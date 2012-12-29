@@ -1,0 +1,11 @@
+﻿/* CSS Document */
+
+textarea {
+    -moz-border-radius-bottomleft: 4px;
+    -moz-border-radius-bottomright: 4px;
+    -moz-border-radius-topleft: 4px;
+    -moz-border-radius-topright: 4px;
+    border-color:#B0B0B0 #E0E0E0 #E0E0E0;
+    border-style:solid;
+    border-width:1px;
+}

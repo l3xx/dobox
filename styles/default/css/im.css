@@ -1,0 +1,92 @@
+a img{
+  border: 0px;
+}
+
+.vfolders {
+    font-size: 9px;
+    margin-top: 40px;
+    line-height: 16px;
+    margin-top: 2px;
+}
+
+.folders { 
+    font-size: 9px;
+    margin-top:0px;  
+    line-height: 16px;
+}
+.vfolders div.passive {
+    display:none;
+}
+  
+.folders div.fpopup{
+  background: #ffffff;
+    width: 150px;
+    position:absolute;
+    margin:0;
+    padding:4px;
+    border-left: 1px solid #cdccc9;
+    border-top: 1px solid #cdccc9;
+    border-right: 2px solid #cdccc9;
+    border-bottom: 2px solid #cdccc9;
+    display: none;
+    text-align: left;
+}
+
+.folders div.fpopup div{
+    font-size: 9px;
+    color: #666;
+    display: inline;
+    width: auto;
+    border: 0;
+    margin: 2px;
+    padding: 0px;
+    text-decoration: none;
+    cursor: pointer;
+    border-bottom: 1px dotted #666;
+}
+
+.folders div.fpopup div.active{
+    background-color: #fff6b5;
+    border-bottom: 0;
+}
+
+.vfolders div{
+    font-size: 9px;
+    color: #666;
+    display: inline;
+    width: auto;
+    border: 0;
+    margin: 2px;
+    padding: 0px;
+    text-decoration: none;
+    background-color: #fff6b5;
+    border-bottom: 0;
+}
+
+.folders div.fpopup div:hover{
+    border-bottom: 1px solid #fff;
+}
+
+.newmess{
+  color: #f16728; 
+  font-weight: bold; 
+}
+
+.im-triangle-from{
+    background: url('../img/admin/triangle_red.gif') 0 0 no-repeat; 
+    width: 4px; height: 11px;
+}
+.im-triangle-to{
+    background: url('../img/admin/triangle_gray.gif');
+    width: 4px; height: 11px; 
+}
+
+.v2folder{
+    width: 126px;
+    height: 13px;
+    margin: 6px 0px 0px 0px;
+}
+
+table.messages td.from  {
+    color:#A34747;
+}

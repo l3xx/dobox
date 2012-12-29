@@ -1,0 +1,59 @@
+body {margin:0;	padding:0; font-family:Arial, Verdana, Tahoma, Sans-serif, Helvetica;	font-size:12px;	color:#000; background:#fff;}
+img {border: 0;	padding: 0;	margin: 0;}
+form {margin: 0;	padding: 0;	font-family: Arial, Tahoma, Sans-serif, Helvetica;}
+	
+table {margin: 0;	padding: 0;	border: none;}
+table, tr, td {border-collapse:collapse;}
+
+.clear {clear: both;}
+.left	{float: left;}
+.right {float: right;}
+
+a:focus {outline:none;}
+
+a {color:#1b67a2; text-decoration:underline;}
+a:hover {color:#1b67a2; text-decoration:none;}
+
+a.greyBord {color:#7b8080; text-decoration:none; border-bottom:1px dashed #7b8080;}
+a:hover.greyBord {color:#7b8080; text-decoration:none; border-bottom:none;}
+
+#wrap {width:100%;}
+.container {width:572px; margin:0 auto;}
+.header {height:88px; padding-top:24px;}
+.header .right img {margin:0px 4px -1px;}
+.content {margin:0; padding:4px 0 20px 0;}
+.leftMenu {width:192px; padding-right:20px; float:left; line-height:16px;}
+.leftMenu p {padding:0; margin:0; margin-top:10px;}
+.centerBlock {float:left; width:360px; line-height:16px;}
+.centerBlock p {padding:0; margin:0; margin-top:18px;}
+.caption {font-weight:bold; text-transform:uppercase; display:block;}
+p.margTop {margin-top:30px;}
+.picCont {padding-top:17px;}
+.picCont img {border:1px solid #c1c1c1;}
+.padTop {padding-top:12px;}
+.padTop a.greyBord {margin-left:19px; line-height:20px;}
+
+.blockOb {padding:9px 10px; border:1px solid #686868; background-color:#fff; margin-bottom:12px;}
+.blockOb .pic {width:118px; float:left;}
+.blockOb .pic img {border:1px solid #c1c1c1;}
+.blockOb .desc {width:350px; float:left; line-height:16px;}
+.blockOb .desc .address {font-size:11px; padding-top:8px;}
+.blockOb .desc .contact {padding-top:12px;}
+.blockOb .price {width:80px; float:right; text-align:right; line-height:16px;}
+.blockOb .price .date {display:block; font-size:11px; padding-bottom:3px;}
+
+.f24 {font-size:24px;}
+.f18 {font-size:18px;}
+.orange {}
+.f12Up {font-size:12px; text-transform:uppercase;}
+.f11Up {font-size:11px; text-transform:uppercase;}
+.upper {text-transform:uppercase;}
+
+.button {cursor:pointer; margin:0;}
+.button input {border:0; float:left; background:url(../img/button-bg.png) right top no-repeat; height:24px; padding-left:8px; padding-right:11px; :padding-left:2px; :padding-right:5px; font-family:Arial; text-transform:uppercase; font-size:11px; color:#fff; padding-bottom:2px; :padding-bottom:0px; cursor:pointer;}
+.button:hover input {background:url(../img/button-bg.png) right bottom no-repeat;}
+.button span {display:block; float:left; width:4px; font-size:0; height:24px; background:url(../img/button-left-bg.png) 0 0 no-repeat;}
+.button:hover span {background:url(../img/button-left-bg.png) 0 bottom no-repeat;}
+
+.footer {display: none;}
+.header .about {}

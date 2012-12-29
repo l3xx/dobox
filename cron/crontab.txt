@@ -1,0 +1,9 @@
+
+1) уведомление о новых комментариях - каждые 15 минут
+*/15 * * * * /usr/bin/php -q .../cron/cron.php act=bbs.items.comments.enotify
+
+2) коррекция счетчиков объявлений в категориях - ежедневно, 2 раза в сутки
+* 14,23 * * * /usr/bin/php -q .../cron/cron.php act=bbs.items.counters.554
+
+2) снятие объявлений с публикации - ежедневно, каждые 3 часа
+* */3 * * * /usr/bin/php -q .../cron/cron.php act=bbs.items.status.223

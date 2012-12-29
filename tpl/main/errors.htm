@@ -1,0 +1,17 @@
+{if $aErrors}
+<div class="error_block">
+    <div class="error_content">
+        {* {if !$isSuccessfull}<div class="icon left"><img src="/img/icon_error.gif" alt="" /></div>{/if} *}
+        <div class="items {if !$isSuccessfull}left{/if}">
+            {foreach from=$aErrors item=v key=k}
+            {if $isSuccessfull}
+            <div class="message">{$v.msg}</div>
+            {else}
+            <div class="error"><b>Ошибка:</b> {$v.msg}</div>
+            {/if}
+            {/foreach}
+        </div>
+        <div class="clear"></div>
+    </div>
+</div>    
+{/if}

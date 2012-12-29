@@ -1,0 +1,4 @@
+a:2:{s:4:"body";s:33:"ыыыddddddddddd
+as
+в
+фыв";s:7:"subject";s:3:"asd";}

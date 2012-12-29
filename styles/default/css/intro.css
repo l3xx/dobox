@@ -1,0 +1,90 @@
+@charset "utf-8";
+/* CSS Document */
+
+/*Structure styles*/
+* {
+    margin:0 0;
+    padding:0 0;
+}
+html, body{
+    height:100%;
+}
+/*Main styles*/
+body {
+    background:none;
+    font:12px Verdana, Arial, Helvetica, sans-serif;
+    color:#666;
+}
+li {list-style-type: none;}
+a {color:#70CDE0; text-decoration:none;}
+a:hover {}
+img {border:0;}
+
+.left {float:left;}
+.right {float:right;}
+.clear {clear:both;}
+.clear-all {clear:both; height:1px; line-height:1px; overflow:hidden;}
+.nowrap {white-space:nowrap;}
+table, tr, td {border-collapse:collapse;}
+
+/*Site styles*/
+
+table.page {height:100%; width:990px; margin:auto;}
+table.page .top td {padding-top:15px;}
+table.page .bottom td {padding-bottom:15px;} 
+
+input.text {border:1px solid #c8da2c; height:30px; line-height: 30px; font-size:14px; text-align:center; color:#a3867c;}
+input.textErr {border:1px solid #f36f27;}
+
+.logo {margin-bottom:10px;}
+table.page .top div.funcBlock td {padding-top:10px;}
+.funcBlock {height:385px; width:302px; background:url(../img/intro/funcBlockBG.gif) 0 0 no-repeat;}
+.funcBlock div.content {padding:35px 0;}
+.funcBlock div.content p {font-size:14px; text-align:center;}
+.funcBlock input.text {width:220px;}
+.funcBlock a.submitReg {display:block; color:#fff; font-size:14px; width:181px; height:34px; line-height:30px; 
+    background:url(../img/intro/but_reg.gif) 0 0 no-repeat; margin:auto; text-align:center; cursor:pointer;
+    }
+.funcBlock a.submitReg:hover {text-decoration:underline; border:none;}    
+.funcBlock a.submitRegErr {background:url(../img/intro/but_reg.gif) 0 -34px no-repeat;} 
+
+.funcBlock a.submitSub {display:block; color:#fff; font-size:14px; width:193px; height:33px; line-height:30px; 
+    background:url(../img/intro/but_sub.gif) 0 0 no-repeat; margin:auto; text-align:center; cursor:pointer;
+    }
+.funcBlock a.submitSub:hover {text-decoration:underline; border:none;}    
+.funcBlock a.submitSubErr {background:url(../img/intro/but_sub.gif) 0 -33px no-repeat;} 
+.funcBlock a.wait, .funcBlock a.wait:hover {cursor:default; text-decoration:none; }
+.funcBlock .fineIcon {width:25px; height:25px; background:url(../img/intro/fineIcon.gif) 0 0 no-repeat; margin-left:5px;}
+.funcBlock .errIcon {width:25px; height:25px; background:url(../img/intro/errIcon.gif) 0 0 no-repeat; margin:4px 0 0 5px;}
+.funcBlock form span {display:block;  font-size:9px; text-align:center; height:8px; line-height: 8px;}
+.funcBlock form span.fine {color:#c8da2c;}
+.funcBlock form span.err {color:#f36f27;}
+.funcBlock form span.note {color:#999;}
+
+.funcBlock .content h3 {color:#c8da2b; font-weight:bold; font-size:12px; text-align:left; padding:0 35px 10px 35px;}
+.funcBlock .content p.done {color:#a4887d; font-size:12px; text-align:left; padding:0 20px 0 35px;}
+
+.add2fav {margin: auto; width: 155px; margin-bottom: 5px;}
+.add2fav a {background:url(../img/intro/star.gif) 0 2px no-repeat; padding-left:17px; display:block; text-decoration: underline;}
+.add2fav a:hover {border:none; text-decoration:none;}
+.maintxt {padding-top:10px; padding-bottom:15px; width:550px; }
+.maintxt p {padding-bottom:5px; padding-right: 30px;}
+.separator {width:135px; background:url(../img/intro/separator.gif) 0 0 no-repeat; margin:auto; padding-bottom:30px;}
+
+.tags {line-height:60px; width:515px; margin:auto; text-align:center; margin-bottom: 10px;}
+.tags a {color:#a3867c; font-size:14px; margin:0 10px; border-bottom:1px dotted #a3867c;}
+.tags a:hover {border: none;}
+.tags a.main {font-size:24px; font-weight:bold;}
+.tags a.submain {font-size:20px; font-weight:bold;}
+
+.footer {font-size:10px;}
+
+.box {position:absolute; width:450px; background-color:#fff; border:1px solid #bab9b9; z-index:1001;}
+.box .content {padding:10px;}
+.box .content table {width:100%;}
+.box h1 {color:#fdd433; font-size:24px; font-weight:bold; text-transform:uppercase; padding-top:57px; padding-bottom:10px;}
+.box p {padding-bottom:20px;}
+
+.busyLayer { background-color:#ffffff; height:100%; width:100%; left:0; top: 0; opacity: 0.65; filter:alpha(opacity=65); position:absolute; z-index:1000; }     
+
+h1.err {color: #F36F28;}
