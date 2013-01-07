@@ -21,68 +21,94 @@
 </div>
 <div class="categories" id="indexCategoriesList">
     <?php
-        $aCats = bff::i()->Bbs_getIndexCategories();
-        $k = 0;
-        foreach($aCats as $v) { $k++; ?>
+    $aCats = bff::i()->Bbs_getIndexCategories();
+    $k = 0;
+    foreach($aCats as $v) { $k++; ?>
         <div class="blockCat" rel="<?= $v['id'] ?>">
-          <div class="top"></div>
-          <div class="center">
-            <span class="caption"><?= $v['title']; ?></span>
-            <ul>
-                <?php  $i=1;
+            <div class="top"></div>
+            <div class="center">
+                <div onclick="blockClick(<?= $v['id'] ?>)" class="blockClick" >
+                    <span class="caption"><?= $v['title']; ?></span>
+                </div>
+                <div id="block<?= $v['id'] ?>" style="padding: 0 0 10px 0;" class="block_front" >
+                    <!--ul-->
+                    <?php  $i=1;
                     foreach($v['sub'] as $v2) { ?>
-                        <li><a href="/search?c=<?= $v2['id'] ?>"><?= $v2['title']; ?></a> (<?= $v2['items']; ?>)</li>
-              <?php $i++; if($i>5) break; } 
-              if(sizeof($v['sub'])>5) {
-              ?>
-              <li><a href="javascript:void(0);" onclick="indexCatExpand(<?= $v['id'] ?>, true);" class="greyBord">другие рубрики</a></li>
-              <? } ?>
-            </ul>
-          </div>
-          <div class="bottom"></div>
+                        <!--li--><a href="/search?c=<?= $v2['id'] ?>"><?= $v2['title']; ?></a> (<?= $v2['items']; ?>)&nbsp;&nbsp;<!--/li-->
+                        <?php $i++; //if($i>5) break;
+                    }
+
+                    //if(sizeof($v['sub'])>5) {
+                    ?>
+                    <!--li><a href="javascript:void(0);" onclick="indexCatExpand(<?= $v['id'] ?>, true);" class="greyBord">другие рубрики</a></li-->
+                    <? //} ?>
+                    <!--/ul-->
+                    <br />
+                </div>
+            </div>
+            <div class="bottom"></div>
         </div>
-    <?php if($k==3){ echo '<div class="clear"></div>'; $k=0; }  } ?>
+        <?php if($k==3){ echo '<div class="clear"></div>'; $k=0; }  } ?>
     <div class="clear"></div>
 </div>
 
 <script type="text/javascript">
-var indexCatCache = {}, $indexCatList, indexCatExpandLastID = 0;
-$(function(){
-    $indexCatList = $('#indexCategoriesList');   
-    $('body').click(function(e) {                                                
-        if( ! $(e.target).is('a') && ! $(e.target).parents('div.openBlock').length ) {
-            $('div.openBlock', $indexCatList).remove();
-        }
-    });
-});
+    var indexCatCache = {}, $indexCatList, indexCatExpandLastID = 0;
 
-function indexCatExpand(id, expand) 
-{         
-    if(expand) 
-    {
-        var $block = $('div.blockCat[rel="'+id+'"]', $indexCatList);
-        var pos = $block.position();
-        if(indexCatCache[id]) { 
-            if(indexCatExpandLastID>0) {
-                $('div.expand-'+indexCatExpandLastID, $indexCatList).remove(); 
-            }
-            $block.after( indexCatCache[id] );
-            $('div.expand-'+id, $indexCatList).css({top: pos.top, left: pos.left}).show();
+    function blockClick(id){
+        $('.block_front').css({"display":"none"});
+
+        if ($("#block"+id).is(":hidden")) {
+            $("#block"+id).slideDown("slow");
         } else {
-            bff.ajax('/items/getIndexCategories?act=expand', {id:id}, function(data){
-                if(data && data.res) {
-                    if(indexCatExpandLastID>0) {
-                        $('div.expand-'+indexCatExpandLastID, $indexCatList).remove(); 
-                    }
-                    $block.after( ( indexCatCache[id] = data.block ) );
-                    $('div.expand-'+id, $indexCatList).css({top: pos.top, left: pos.left}).show();
-                }
-            });
+            $("#block"+id).hide();
         }
-        indexCatExpandLastID = id;
-    } else {
-        $('div.expand-'+id, $indexCatList).hide().remove();
-        indexCatExpandLastID = 0;
+
     }
-}
+
+
+
+    $(function(){
+        $indexCatList = $('#indexCategoriesList');
+        $('body').click(function(e) {
+            if( ! $(e.target).is('a') && ! $(e.target).parents('div.openBlock').length ) {
+                $('div.openBlock', $indexCatList).remove();
+            }
+        });
+
+        /*$(".block_front").click(function(){
+            $('.block_front').css({"display":"none;"});
+        });*/
+
+    });
+
+    function indexCatExpand(id, expand)
+    {
+        if(expand)
+        {
+            var $block = $('div.blockCat[rel="'+id+'"]', $indexCatList);
+            var pos = $block.position();
+            if(indexCatCache[id]) {
+                if(indexCatExpandLastID>0) {
+                    $('div.expand-'+indexCatExpandLastID, $indexCatList).remove();
+                }
+                $block.after( indexCatCache[id] );
+                $('div.expand-'+id, $indexCatList).css({top: pos.top, left: pos.left}).show();
+            } else {
+                bff.ajax('/items/getIndexCategories?act=expand', {id:id}, function(data){
+                    if(data && data.res) {
+                        if(indexCatExpandLastID>0) {
+                            $('div.expand-'+indexCatExpandLastID, $indexCatList).remove();
+                        }
+                        $block.after( ( indexCatCache[id] = data.block ) );
+                        $('div.expand-'+id, $indexCatList).css({top: pos.top, left: pos.left}).show();
+                    }
+                });
+            }
+            indexCatExpandLastID = id;
+        } else {
+            $('div.expand-'+id, $indexCatList).hide().remove();
+            indexCatExpandLastID = 0;
+        }
+    }
 </script>

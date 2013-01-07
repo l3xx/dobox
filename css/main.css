@@ -148,10 +148,17 @@ h3 {padding:0; margin:0; font-size:12px; font-weight:normal; color:#7b8080;}
 .leftBlock .buttonsOb .dropdown ul li a.select {background:#f0efee; color:#7b8080; text-decoration:none;}
 
 .leftBlock .categories {padding-top:24px; margin-right:-24px; width:720px; position:relative;}
-.leftBlock .categories .blockCat {width:216px; float:left; margin:0 24px 24px 0;}
-.leftBlock .categories .blockCat .top {width:216px; height:10px; background:url(../img/bgBlockCatTop.png) 0 0 no-repeat;}
-.leftBlock .categories .blockCat .bottom {width:216px; height:10px; background:url(../img/bgBlockCatBottom.png) 0 0 no-repeat;}
-.leftBlock .categories .blockCat .center {/*padding:4px 16px 2px 16px;*/ padding:0px 16px 0px 16px; min-height:160px; color:#7b8080; background:url(../img/bgBlockCat.gif) 0 0 repeat-y;}
+.leftBlock .categories .blockCat {width:696px/*216px*/; /*float:left;*/ margin:0 24px 24px 0;}
+/*.leftBlock .categories .blockCat .top {width:216px; height:10px; background:url(../img/bgBlockCatTop.png) 0 0 no-repeat;}
+.leftBlock .categories .blockCat .bottom {width:216px; height:10px; background:url(../img/bgBlockCatBottom.png) 0 0 no-repeat;}*/
+.leftBlock .categories .blockCat .top {width:696px; height:10px; background:url(../img/bgBlockCatTop696.png) 0 0 no-repeat;}
+.leftBlock .categories .blockCat .bottom {width:696px; height:10px; background:url(../img/bgBlockCatBottom696.png) 0 0 no-repeat;}
+
+
+.block_front {display: none;}
+.blockClick {cursor: pointer;}
+.leftBlock .categories .blockCat .center {/*padding:4px 16px 2px 16px;*/ padding:0px 16px 0px 16px; min-height:20px; color:#7b8080; background:url(../img/bgBlockCat696.gif) 0 0 repeat-y;}
+/*.leftBlock .categories .blockCat .center {/*padding:4px 16px 2px 16px;*/ /*padding:0px 16px 0px 16px; min-height:160px; color:#7b8080; background:url(../img/bgBlockCat.gif) 0 0 repeat-y;}*/  
 .leftBlock .categories .blockCat .center span.caption {display:block; padding-bottom:9px; color:#1b67a2; font-size:18px; line-height:24px; font-weight:bold; text-transform:uppercase;}
 .leftBlock .categories .blockCat .center ul {list-style:none; padding:0; margin:1px 0 0px 0;}
 .leftBlock .categories .blockCat .center ul li {padding:3px 0 3px 0; margin:0;}
