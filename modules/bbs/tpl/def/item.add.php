@@ -1,5 +1,5 @@
 <?php 
-    extract($aData);  
+    extract($aData);
 ?>
 <h1>размещение объявления</h1>
 <form action="#" id="add-form">

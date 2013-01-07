@@ -123,7 +123,7 @@ var iTypes = (function(){
         }, $progress);
         return false;
     }
-    
+
     function del(id, link)
     {
         bff.ajaxDelete('Удалить тип?', id, 

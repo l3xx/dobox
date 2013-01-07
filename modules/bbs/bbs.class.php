@@ -66,7 +66,8 @@ class BBS extends BBSBase
                 'ph'  => TYPE_BOOL, //с фото
                 'v'   => TYPE_UINT, //тип отображения, 0,1 - list, 2 - таблица
                 'ct'  => TYPE_UINT, //тип категории
-                'r'   => TYPE_ARRAY, //регион 
+                'sct'  => TYPE_UINT, //подтип категории
+                'r'   => TYPE_ARRAY, //регион
                 //цена
                 'prf' => TYPE_UNUM,
                 'prt' => TYPE_UNUM,
@@ -222,7 +223,14 @@ class BBS extends BBSBase
                         FROM '.TABLE_BBS_CATEGORIES_TYPES.' T, '.TABLE_BBS_CATEGORIES.' C
                         WHERE '.$this->db->prepareIN('T.cat_id', $aParentCatsID).' AND T.cat_id = C.id
                         ORDER BY C.numleft, T.num ASC');
+
+            $aData['subtypes'] = $this->db->select('SELECT T.*
+                        FROM '.TABLE_BBS_CATEGORIES_SUBTYPES.' T, '.TABLE_BBS_CATEGORIES.' C
+                        WHERE '.$this->db->prepareIN('T.cat_id', $aParentCatsID).' AND T.cat_id = C.id
+                        ORDER BY C.numleft, T.num ASC');
+
             $aData['types'] = func::array_transparent($aData['types'], 'id', true);   
+            $aData['subtypes'] = func::array_transparent($aData['subtypes'], 'id', true);
 
             $dp = $this->initDynprops();
             $aData['dp'] = $dp->form($c, false, true, array(), 'f', 'search.dp.php', $this->module_dir_tpl, true);
@@ -1949,10 +1957,12 @@ class BBS extends BBSBase
                     'dp'     => TYPE_BOOL,
                     'dp_form'=> TYPE_STR,
                     'format' => TYPE_STR,
+                    'type' => TYPE_STR,
                 ));
-                
-                if(!$p['pid']) break;
+
+                 if(!$p['pid']) break;
                 $returnTypes = 0;
+                $returnSubTypes = 0;
 
                 $aParentInfo = $this->db->one_array('SELECT id, numlevel, numleft, numright, prices, prices_sett, regions FROM '.TABLE_BBS_CATEGORIES.' WHERE id = '.$p['pid']);
                 
@@ -1960,9 +1970,13 @@ class BBS extends BBSBase
                 $aCats = $this->db->select('SELECT id, title, numlevel FROM '.TABLE_BBS_CATEGORIES.' WHERE pid = '.$p['pid'].' AND enabled = 1 ORDER BY numleft');
                 if(empty($aCats)) {
                     $returnTypes = 1;
+                    $tableName = TABLE_BBS_CATEGORIES_TYPES;
+                    if($p['type'] == 'type') {
+                        $tableName = TABLE_BBS_CATEGORIES_SUBTYPES;
+                    }
                     //если категории не найдены, пытаемся получить "типы"
                     $aCats = $this->db->select('SELECT T.id, T.title 
-                                                    FROM '.TABLE_BBS_CATEGORIES_TYPES.' T, 
+                                                    FROM '.$tableName.' T,
                                                          '.TABLE_BBS_CATEGORIES.' C 
                                                     WHERE ((C.numleft <= '.$aParentInfo['numleft'].' AND C.numright > '.$aParentInfo['numright'].') OR (C.id = '.$p['pid'].'))
                                                         AND C.id = T.cat_id AND T.enabled = 1 
@@ -1985,7 +1999,7 @@ class BBS extends BBSBase
                     }
                 }
                 
-                $this->ajaxResponse( array('cats'=>$aCats, 'is_types'=>$returnTypes, 'dp'=>$aDynprops, 
+                $this->ajaxResponse( array('cats'=>$aCats, 'is_types'=>$returnTypes, 'is_subtypes'=>$returnSubTypes, 'dp'=>$aDynprops,
                         'regions'=>$aParentInfo['regions'], //определяем наличие блока "Местоположение" 
                         'prices' =>$aParentInfo['prices'], 'prices_sett' =>$aParentInfo['prices_sett'], //определяем наличие блока "Цена"
                         ));

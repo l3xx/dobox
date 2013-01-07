@@ -1,6 +1,6 @@
 var bbsSearch = (function(){
     var $form, $doc = document, $filter, $filterContent, $filterShowLink, 
-        $list, $sett, $catTypes, //$ph,
+        $list, $sett, $catTypes, $catSubTypes, //$ph,
         $viewTypeTable, $viewTypeList,
         $viewPPLink, $viewPPDropdown, 
         $progress, process = false, f = {}, child_cache = {}, child_tmpl, 
@@ -16,6 +16,7 @@ var bbsSearch = (function(){
  
         $form = $('#searchForm');
         $catTypes = $('#searchCatTypes', $form);
+        $catSubTypes = $('#searchCatSubTypes', $form);
         $filter = $('#searchFilter', $form);
         $filterContent = $('>div>div.filterContent', $filter);
         $list = $('#searchResults');  
@@ -52,6 +53,17 @@ var bbsSearch = (function(){
                 $(this).addClass('active');
                 $(this).siblings().removeClass('active');
                 setFormParam('ct', ct);
+                update();
+            }
+        });
+
+        $('a', $catSubTypes).click(function(e){
+            nothing(e);
+            var sct = intval( this.rel );
+            if(f.sct!=sct && !process) {
+                $(this).addClass('active');
+                $(this).siblings().removeClass('active');
+                setFormParam('sct', sct);
                 update();
             }
         });

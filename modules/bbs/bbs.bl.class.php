@@ -5,6 +5,7 @@ define('TABLE_BBS_CATEGORIES_DYNPROPS',       DB_PREFIX.'bbs_categories_dynprops
 define('TABLE_BBS_CATEGORIES_DYNPROPS_MULTI', DB_PREFIX.'bbs_categories_dynprops_multi');    
 define('TABLE_BBS_CATEGORIES_IN_DYNPROPS',    DB_PREFIX.'bbs_categories_in_dynprops'); 
 define('TABLE_BBS_CATEGORIES_TYPES',          DB_PREFIX.'bbs_categories_types');
+define('TABLE_BBS_CATEGORIES_SUBTYPES',       DB_PREFIX.'bbs_categories_subtypes');
 define('TABLE_BBS_ITEMS',                     DB_PREFIX.'bbs_items');
 define('TABLE_BBS_ITEMS_CLAIMS',              DB_PREFIX.'bbs_items_claims');
 define('TABLE_BBS_ITEMS_COMMENTS',            DB_PREFIX.'bbs_items_comments');

@@ -14,7 +14,17 @@ $(function(){
     
 ?>
 
-<div class="greyLine">           
+<form action="/search" method="get"  id="searchForm">
+
+<div class="tabs" id="searchCatSubTypes">
+    <a href="#" rel="0" <?= (!$sct ? ' class="active"':'') ?>><span class="left">&nbsp;</span><span>Все</span><span class="right">&nbsp;</span></a>
+    <? foreach($subtypes as $t) { ?>
+    <a href="#" rel="<?= $t['id'] ?>"<?= ($t['id'] == $sct ? ' class="active"':'') ?>><span class="left">&nbsp;</span><span><?= $t['title']; ?></span><span class="right">&nbsp;</span></a>
+    <? } ?>
+    <div class="clear"></div>
+</div>
+
+<div class="greyLine">
     <? 
     $cats_level = &$cats; $cats_numlevel = 1; $cats_parent = 0;
     foreach($cats_active as $cat_id) { 
@@ -54,14 +64,16 @@ $(function(){
     <div class="clear"></div>
 </div>
 
-<form action="/search" method="get"  id="searchForm">
+
 <input type="hidden" name="c" value="<?= $c; ?>" />
 <input type="hidden" name="fe" value="<?= $fe; ?>" />
 <input type="hidden" name="fh" value="<?= $fh; ?>" />
 <input type="hidden" name="pp" value="<?= $pp; ?>" />
 <input type="hidden" name="v" value="<?= $v; ?>" />
 <input type="hidden" name="ct" value="<?= $ct; ?>" />
+<input type="hidden" name="sct" value="<?= $sct; ?>" />
 <input type="hidden" name="page" value="1" />
+
 <div class="tabs" id="searchCatTypes">
     <a href="#" rel="0" <?= (!$ct ? ' class="active"':'') ?>><span class="left">&nbsp;</span><span>Все</span><span class="right">&nbsp;</span></a>
     <? foreach($types as $t) { ?>

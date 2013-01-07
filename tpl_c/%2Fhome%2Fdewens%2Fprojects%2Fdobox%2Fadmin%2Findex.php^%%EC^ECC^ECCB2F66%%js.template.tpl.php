@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.7, created on 2012-12-26 00:53:49
+<?php /* Smarty version 2.6.7, created on 2012-12-29 13:40:38
          compiled from js.template.tpl */ ?>
 <?php if (count($_from = (array)$this->_tpl_vars['tplJSIncludes'])):
     foreach ($_from as $this->_tpl_vars['v']):

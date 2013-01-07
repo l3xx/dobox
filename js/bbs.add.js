@@ -185,15 +185,15 @@ bbsAddClass.prototype =
         else if(step == 3){
             
             this.stepInit(step);
-            
+
             //build preview
             this.$viewPhoto.attr('src', this.photos.getPreviewPhoto(this.id) );
-            
+
             var type = '';
-            var sel = $('select.cat[name="cat[type]"]', this.steps[1].e); 
+            var sel = $('select.cat[name="cat[type]"]', this.steps[1].e);
             if(sel.length) { sel = sel.get(0); type = sel.options[sel.selectedIndex].text; }
-            this.$viewType.html( (type!==''?type+':':'') );              
-            
+            this.$viewType.html( (type!==''?type+':':'') );
+
             if(this.$regions.hasClass('hidden')) {
                 this.$viewRegion.hide();
             } else {
@@ -206,7 +206,7 @@ bbsAddClass.prototype =
             }
 
             this.$viewText.html( (this.$adText.val() + '').replace(/([^>\r\n]?)(\r\n|\n\r|\r|\n)/g, '$1<br/>$2') );
-            
+
             if(this.$prices.state.p) {
                 this.$viewPrices.p.html( this.$prices.p.val() );
                 var hasT = false;
@@ -216,8 +216,8 @@ bbsAddClass.prototype =
             } else {
                 this.$viewPrices.p.parent().hide();
             }
-            
-            $('div.add-step-content', $step).removeClass('hidden'); 
+
+            $('div.add-step-content', $step).removeClass('hidden');
         }
         
         this.stepInit(step);
@@ -303,18 +303,18 @@ bbsAddClass.prototype =
         var id = intval($select.val()); 
         if(id <= 0) return;
         
-        if(type == 'type') {
+        if(type == 'subtype') {
             this.stepReady(1);    
             return;
-        }    
-        
+        }
+
         this.categoryBuild($select, type, id, 'bbsAdd.categorySelect');
     },
     
     categoryBuild: function($select, type, id, objFunc)
     {
-        var html = '';                                    
-        
+        var html = '';
+
         if(app.cache.category[id]) {
             html = this.categoryBuildHTML(app.cache.category[id], type, objFunc);
             if(html === false)
@@ -323,7 +323,7 @@ bbsAddClass.prototype =
         } 
         else 
         {
-            bff.ajax('/ajax/bbs?act=sub-cats', {pid: id, dp:1, dp_form:'add'}, function (data)
+            bff.ajax('/ajax/bbs?act=sub-cats', {pid: id, dp:1, dp_form:'add', type: type}, function (data)
             {                                                                                       
                 if(data) {   
                     html = this.categoryBuildHTML( (app.cache.category[id] = data), type, objFunc);

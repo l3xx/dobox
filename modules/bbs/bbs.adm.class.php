@@ -1022,8 +1022,15 @@ class BBS extends BBSBase
             {
                 case 'toggle':
                 {
+                    $tableName = TABLE_BBS_CATEGORIES_TYPES;
                     $nTypeID = $this->input->get('type_id');
-                    if($this->db->execute('UPDATE '.TABLE_BBS_CATEGORIES_TYPES.' SET enabled = (1-enabled) WHERE id = '.$nTypeID))
+
+                    if(!$nTypeID) {
+                        $nTypeID = $this->input->id('subtype_id');
+                        $tableName = TABLE_BBS_CATEGORIES_SUBTYPES;
+                    }
+
+                    if($this->db->execute('UPDATE '.$tableName.' SET enabled = (1-enabled) WHERE id = '.$nTypeID))
                         $this->ajaxResponse(Errors::SUCCESSFULL);
                 } break;  
                 case 'rotate':
@@ -1032,10 +1039,17 @@ class BBS extends BBSBase
                         $this->ajaxResponse(Errors::SUCCESSFULL);
                 } break;  
                 case 'form':
-                {                            
+                {
                     $nTypeID = $this->input->get('type_id');
+                    $tableName = TABLE_BBS_CATEGORIES_TYPES;
+
+                    if ($nTypeID === NULL) {
+                        $nTypeID = $this->input->get('subtype_id');
+                        $tableName = TABLE_BBS_CATEGORIES_SUBTYPES;
+                    }
+
                     if($nTypeID) {
-                        $aData = $this->db->one_array('SELECT id, title FROM '.TABLE_BBS_CATEGORIES_TYPES.' WHERE id = '.$nTypeID);
+                        $aData = $this->db->one_array('SELECT id, title FROM '.$tableName.' WHERE id = '.$nTypeID);
                     } else {
                         $aData['id'] = 0;
                     }
@@ -1045,11 +1059,17 @@ class BBS extends BBSBase
                 } break; 
                 case 'delete':
                 {
+                    $tableName = TABLE_BBS_CATEGORIES_TYPES;
                     $nTypeID = $this->input->id('type_id');
+
+                    if(!$nTypeID) {
+                        $nTypeID = $this->input->id('subtype_id');
+                        $tableName = TABLE_BBS_CATEGORIES_SUBTYPES;
+                    }
                     if($nTypeID) {
                         $nItems =  $this->db->one_data('SELECT COUNT(I.id) FROM '.TABLE_BBS_ITEMS.' I WHERE I.cat_type = '.$nTypeID);
                         if(empty($nItems)) { //удаляем только "свободный" тип
-                            $res = $this->db->execute('DELETE FROM '.TABLE_BBS_CATEGORIES_TYPES.' WHERE id = '.$nTypeID);
+                            $res = $this->db->execute('DELETE FROM '.$tableName.' WHERE id = '.$nTypeID);
                             if($res) $this->ajaxResponse( Errors::SUCCESS );
                         }
                     }
@@ -1065,32 +1085,44 @@ class BBS extends BBSBase
                     $this->input->postm(array(
                         'title' => TYPE_STR,
                     ), $aData, array('title'));
-                    
-                    if($this->errors->no()) 
+
+                    $tableName = TABLE_BBS_CATEGORIES_TYPES;
+                    if (func::POSTGET('subtype_id') !== false)  $tableName = TABLE_BBS_CATEGORIES_SUBTYPES;
+
+                    if($this->errors->no())
                     {
-                        $nNum = (integer)$this->db->one_data('SELECT MAX(num) FROM '.TABLE_BBS_CATEGORIES_TYPES.' WHERE cat_id = '.$nCategoryID);
-                        
-                        $res = $this->db->execute('INSERT INTO '.TABLE_BBS_CATEGORIES_TYPES.' (cat_id, title, num) 
-                            VALUES('.$nCategoryID.', ?, '.($nNum+1).')
-                        ', array($aData['title']));
-                        
+                        $nNum = (integer)$this->db->one_data('SELECT MAX(num) FROM '.$tableName.' WHERE cat_id = '.$nCategoryID);
+
+                        $res = $this->db->execute('INSERT INTO '.$tableName.' (cat_id, title, num)
+                        VALUES('.$nCategoryID.', ?, '.($nNum+1).')
+                    ', array($aData['title']));
+
                         $this->adminRedirect(($res ? Errors::SUCCESS : Errors::IMPOSSIBLE), 'types&cat_id='.$nCategoryID);
-                    } 
+                    }
                 } break;
                 case 'edit': {
+
+                    $name = 'type_id';
+                    $tableName = TABLE_BBS_CATEGORIES_TYPES;
+
+                    if (func::POSTGET('subtype_id') !== false) {
+                        $tableName = TABLE_BBS_CATEGORIES_SUBTYPES;
+                        $name = 'subtype_id';
+                    }
+
                     $this->input->postm(array(
                         'title' => TYPE_STR,
-                        'type_id' => TYPE_UINT,
+                        $name => TYPE_UINT,
                     ), $aData, array('title'));
-                    
-                    if(!$aData['type_id']) {
-                        $this->adminRedirect(Errors::IMPOSSIBLE, 'types&cat_id='.$nCategoryID);                          
+
+                    if((isset($aData['type_id']) && !$aData['type_id']) && (isset($aData['subtype_id']) && !$aData['subtype_id'])) {
+                        $this->adminRedirect(Errors::IMPOSSIBLE, 'types&cat_id='.$nCategoryID);
                     }
                     
                     if($this->errors->no()) 
                     {
-                        $res = $this->db->execute('UPDATE '.TABLE_BBS_CATEGORIES_TYPES.' 
-                            SET title = ? WHERE id = '.$aData['type_id'], array($aData['title']));
+                        $res = $this->db->execute('UPDATE '.$tableName.'
+                            SET title = ? WHERE id = '.$aData[$name], array($aData['title']));
                         
                         $this->adminRedirect(($res ? Errors::SUCCESS : Errors::IMPOSSIBLE), 'types&cat_id='.$nCategoryID);
                     } 
@@ -1110,7 +1142,12 @@ class BBS extends BBSBase
         $aData['types'] = $this->db->select('SELECT T.*, C.title as cat_title
                     FROM '.TABLE_BBS_CATEGORIES_TYPES.' T, '.TABLE_BBS_CATEGORIES.' C
                     WHERE '.$this->db->prepareIN('T.cat_id', $aParentID).' AND T.cat_id = C.id
-                    ORDER BY C.numleft, T.num ASC');        
+                    ORDER BY C.numleft, T.num ASC');
+
+        $aData['subtypes'] = $this->db->select('SELECT T.*, C.title as cat_title
+                    FROM '.TABLE_BBS_CATEGORIES_SUBTYPES.' T, '.TABLE_BBS_CATEGORIES.' C
+                    WHERE '.$this->db->prepareIN('T.cat_id', $aParentID).' AND T.cat_id = C.id
+                    ORDER BY C.numleft, T.num ASC');
 
         $aData['url_listing'] = $this->adminCreateLink('types');
         $aData['url_action'] = $this->adminCreateLink('types&cat_id='.$nCategoryID.'&act=');
@@ -1118,7 +1155,7 @@ class BBS extends BBSBase
         
         $this->includeJS('tablednd');
         $this->adminCustomCenterArea();           
-        return $this->tplFetchPHP($aData, 'admin.types.php');
+        return $this->tplFetchPHP($aData, 'admin.types.php') . $this->tplFetchPHP($aData, 'admin.subtypes.php');
     }
     
     function settings()

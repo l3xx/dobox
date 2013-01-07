@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.7, created on 2012-12-26 00:58:54
+<?php /* Smarty version 2.6.7, created on 2012-12-30 01:08:02
          compiled from user.menu.tpl */ ?>
 <span class="cont left"><span class="left"><a href="/items/fav" title="Избранное" class="favorite">Избранное</a> (<span id="#favCounter"><?php echo $this->_tpl_vars['config']['bbs_favs']['total']; ?>
 </span>)</span><span class="rightCor">&nbsp;</span></span>
