@@ -302,7 +302,8 @@ bbsAddClass.prototype =
         
         var id = intval($select.val()); 
         if(id <= 0) return;
-        
+
+        console.log(type);
         if(type == 'subtype') {
             this.stepReady(1);    
             return;
@@ -339,7 +340,8 @@ bbsAddClass.prototype =
     categoryBuildHTML: function(data, typePrev, objFunc)
     {
         var type = (intval(data.is_types) ? 'type' : typePrev+1);    
-        
+        var type = (intval(data.is_subtypes) ? 'subtype' : type);
+
         if(type && data.dp) {
             bffDynpropsTextify.clear();
             this.$dynprops.html(data.dp.form);
@@ -371,7 +373,7 @@ bbsAddClass.prototype =
             return false;
 
         var html = '<span class="arrow"><img src="/img/arrowRight.png" /></span>\
-                <select name="cat['+type+']" class="cat" onchange="bbsAdd.categorySelect(this, '+(type=='type'?'\''+type+'\'':type)+');">\
+                <select name="cat['+type+']" class="cat" onchange="bbsAdd.categorySelect(this, '+((type=='type' || type=='subtype')?'\''+type+'\'':type)+');">\
                     <option value="0">выбрать</option>';
                     for(var i in data.cats) {
                           html += '<option value="'+data.cats[i].id+'">'+data.cats[i].title+'</option>';

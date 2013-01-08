@@ -105,7 +105,9 @@ class BBS extends BBSBase
                 
                 //тип категории
                 if($ct>0) $sql[] = 'I.cat_type = '.$ct;
-                
+
+                if($sct>0) $sql[] = 'I.cat_subtype = '.$sct;
+
                 if($fe) {
                     //цена
                     if(empty($cat['prices_sett']['ranges'])) {
@@ -177,12 +179,14 @@ class BBS extends BBSBase
                   I.cat2_id,   CAT2.title as cat2_title,
                   I.cat_id,    C.regions as cat_regions, C.prices as cat_prices, C.prices_sett as cat_prices_sett,
                   I.cat_type,  CT.title as cat_type_title,
+                  I.cat_subtype,  CST.title as cat_subtype_title,
                   I.imgfav, I.imgcnt, I.price, I.descr, I.descr_regions, I.price, I.price_torg, I.price_bart,
                   I.publicated, U.blocked as user_blocked
                   '.($isTable ? ', '.join(', ', $sqlTableDF) : '').'
                   FROM '.TABLE_BBS_ITEMS.' I
                     LEFT JOIN '.TABLE_BBS_CATEGORIES.' CAT2 ON I.cat2_id = CAT2.id
                     LEFT JOIN '.TABLE_BBS_CATEGORIES_TYPES.' CT ON I.cat_type = CT.id
+                    LEFT JOIN '.TABLE_BBS_CATEGORIES_SUBTYPES.' CST ON I.cat_subtype = CST.id
                     LEFT JOIN '.TABLE_BBS_ITEMS_VIEWS.' IV ON I.id = IV.item_id AND IV.views_date
                     LEFT JOIN '.TABLE_USERS.' U ON I.user_id = U.user_id,
                     '.TABLE_BBS_CATEGORIES.' CAT1,
@@ -280,11 +284,13 @@ class BBS extends BBSBase
               I.cat2_id,   CAT2.title as cat2_title,
               I.cat_id,    C.regions as cat_regions, C.prices as cat_prices, C.prices_sett as cat_prices_sett,
               I.cat_type,  CT.title as cat_type_title,
+              I.cat_subtype,  CST.title as cat_subtype_title,
               I.imgfav, I.imgcnt, I.price, I.descr, I.descr_regions, I.price, I.price_torg, I.price_bart,
               I.publicated
               FROM '.TABLE_BBS_ITEMS.' I
                 LEFT JOIN '.TABLE_BBS_CATEGORIES.' CAT2 ON I.cat2_id = CAT2.id
                 LEFT JOIN '.TABLE_BBS_CATEGORIES_TYPES.' CT ON I.cat_type = CT.id
+                LEFT JOIN '.TABLE_BBS_CATEGORIES_SUBTYPES.' CST ON I.cat_subtype = CST.id
                 LEFT JOIN '.TABLE_BBS_ITEMS_VIEWS.' IV ON I.id = IV.item_id AND IV.views_date
                 LEFT JOIN '.TABLE_USERS.' U ON I.user_id = U.user_id,
                 '.TABLE_BBS_CATEGORIES.' CAT1,
@@ -459,13 +465,13 @@ class BBS extends BBSBase
                     $sPassword = func::generator(6);    
                     
                     $this->db->execute('INSERT INTO '.TABLE_BBS_ITEMS.' (
-                        user_id, uid, status, cat1_id, cat2_id, cat_id, cat_type,
+                        user_id, uid, status, cat1_id, cat2_id, cat_id, cat_type, cat_subtype,
                         country_id, region_id, city_id,  
                         img, imgcnt, imgfav, 
                         price, price_torg, price_bart,        
                         contacts_name, contacts_email, contacts_phone, contacts_skype, contacts_site, video, pass,
                         descr, descr_regions, info, mkeywords, mdescription, created, modified'.(!empty($aDynpropsData['fields']) ? $aDynpropsData['fields'] : '').')
-                        VALUES ('.$nUserID.', :uid, '.BBS_STATUS_NEW.', '.$p['cat'][1].', '.$p['cat'][2].', '.$nCategoryID.', '.$p['cat']['type'].', 
+                        VALUES ('.$nUserID.', :uid, '.BBS_STATUS_NEW.', '.$p['cat'][1].', '.$p['cat'][2].', '.$nCategoryID.', '.$p['cat']['type'].', '.$p['cat']['subtype'].',
                             '.(isset($p['reg'][1]) ? $p['reg'][1] : 0).','.(isset($p['reg'][2]) ? $p['reg'][2] : 0).','.(isset($p['reg'][3]) ? $p['reg'][3] : 0).',
                             :img, '.sizeof($p['img']).', :imgfav,
                             '.$p['price'].', '.$p['price_torg'].', '.$p['price_bart'].',
@@ -710,10 +716,12 @@ class BBS extends BBSBase
                               I.cat2_id,   CAT2.title as cat2_title,
                               I.cat_id,    C.regions as cat_regions, C.prices as cat_prices, C.prices_sett as cat_prices_sett,
                               I.cat_type,  CT.title as cat_type_title,
+                              I.cat_subtype,  CST.title as cat_subtype_title,
                               I.imgfav, I.imgcnt, I.descr, I.descr_regions, I.price, I.price_torg, I.price_bart
                               FROM '.TABLE_BBS_ITEMS.' I
                                 LEFT JOIN '.TABLE_BBS_CATEGORIES.' CAT2 ON I.cat2_id = CAT2.id
                                 LEFT JOIN '.TABLE_BBS_CATEGORIES_TYPES.' CT ON I.cat_type = CT.id,
+                                LEFT JOIN '.TABLE_BBS_CATEGORIES_SUBTYPES.' CST ON I.cat_subtype = CST.id,
                                 '.TABLE_BBS_CATEGORIES.' CAT1,
                                 '.TABLE_BBS_CATEGORIES.' C
                               WHERE I.id = '.$nItemID.' AND I.status = '.BBS_STATUS_PUBLICATED.'
@@ -1057,6 +1065,7 @@ class BBS extends BBSBase
                               I.publicated, I.publicated_to, I.blocked_reason,
                               I.cat_id, C.regions as cat_regions, C.prices as cat_prices, C.prices_sett as cat_prices_sett,
                               I.cat_type, CT.title as cat_type_title,
+                              I.cat_subtype,  CST.title as cat_subtype_title,
                               I.views_total, IV.views as views_today,
                               I.img, I.imgfav, I.imgcnt, I.descr, I.descr_regions, I.info, I.price, I.price_torg, I.price_bart, I.video,
                               I.contacts_name, I.contacts_email, I.contacts_phone, I.contacts_skype, I.contacts_site,
@@ -1064,6 +1073,7 @@ class BBS extends BBSBase
                               I.f'.join(', I.f', range($dp->datafield_int_first, $dp->datafield_text_last) ).'
                               FROM '.TABLE_BBS_ITEMS.' I
                                     LEFT JOIN '.TABLE_BBS_CATEGORIES_TYPES.' CT ON I.cat_type = CT.id
+                                    LEFT JOIN '.TABLE_BBS_CATEGORIES_SUBTYPES.' CST ON I.cat_subtype = CST.id
                                     LEFT JOIN '.TABLE_BBS_ITEMS_VIEWS.' IV ON I.id = IV.item_id AND IV.views_date = '.$sqlDate.'
                                     LEFT JOIN '.TABLE_USERS.' U ON I.user_id = U.user_id,
                                     '.TABLE_BBS_CATEGORIES.' C
@@ -1156,11 +1166,13 @@ class BBS extends BBSBase
               I.cat2_id,   CAT2.title as cat2_title,
               I.cat_id,    C.regions as cat_regions, C.prices as cat_prices, C.prices_sett as cat_prices_sett,
               I.cat_type,  CT.title as cat_type_title,
+              I.cat_subtype,  CST.title as cat_subtype_title,
               I.imgfav, I.imgcnt, I.price, I.descr, I.descr_regions, I.price, I.price_torg, I.price_bart,
               I.contacts_name, I.contacts_email, I.contacts_phone, I.contacts_skype, I.contacts_site
           FROM '.TABLE_BBS_ITEMS.' I
             LEFT JOIN '.TABLE_BBS_CATEGORIES.' CAT2 ON I.cat2_id = CAT2.id
             LEFT JOIN '.TABLE_BBS_CATEGORIES_TYPES.' CT ON I.cat_type = CT.id,
+            LEFT JOIN '.TABLE_BBS_CATEGORIES_SUBTYPES.' CST ON I.cat_subtype = CST.id,
             '.TABLE_BBS_CATEGORIES.' CAT1,
             '.TABLE_BBS_CATEGORIES.' C
           WHERE '.$this->db->prepareIN('I.id', $aData['items']).'
@@ -1255,11 +1267,13 @@ class BBS extends BBSBase
                           I.cat2_id,   CAT2.title as cat2_title,
                           I.cat_id,    C.regions as cat_regions, C.prices as cat_prices, C.prices_sett as cat_prices_sett,
                           I.cat_type,  CT.title as cat_type_title,
+                          I.cat_subtype,  CST.title as cat_subtype_title,
                           I.imgfav, I.imgcnt, I.price, I.descr, I.descr_regions, I.price, I.price_torg, I.price_bart,
                           I.contacts_name, I.contacts_email, I.contacts_phone, I.contacts_skype, I.contacts_site
                       FROM '.TABLE_BBS_ITEMS.' I
                         LEFT JOIN '.TABLE_BBS_CATEGORIES.' CAT2 ON I.cat2_id = CAT2.id
                         LEFT JOIN '.TABLE_BBS_CATEGORIES_TYPES.' CT ON I.cat_type = CT.id
+                        LEFT JOIN '.TABLE_BBS_CATEGORIES_SUBTYPES.' CST ON I.cat_subtype = CST.id
                         LEFT JOIN '.TABLE_USERS.' U ON I.user_id = U.user_id,
                         '.TABLE_BBS_CATEGORIES.' CAT1,
                         '.TABLE_BBS_CATEGORIES.' C
@@ -1316,12 +1330,14 @@ class BBS extends BBSBase
                   I.cat2_id,   CAT2.title as cat2_title,
                   I.cat_id,    C.regions as cat_regions, C.prices as cat_prices, C.prices_sett as cat_prices_sett,
                   I.cat_type,  CT.title as cat_type_title,
+                  I.cat_subtype,  CST.title as cat_subtype_title,
                   I.imgfav, I.imgcnt, I.price, I.descr, I.descr_regions, I.price, I.price_torg, I.price_bart,
                   I.views_total, IV.views,
                   U.blocked as user_blocked
                   FROM '.TABLE_BBS_ITEMS.' I
                     LEFT JOIN '.TABLE_BBS_CATEGORIES.' CAT2 ON I.cat2_id = CAT2.id
                     LEFT JOIN '.TABLE_BBS_CATEGORIES_TYPES.' CT ON I.cat_type = CT.id
+                    LEFT JOIN '.TABLE_BBS_CATEGORIES_SUBTYPES.' CST ON I.cat_subtype = CST.id
                     LEFT JOIN '.TABLE_BBS_ITEMS_VIEWS.' IV ON I.id = IV.item_id AND IV.views_date = '.$this->db->str2sql(date('Y-m-d')).'
                     LEFT JOIN '.TABLE_USERS.' U ON I.user_id = U.user_id,
                     '.TABLE_BBS_CATEGORIES.' CAT1,
@@ -1460,11 +1476,13 @@ class BBS extends BBSBase
               I.cat2_id,   CAT2.title as cat2_title,
               I.cat_id,    C.regions as cat_regions, C.prices as cat_prices, C.prices_sett as cat_prices_sett,
               I.cat_type,  CT.title as cat_type_title,
+              I.cat_subtype,  CST.title as cat_subtype_title,
               I.imgfav, I.imgcnt, I.price, I.descr, I.descr_regions, I.price, I.price_torg, I.price_bart,
               I.views_total, IV.views
               FROM '.TABLE_BBS_ITEMS.' I
                 LEFT JOIN '.TABLE_BBS_CATEGORIES.' CAT2 ON I.cat2_id = CAT2.id
                 LEFT JOIN '.TABLE_BBS_CATEGORIES_TYPES.' CT ON I.cat_type = CT.id
+                LEFT JOIN '.TABLE_BBS_CATEGORIES_SUBTYPES.' CST ON I.cat_type = CST.id
                 LEFT JOIN '.TABLE_BBS_ITEMS_VIEWS.' IV ON I.id = IV.item_id AND IV.views_date = '.$this->db->str2sql(date('Y-m-d')).',
                 '.TABLE_BBS_CATEGORIES.' CAT1,
                 '.TABLE_BBS_CATEGORIES.' C
@@ -1547,11 +1565,13 @@ class BBS extends BBSBase
           I.cat2_id,   CAT2.title as cat2_title,
           I.cat_id,    C.regions as cat_regions, C.prices as cat_prices, C.prices_sett as cat_prices_sett,
           I.cat_type,  CT.title as cat_type_title,
+          I.cat_subtype,  CST.title as cat_subtype_title,
           I.imgfav, I.imgcnt, I.price, I.descr, I.descr_regions, I.price, I.price_torg, I.price_bart,
           I.publicated
           FROM '.TABLE_BBS_ITEMS.' I
             LEFT JOIN '.TABLE_BBS_CATEGORIES.' CAT2 ON I.cat2_id = CAT2.id
             LEFT JOIN '.TABLE_BBS_CATEGORIES_TYPES.' CT ON I.cat_type = CT.id
+            LEFT JOIN '.TABLE_BBS_CATEGORIES_SUBTYPES.' CST ON I.cat_subtype = CST.id
             LEFT JOIN '.TABLE_BBS_ITEMS_VIEWS.' IV ON I.id = IV.item_id AND IV.views_date,
             '.TABLE_BBS_CATEGORIES.' CAT1,
             '.TABLE_BBS_CATEGORIES.' C
@@ -1963,16 +1983,29 @@ class BBS extends BBSBase
                  if(!$p['pid']) break;
                 $returnTypes = 0;
                 $returnSubTypes = 0;
+                // Dirty. We get here category for our custom subtype
+                if($p['type'] == 'type') {
+                    $type = $this->db->select('SELECT T.cat_id FROM '.TABLE_BBS_CATEGORIES_TYPES.' T WHERE T.id = '.$p['pid'].' LIMIT 1');
+                    $p['pid'] = $type[0]['cat_id'];
+                }
+
 
                 $aParentInfo = $this->db->one_array('SELECT id, numlevel, numleft, numright, prices, prices_sett, regions FROM '.TABLE_BBS_CATEGORIES.' WHERE id = '.$p['pid']);
                 
                 $aDynprops = array();
                 $aCats = $this->db->select('SELECT id, title, numlevel FROM '.TABLE_BBS_CATEGORIES.' WHERE pid = '.$p['pid'].' AND enabled = 1 ORDER BY numleft');
+
+                if($p['type'] == 'type') {
+                    $aCats = array();
+                }
+
                 if(empty($aCats)) {
                     $returnTypes = 1;
                     $tableName = TABLE_BBS_CATEGORIES_TYPES;
                     if($p['type'] == 'type') {
                         $tableName = TABLE_BBS_CATEGORIES_SUBTYPES;
+                        $returnTypes = 0;
+                        $returnSubTypes = 1;
                     }
                     //если категории не найдены, пытаемся получить "типы"
                     $aCats = $this->db->select('SELECT T.id, T.title 

@@ -367,6 +367,19 @@ a.write {padding-left:23px; background:url(../img/writeBg.png) 1px 0 no-repeat;}
 .leftBlock .tabs a.active span.left {width:19px; background:url(../img/tabLeftA.gif) 0 0 no-repeat;}
 .leftBlock .tabs a.active span.right {width:20px; background:url(../img/tabRightA.gif) right 0 no-repeat;}
 
+#searchCatSubTypes {padding-top:20px; padding-left:16px; border-bottom:none;}
+#searchCatSubTypes a {float:left; height:30px; text-decoration:none; color:#333737; font-size:14px; margin-right:1px; text-transform:capitalize; }
+#searchCatSubTypes a span {float:left; padding-top:7px; border-bottom:1px dashed #333737;}
+#searchCatSubTypes a span.left {padding:0px; border-bottom:none; font-size:0; height:30px; width:24px;}
+#searchCatSubTypes a span.right {padding:0px; border-bottom:none; font-size:0; height:30px; width:24px;}
+#searchCatSubTypes a:hover {background-color: #ECEEEE; text-decoration:none; color:#333737;}
+#searchCatSubTypes a:hover span.left {background-color: #ECEEEE;}
+#searchCatSubTypes a:hover span.right {background-color: #ECEEEE;}
+#searchCatSubTypes a.active {background:none; background-color: #ECEEEE; color:#000; font-weight:bold; text-transform:uppercase;}
+#searchCatSubTypes a.active span {border:none;}
+#searchCatSubTypes a.active span.left {width:19px; background:none; background-color: #ECEEEE;}
+#searchCatSubTypes a.active span.right {width:20px; background:none; background-color: #ECEEEE;}
+
 .leftBlock .padForm {padding:20px 16px 0 16px; color:#7b8080;}
 .leftBlock .padForm .padTop {padding-top:10px;}
 .leftBlock .padForm .padTop2 {padding-top:16px;}

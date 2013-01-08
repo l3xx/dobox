@@ -26,7 +26,9 @@
             <div class="clear"></div>
             <div class="pic"><a href="/item/<?= $i['id']; ?>"><img src="<?= tpl::imgurl(array('folder'=>'items', 'file'=>(!empty($i['imgfav']) ? $i['id'].'t'.$i['imgfav'] : ''), 'static'=>1)); ?>" /></a></div>
             <div class="desc">
-                <?php if($i['cat_type']): ?><b class="upper"><?= $i['cat_type_title']; ?>:</b> <?php endif; ?><?= tpl::truncate($i['descr'], 330, '...', true); ?>
+                <?php if($i['cat_type']): ?><b class="upper"><?= $i['cat_type_title']; ?>:</b> <?php endif; ?>
+                <?php if($i['cat_subtype']): ?><b class="upper"><?= $i['cat_subtype_title']; ?></b> <?php endif; ?>
+                <?= tpl::truncate($i['descr'], 330, '...', true); ?>
                 <div class="address"><?= $i['cat1_title']; ?><? if($i['cat2_id']): ?> <img src="/img/arrowRightSmall.png" /> <?= $i['cat2_title']; ?><? endif; ?> <?= ($i['cat_regions'] && !empty($i['descr_regions'])?'/ '.$i['descr_regions']:''); ?></div>
                 <div class="contact"><?= (!empty($i['contacts_phone']) ? 'Тел: '.$i['contacts_phone'].'&nbsp;&nbsp;':'') ?><?= (!empty($i['contacts_email']) ? 'E-mail: '.$i['contacts_email'].'&nbsp;&nbsp;':'') ?><?= (!empty($i['contacts_skype']) ? 'Skype: '.$i['contacts_skype'].'&nbsp;&nbsp;':'') ?><?= $i['contacts_name'] ?></div>
             </div>

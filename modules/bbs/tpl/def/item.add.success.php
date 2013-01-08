@@ -9,6 +9,7 @@
       <div class="pic"><img src="<?= tpl::imgurl(array('folder'=>'items', 'file'=>(!empty($imgfav) ? $id.'t'.$imgfav : ''), 'static'=>1)); ?>" /></div>
       <div class="desc">
         <?php if($cat_type>0): ?><b class="upper"><?= $cat_type_title; ?>:</b> <?php endif; ?><?= nl2br($descr); ?>
+        <?php if($cat_subtype>0): ?><b class="upper"><?= $cat_subtype_title; ?>:</b> <?php endif; ?><?= nl2br($descr); ?>
         <div class="address"><?= $descr_regions; ?></div>
       </div>
       <?php if($cat_prices>0): ?><div class="price"><b class="f18"><?= $price; ?></b> <span class="f11Up">руб</span><br/><?= ($price_torg ? 'торг' : '').($price_bart ? ($price_torg ? ', ': '').'бартер' : '' ); ?></div><?php endif; ?>

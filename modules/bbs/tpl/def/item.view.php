@@ -39,6 +39,9 @@ $(function(){
     ?>
     <span class="arrow"><img src="/img/arrowRight.png" alt=""/></span>
     <span class="left"><?= $cat_type_title; ?></span> <? } ?>
+    <? if(!empty($cat_subtype)) { ?>
+    <span class="arrow"><img src="/img/arrowRight.png" alt=""/></span>
+    <span class="left"><?= $cat_subtype_title; ?></span> <? } ?>
     <span class="right"><? if($from_search): ?><a href="#" onclick="history.back(); return false;">К результатам поиска</a><? endif; ?></span>
     <div class="clear"></div>
     
@@ -188,7 +191,8 @@ $(function(){
         </p>
         <p class="padTop">
             <?php if($cat_type): ?><b class="grey f12Up"><?= $cat_type_title; ?>:</b> <?php endif; ?><?= nl2br($descr); ?><br/>
-        </p> <? 
+            <?php if($cat_subtype): ?><b class="grey f12Up"><?= $cat_subtype_title; ?></b> <?php endif; ?><?= nl2br($descr); ?><br/>
+        </p> <?
         
         if($imgcnt) 
         {

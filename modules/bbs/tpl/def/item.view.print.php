@@ -22,6 +22,8 @@
          <?= $cats[$i]['title']; ?>&nbsp;<? if($i<$n-1): ?><img src="/img/arrowRight.png" /><? endif; ?>
       <? } if($cat_type){ ?>
         <img src="/img/arrowRight.png" /> <?= $cat_type_title; ?>
+      <? } if($cat_subtype){ ?>
+        <img src="/img/arrowRight.png" /> <?= $cat_subtype_title; ?>
       <? }?>
       </span>
       <div class="clear"></div>

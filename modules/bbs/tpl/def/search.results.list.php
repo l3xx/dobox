@@ -19,7 +19,9 @@ foreach($aData['items'] as $i)
         <div class="action"><? if(!$my): ?><a href="/items/makefav?id=<?= $i['id'] ?>" onclick="return app.fav(<?= $i['id'] ?>, $(this));" class="fav<?= (!empty( $favs['id']) && in_array($i['id'], $favs['id'])?' active':''); ?>"></a><? endif; ?></div>
         <div class="pic<?= ($i['imgcnt']<2?'2':''); ?>"><a href="/item/<?= $i['id'] ?>"><img src="<?= tpl::imgurl(array('folder'=>'items', 'file'=>(!empty($i['imgfav']) ? $i['id'].'t'.$i['imgfav'] : ''), 'static'=>1)); ?>" /></a></div>
         <div class="desc">
-            <?php if($i['cat_type']): ?><b class="upper"><?= $i['cat_type_title']; ?>:</b> <?php endif; ?><a href="/item/<?= $i['id'] ?>" class="desc-link"><?= tpl::truncate($i['descr'], 330, '...', true); ?></a>
+            <?php if($i['cat_type']): ?><b class="upper"><?= $i['cat_type_title']; ?>:</b> <?php endif; ?>
+            <?php if($i['cat_subtype']): ?><b class="upper"><?= $i['cat_subtype_title']; ?>:</b> <?php endif; ?>
+            <a href="/item/<?= $i['id'] ?>" class="desc-link"><?= tpl::truncate($i['descr'], 330, '...', true); ?></a>
             <div class="address"><?= $i['cat1_title']; ?><? if($i['cat2_id']): ?> <img src="/img/arrowRightSmall.png" /> <?= $i['cat2_title']; ?><? endif; ?> <?= ($i['cat_regions'] && !empty($i['descr_regions'])?'/ '.$i['descr_regions']:''); ?></div>
         </div>
         <?php if($bShowPrices): ?><div class="price"><b class="f18 orange"><?= $i['price']; ?></b> <span class="f11Up orange">руб</span><br/><?= ($i['price_torg'] ? 'торг' : '').($i['price_bart'] ? ($i['price_torg'] ? ', ': '').'бартер' : '' ); ?></div><? endif; ?>

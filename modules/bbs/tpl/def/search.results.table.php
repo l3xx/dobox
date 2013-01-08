@@ -93,7 +93,9 @@ foreach($aData['items'] as $i)
         }
     ?>
     <td valign="top">
-        <?php if($i['cat_type']): ?><b class="upper grey"><?= $i['cat_type_title']; ?>:</b> <?php endif; ?><a href="/item/<?= $i['id'] ?>" class="desc-link"><?= tpl::truncate($i['descr'], 200, '...', true); ?></a>
+        <?php if($i['cat_type']): ?><b class="upper grey"><?= $i['cat_type_title']; ?>:</b> <?php endif; ?>
+        <?php if($i['cat_subtype']): ?><b class="upper grey"><?= $i['cat_subtype_title']; ?>:</b> <?php endif; ?>
+        <a href="/item/<?= $i['id'] ?>" class="desc-link"><?= tpl::truncate($i['descr'], 200, '...', true); ?></a>
         <div class="address"><?= $i['cat1_title']; ?><? if($i['cat2_id']): ?> <img src="/img/arrowRightSmall.png" /> <?= $i['cat2_title']; ?><? endif; ?> <?= ($i['cat_regions'] && !empty($i['descr_regions'])?'/ '.$i['descr_regions']:''); ?></div>
     </td>
     <? if($bShowPrices){ ?><td valign="top" class="price"><b class="orange f18"><?= $i['price']; ?></b> <span class="f11Up orange">руб</span><br/><span class="f11"><?= ($i['price_torg'] ? 'торг' : '').($i['price_bart'] ? ($i['price_torg'] ? ', ': '').'бартер' : '' ); ?></span></td><? } ?>
