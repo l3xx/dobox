@@ -2,7 +2,7 @@
     extract($aData, EXTR_REFS);
 
     foreach($svc as $k=>$v) {
-        $svc[$k]['price_prefix'] = '&nbsp;<span class="desc">руб.</span>';
+        $svc[$k]['price_prefix'] = '&nbsp;<span class="desc">$.</span>';
     }
 ?>
 <div class="blueblock whiteblock">

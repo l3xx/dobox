@@ -2,7 +2,8 @@
 
 $lang['successfull']   = 'Операция выполнена успешно';
 $lang['impossible']    = 'Операцию выполнить невозможно';
-$lang['access_denied'] = 'В доступе отказано';                                                          
+$lang['access_denied'] = 'В доступе отказано';
+$lang['wrong_captcha'] = 'Неверно указан проверочный код';
 
 //buttons
 $lang['save']       = 'сохранить';

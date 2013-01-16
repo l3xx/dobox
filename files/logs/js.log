@@ -14,3 +14,27 @@
 2013/01/08 21:32:59 Uncaught ReferenceError: subtype is not defined; http://dobox.local/items/add; 1
 2013/01/08 21:34:23 Uncaught ReferenceError: subtype is not defined; http://dobox.local/items/add; 1
 2013/01/08 21:34:32 Uncaught ReferenceError: subtype is not defined; http://dobox.local/items/add; 1
+2013/01/12 16:07:31 Uncaught TypeError: Cannot call method 'val' of null; http://dobox.local/js/bbs.add.js; 629
+2013/01/12 16:29:14 Uncaught ReferenceError: $block is not defined; http://dobox.local/js/bbs.add.js; 98
+2013/01/12 16:49:37 Uncaught ReferenceError: type1 is not defined; http://dobox.local/items/add; 1
+2013/01/12 18:33:18 TypeError: this.find is not a function; http://dobox.local/js/bbs.add.js; 101
+2013/01/12 18:34:27 Uncaught TypeError: Object #<HTMLInputElement> has no method 'stepInit'; http://dobox.local/js/bbs.add.js; 102
+2013/01/12 18:34:28 Uncaught TypeError: Object #<HTMLInputElement> has no method 'stepInit'; http://dobox.local/js/bbs.add.js; 102
+2013/01/12 18:34:29 Uncaught TypeError: Object #<HTMLInputElement> has no method 'stepInit'; http://dobox.local/js/bbs.add.js; 102
+2013/01/12 18:34:40 Uncaught TypeError: Object #<HTMLInputElement> has no method 'stepInit'; http://dobox.local/js/bbs.add.js; 102
+2013/01/12 19:38:42 Uncaught ReferenceError: his is not defined; http://dobox.local/js/bbs.add.js; 65
+2013/01/12 19:39:17 Uncaught TypeError: Cannot call method 'submit' of undefined; http://dobox.local/js/bbs.add.js; 65
+2013/01/12 20:56:49 Uncaught TypeError: Cannot read property 'value' of undefined; http://dobox.local/js/bbs.add.js; 78
+2013/01/12 20:58:25 Uncaught TypeError: Cannot read property 'value' of undefined; http://dobox.local/js/bbs.add.js; 80
+2013/01/12 21:00:57 Uncaught TypeError: Cannot read property 'value' of undefined; http://dobox.local/js/bbs.add.js; 79
+2013/01/12 21:01:31 Uncaught TypeError: Cannot read property 'value' of undefined; http://dobox.local/js/bbs.add.js; 79
+2013/01/12 21:04:47 Uncaught TypeError: Cannot read property 'value' of undefined; http://dobox.local/js/bbs.add.js; 79
+2013/01/12 21:06:50 Uncaught TypeError: Object #<HTMLSelectElement> has no method 'val'; http://dobox.local/js/bbs.add.js; 68
+2013/01/12 21:07:24 Uncaught TypeError: Cannot read property 'value' of undefined; http://dobox.local/js/bbs.add.js; 79
+2013/01/12 21:07:54 Uncaught SyntaxError: Unexpected token .; http://dobox.local/js/bbs.add.js; 79
+2013/01/12 21:07:54 Uncaught ReferenceError: bbsAddClass is not defined; http://dobox.local/items/add?period=1#; 272
+2013/01/12 21:07:55 Uncaught TypeError: Cannot call method 'categorySelect' of undefined; http://dobox.local/items/add?period=1#; 54
+2013/01/12 21:08:17 Uncaught TypeError: Cannot read property 'value' of undefined; http://dobox.local/js/bbs.add.js; 79
+2013/01/12 21:08:44 Uncaught TypeError: Cannot set property 'value' of undefined; http://dobox.local/js/bbs.add.js; 79
+2013/01/12 21:11:52 Uncaught SyntaxError: Unexpected token ,; http://dobox.local/js/bbs.add.js; 78
+2013/01/12 21:11:52 Uncaught ReferenceError: bbsAddClass is not defined; http://dobox.local/items/add?period=1#; 272

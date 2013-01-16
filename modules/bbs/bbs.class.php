@@ -350,8 +350,15 @@ class BBS extends BBSBase
                 'price_bart' => TYPE_BOOL,
                 'video'      => TYPE_NOHTML,     
                 //publicate
-                'period' => TYPE_UINT,          
+                'period' => TYPE_UINT,
+                'captcha' => TYPE_NOTAGS,
             ), $p);
+
+            require './bff/captcha/captcha.protection.php';
+            $oProtection = new CCaptchaProtection();
+            if ($_COOKIE['c3'] != $oProtection->generate_hash($p['captcha'], date('j'))){
+              $this->ajaxResponse(Errors::WRONGCAPTCHA);
+            }
 
             $nUserID = $this->security->getUserID();
             
@@ -375,7 +382,7 @@ class BBS extends BBSBase
             }  
             
             $this->input->clean_array($p['cat'], array(
-                1=>TYPE_UINT,2=>TYPE_UINT,3=>TYPE_UINT,'type'=>TYPE_UINT
+                1=>TYPE_UINT,2=>TYPE_UINT,3=>TYPE_UINT,'type'=>TYPE_UINT,'subtype'=>TYPE_UINT
             ));
             $this->input->clean_array($p['reg'], array(
                 1=>TYPE_UINT,2=>TYPE_UINT,3=>TYPE_UINT
@@ -387,6 +394,7 @@ class BBS extends BBSBase
             }
                        
             $p['cat']['type'] = (isset($p['cat']['type']) && $p['cat']['type']>0 ? abs(intval($p['cat']['type'])) : 0);
+            $p['cat']['subtype'] = (isset($p['cat']['subtype']) && $p['cat']['subtype']>0 ? abs(intval($p['cat']['subtype'])) : 0);
 
             $aDynpropsData = $this->input->post('dp', TYPE_ARRAY);
             if(!empty($aDynpropsData)) {    
@@ -420,7 +428,22 @@ class BBS extends BBSBase
                 
                 $p['descr'] = func::cleanComment($p['descr']);
                 $p['info'] = func::cleanComment($p['info']);
-                
+
+                include_once('counter.php');
+                $word_counter = new Counter();
+                $content = $p['descr'];
+
+                if (strlen($content)>50000)
+                {
+                    $keywords = $word_counter->get_keywords(substr($content, 0, 50000));
+                }
+                else
+                {
+                    $keywords = $word_counter->get_keywords($content);
+                }
+
+                $mdescription = substr($content, 0, 250);
+
                 $sqlNOW = $this->db->getNOW(); 
 
                 $sUID = $this->security->getUID(false, 'post');
@@ -453,8 +476,8 @@ class BBS extends BBSBase
                         array(':descr', $p['descr'], PDO::PARAM_STR), 
                         array(':descr_regions', $sRegionsTitle, PDO::PARAM_STR),
                         array(':info', $p['info'], PDO::PARAM_STR), 
-                        array(':mkeywords', $p['descr'], PDO::PARAM_STR),
-                        array(':mdescription', $p['descr'], PDO::PARAM_STR),
+                        array(':mkeywords', $keywords, PDO::PARAM_STR),
+                        array(':mdescription', $mdescription, PDO::PARAM_STR),
                     ));
                     
                     $this->ajaxResponse(array('res'=>($res === 1), 'pp'=>$bPayPublication));
@@ -492,8 +515,8 @@ class BBS extends BBSBase
                         array(':descr', $p['descr'], PDO::PARAM_STR),
                         array(':descr_regions', $sRegionsTitle, PDO::PARAM_STR),
                         array(':info', $p['info'], PDO::PARAM_STR),
-                        array(':mkeywords', $p['descr'], PDO::PARAM_STR),
-                        array(':mdescription', $p['descr'], PDO::PARAM_STR),
+                        array(':mkeywords', $keywords, PDO::PARAM_STR),
+                        array(':mdescription', $mdescription, PDO::PARAM_STR),
                     ));
                     
                     $nItemID = $this->db->insert_id(TABLE_BBS_ITEMS, 'id');
@@ -526,8 +549,9 @@ class BBS extends BBSBase
             }
             
             $this->ajaxResponse(null);
-        }          
-        
+        }
+
+
         $aData['cats'] = $this->db->select('SELECT id, title FROM '.TABLE_BBS_CATEGORIES.' WHERE numlevel = 1 AND enabled = 1 ORDER BY numleft');
         
         $aData['regions'] = $this->db->select('SELECT R.id, R.pid, R.title
@@ -720,7 +744,7 @@ class BBS extends BBSBase
                               I.imgfav, I.imgcnt, I.descr, I.descr_regions, I.price, I.price_torg, I.price_bart
                               FROM '.TABLE_BBS_ITEMS.' I
                                 LEFT JOIN '.TABLE_BBS_CATEGORIES.' CAT2 ON I.cat2_id = CAT2.id
-                                LEFT JOIN '.TABLE_BBS_CATEGORIES_TYPES.' CT ON I.cat_type = CT.id,
+                                LEFT JOIN '.TABLE_BBS_CATEGORIES_TYPES.' CT ON I.cat_type = CT.id
                                 LEFT JOIN '.TABLE_BBS_CATEGORIES_SUBTYPES.' CST ON I.cat_subtype = CST.id,
                                 '.TABLE_BBS_CATEGORIES.' CAT1,
                                 '.TABLE_BBS_CATEGORIES.' C
@@ -888,7 +912,7 @@ class BBS extends BBSBase
                 return $this->tplFetchPHP($aData, 'item.edit.pass.php');
             }
         }  else if($aData['user_id'] != $nUserID) { //не является владельцем объявления
-            return $this->showForbidden('Вы не является владельцем данного объявления.');
+            return $this->showForbidden('Вы не являетесь владельцем данного объявления.');
         }
         
         if($aData['status'] == BBS_STATUS_BLOCKED && $aData['moderated']==0) {
@@ -1138,7 +1162,7 @@ class BBS extends BBSBase
             $this->db->execute('INSERT INTO '.TABLE_BBS_ITEMS_VIEWS.' (item_id, views, views_date) VALUES('.$nItemID.', 1, '.$sqlDate.')
                                 ON DUPLICATE KEY UPDATE views = views + 1');
         }
-        
+
         config::set(array(
                 'mkeywords' => $aData['mkeywords'],
                 'mdescription' => $aData['mdescription'],
@@ -1171,7 +1195,7 @@ class BBS extends BBSBase
               I.contacts_name, I.contacts_email, I.contacts_phone, I.contacts_skype, I.contacts_site
           FROM '.TABLE_BBS_ITEMS.' I
             LEFT JOIN '.TABLE_BBS_CATEGORIES.' CAT2 ON I.cat2_id = CAT2.id
-            LEFT JOIN '.TABLE_BBS_CATEGORIES_TYPES.' CT ON I.cat_type = CT.id,
+            LEFT JOIN '.TABLE_BBS_CATEGORIES_TYPES.' CT ON I.cat_type = CT.id
             LEFT JOIN '.TABLE_BBS_CATEGORIES_SUBTYPES.' CST ON I.cat_subtype = CST.id,
             '.TABLE_BBS_CATEGORIES.' CAT1,
             '.TABLE_BBS_CATEGORIES.' C

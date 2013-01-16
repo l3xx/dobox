@@ -455,7 +455,7 @@ class Bills extends BillsBase
         // только пополнение
         $nBalance = $this->security->getBalance(true); // актуализируем информацию о балансе в сессии
         return $this->errors->showSuccess('Пополнение счета', 'Вы успешно пополнили счет<br/>
-            На вашем счету: <a href="'.SITEURL.'/bill">'.$nBalance.' руб.</a>');
+            На вашем счету: <a href="'.SITEURL.'/bill">'.$nBalance.' $.</a>');
     }
 
     function fail() 

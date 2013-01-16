@@ -24,7 +24,7 @@ foreach($aData['items'] as $i)
             <a href="/item/<?= $i['id'] ?>" class="desc-link"><?= tpl::truncate($i['descr'], 330, '...', true); ?></a>
             <div class="address"><?= $i['cat1_title']; ?><? if($i['cat2_id']): ?> <img src="/img/arrowRightSmall.png" /> <?= $i['cat2_title']; ?><? endif; ?> <?= ($i['cat_regions'] && !empty($i['descr_regions'])?'/ '.$i['descr_regions']:''); ?></div>
         </div>
-        <?php if($bShowPrices): ?><div class="price"><b class="f18 orange"><?= $i['price']; ?></b> <span class="f11Up orange">руб</span><br/><?= ($i['price_torg'] ? 'торг' : '').($i['price_bart'] ? ($i['price_torg'] ? ', ': '').'бартер' : '' ); ?></div><? endif; ?>
+        <?php if($bShowPrices): ?><div class="price"><b class="f18 orange"><?= $i['price']; ?></b> <span class="f11Up orange">$</span><br/><?= ($i['price_torg'] ? 'торг' : '').($i['price_bart'] ? ($i['price_torg'] ? ', ': '').'бартер' : '' ); ?></div><? endif; ?>
         <div class="stat"><?= tpl::date_format3($i['publicated']) ?></div>
         <div class="clear h9"></div> 
         <? if($my){ ?><div class="actionsLink hidden">

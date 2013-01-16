@@ -88,7 +88,7 @@
                     <tr><td colspan="2">Пополнить счет клиента <b id="j-ubalance-login"><? if($f['uid']>0){ ?><a href="#" onclick="return bff.userinfo(<?= $f['uid'] ?>);"><?= $user['login'] ?></a><? } ?></b> на указанную сумму:</td></tr>
                     <tr class="required">
                         <td width="60"><span class="field-title">Сумма</span>:</td>
-                        <td><input type="text" name="amount" value="0" maxlength="5" />&nbsp;<span class="desc">руб.</span></td>
+                        <td><input type="text" name="amount" value="0" maxlength="5" />&nbsp;<span class="desc">$.</span></td>
                     </tr>
                     <tr class="required">
                         <td><span class="field-title">Описание</span>:</td>
@@ -230,7 +230,7 @@ var jBills = (function()
                 $('#tr'+bid, $list).after('<tr class="row'+cls+'" style="border-top: 0;" id="tr'+bid+'_chng"><td colspan="7"><div style="padding: 10px; text-align: left; border: 1px dotted #ccc;"><form action="" method="post" id="tr'+bid+'_form"><input type="hidden" name="bid" value='+bid+' /> \
                     <div class="warning" style="height:40px;"></div> \
                     Изменить статус счета #'+bid+' на: <select name="status" style="width:100px;"> <option value="2">завершен</option> <option value="3">отменен</option> </select>&nbsp;&nbsp;<a href="#" class="bold" onclick="jBills.changeStatus('+bid+', '+cls+'); return false;">изменить</a>&nbsp;|&nbsp;<a href="#" class="ajax" onclick="jBills.check('+bid+'); return false;">проверить</a>&nbsp;|&nbsp;<a href="#" class="ajax" onclick="jBills.сhangeStatusCancel('+bid+', '+cls+'); return false;">отмена</a> <br /> \
-                    <span class="description">После изменения статуса на <u>завершен</u> на счет пользователя <a href="#" onclick="return bff.userinfo('+user_id+');">'+login+'</a> будет зачислена сумма в размере '+money+' руб. </span><br /> \
+                    <span class="description">После изменения статуса на <u>завершен</u> на счет пользователя <a href="#" onclick="return bff.userinfo('+user_id+');">'+login+'</a> будет зачислена сумма в размере '+money+' $. </span><br /> \
                     </form></div></td></tr>');
             }
         },

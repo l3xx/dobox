@@ -14,7 +14,7 @@
             <div style="margin: 10px 10px;"> 
                 <div class="error hidden"></div>
                 
-                <input type="text" class="inputText" id="uBillAmount" style="width: 70px" maxlength="7" value="<?= $amountTo ?>" /> руб.
+                <input type="text" class="inputText" id="uBillAmount" style="width: 70px" maxlength="7" value="<?= $amountTo ?>" /> $.
                 <br /><br />
                 <div class="button">
                     <span class="left">&nbsp;</span>

@@ -94,35 +94,35 @@ $(function(){
         <tr>
             <td style=" vertical-align:top;">Платное размещение:</td>
             <td>
-                <label><input style="width:95px; margin-bottom:5px;" type="text" name="config[svc_publicate_price]" value="{$aData.svc_publicate_price}" /> <span class="desc">&nbsp;руб.</span> </label>
+                <label><input style="width:95px; margin-bottom:5px;" type="text" name="config[svc_publicate_price]" value="{$aData.svc_publicate_price}" /> <span class="desc">&nbsp;$.</span> </label>
                 <textarea name="config[svc_publicate_desc]" id="svc_publicate_desc" class="svc_desc" style="height: 135px; width: 560px;">{$aData.svc_publicate_desc|default:''}</textarea>
             </td>
         </tr>   
         <tr>
             <td style="width:130px; vertical-align:top;">Поднять объявление:</td>
             <td>
-                <label><input style="width:95px; margin-bottom:5px;" type="text" name="config[svc_up_price]" value="{$aData.svc_up_price}" /> <span class="desc">&nbsp;руб.</span> </label>
+                <label><input style="width:95px; margin-bottom:5px;" type="text" name="config[svc_up_price]" value="{$aData.svc_up_price}" /> <span class="desc">&nbsp;$.</span> </label>
                 <textarea name="config[svc_up_desc]" id="svc_up_desc" class="svc_desc" style="height: 135px; width: 560px;">{$aData.svc_up_desc|default:''}</textarea>
             </td>
         </tr>
         <tr>
             <td style=" vertical-align:top;">Выделить объявления:</td>
             <td>
-                <label><input style="width:95px; margin-bottom:5px;" type="text" name="config[svc_mark_price]" value="{$aData.svc_mark_price}" /> <span class="desc">&nbsp;руб.</span> </label>
+                <label><input style="width:95px; margin-bottom:5px;" type="text" name="config[svc_mark_price]" value="{$aData.svc_mark_price}" /> <span class="desc">&nbsp;$.</span> </label>
                 <textarea name="config[svc_mark_desc]" id="svc_mark_desc" class="svc_desc" style=" height: 135px; width: 560px;">{$aData.svc_mark_desc|default:''}</textarea>
             </td>
         </tr>
         <tr>
             <td style=" vertical-align:top;">Премиум:</td>
             <td>
-                <label><input style="width:95px; margin-bottom:5px;" type="text" name="config[svc_premium_price]" value="{$aData.svc_premium_price}" /> <span class="desc">&nbsp;руб.</span> </label>
+                <label><input style="width:95px; margin-bottom:5px;" type="text" name="config[svc_premium_price]" value="{$aData.svc_premium_price}" /> <span class="desc">&nbsp;$.</span> </label>
                 <textarea name="config[svc_premium_desc]" id="svc_premium_desc" class="svc_desc" style="height: 135px; width: 560px;">{$aData.svc_premium_desc|default:''}</textarea>
             </td>
         </tr>
         <tr>
             <td style=" vertical-align:top;">Публикация в прессе:</td>
             <td>
-                <label><input style="width:95px; margin-bottom:5px;" type="text" name="config[svc_press_price]" value="{$aData.svc_press_price}" /> <span class="desc">&nbsp;руб.</span> </label>
+                <label><input style="width:95px; margin-bottom:5px;" type="text" name="config[svc_press_price]" value="{$aData.svc_press_price}" /> <span class="desc">&nbsp;$.</span> </label>
                 <textarea name="config[svc_press_desc]" id="svc_press_desc" class="svc_desc" style="height: 135px; width: 560px;">{$aData.svc_press_desc|default:''}</textarea>
             </td>
         </tr>

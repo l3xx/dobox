@@ -8,7 +8,7 @@ $(function(){
 <?php 
     extract($aData); 
     extract($f);
-    $curr = 'руб.';
+    $curr = '$.';
     
     $total = ($ct? $types[$ct]['items'] : $cat['items']);
     
@@ -156,7 +156,7 @@ $(function(){
                     <div class="buttonsCont">
                         <div class="button">
                             <span class="left">&nbsp;</span>
-                            <input type="button" class="submit" value="отфильтровать" onclick="bbsSearch.filter(11, 0, '.pr', 0, 'руб.', this);" style="width:114px;" />
+                            <input type="button" class="submit" value="отфильтровать" onclick="bbsSearch.filter(11, 0, '.pr', 0, '$.', this);" style="width:114px;" />
                         </div>
                         <div class="clear"></div>
                     </div>

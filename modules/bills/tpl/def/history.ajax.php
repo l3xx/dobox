@@ -9,7 +9,7 @@ foreach($bills as $k=>$v)
 <tr>
     <td class="date"><?= tpl::date_format3($v['created'], 'd.m.Y в H:i'); ?></td>
     <td class="summ">
-        <?= ($v['type'] == Bills::typeOutService ? '<b class="red">–&nbsp;'.$v['amount'].'</b>' : '<b class="green">+&nbsp;'.$v['amount'].'</b>') ?> <span class="f10Up">руб</span>
+        <?= ($v['type'] == Bills::typeOutService ? '<b class="red">–&nbsp;'.$v['amount'].'</b>' : '<b class="green">+&nbsp;'.$v['amount'].'</b>') ?> <span class="f10Up">$</span>
     </td>
     <td class="type">
         <? if(!empty($v['details'])){ ?><a href="#" class="ajaxLink" onclick="$(this).next().toggle(); return false;"><?= $v['description'] ?></a><span style="display: none;" class="desc"><br /><?= $v['details'] ?></span><? } else { echo $v['description']; } ?>    

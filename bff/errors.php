@@ -14,7 +14,8 @@ class Errors
     const SUCCESSFULL   = 1;
     const IMPOSSIBLE    = 4;
     const UNKNOWNRECORD = 402;
-    const ACCESSDENIED  = 403;  
+    const ACCESSDENIED  = 403;
+    const WRONGCAPTCHA  = 999;
                                                
     function __construct()
     {
@@ -149,6 +150,7 @@ class Errors
         {
             case Errors::SUCCESSFULL:   return $this->lang['successfull'];   break;
             case Errors::ACCESSDENIED:  return $this->lang['access_denied']; break;  
+            case Errors::WRONGCAPTCHA:  return $this->lang['wrong_captcha']; break;
             case Errors::IMPOSSIBLE:    return $this->lang['impossible'];    break;
             case Errors::UNKNOWNRECORD: return $this->lang['impossible'];    break;
             default:
@@ -302,7 +304,7 @@ class Errors
             case BFF_UPLOADERROR_WRONGTYPE:{ $sMessage = 'Запрещенный тип файла';                  } break;
             case BFF_UPLOADERROR_WRONGNAME:{ $sMessage = 'Некорректное имя файла';                 } break;
             case BFF_UPLOADERROR_EXISTS:   { $sMessage = 'Файл с указанным именем уже существует'; } break;  
-            case BFF_UPLOADERROR_MAXDIM:   { $sMessage = 'Изображение слишком большое по ширине/высоте, загрузите изображение меньшего масштаба'; } break;  
+            case BFF_UPLOADERROR_MAXDIM:   { $sMessage = 'Изображение слишком большое по ширине/высоте, загрузите изображение меньшего масштаба'; } break;
         }
         return $sMessage;
     }

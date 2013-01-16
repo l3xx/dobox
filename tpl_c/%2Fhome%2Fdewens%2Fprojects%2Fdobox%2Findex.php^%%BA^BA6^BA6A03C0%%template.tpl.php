@@ -45,9 +45,9 @@ unset($_smarty_tpl_vars);
                         <?php if ($this->_tpl_vars['config']['userMenuCurrent'] == 2): ?><span class="cont left activeAds"><span class="left"><b class="ads">Мои объявления</b></span><span class="rightCor">&nbsp;</span></span>
                         <?php else: ?><span class="cont left"><span class="left"><a href="/items/my" title="Мои объявления" class="ads">Мои объявления</a></span><span class="rightCor">&nbsp;</span></span><?php endif; ?>
                         <?php if ($this->_tpl_vars['config']['userMenuCurrent'] == 3): ?><span class="cont left activeCount"><span class="left"><b class="ads">Мой счет</b> (<b class="f14"><?php echo $this->_tpl_vars['config']['user_balance']; ?>
-</b> <span class="f10Up">руб</span>)</span><span class="rightCor">&nbsp;</span></span>
+</b> <span class="f10Up">$</span>)</span><span class="rightCor">&nbsp;</span></span>
                         <?php else: ?><span class="cont left"><span class="left"><a href="/bill" title="Мой счет" class="count"  style="color:grey;">Мой счет</a> (<b class="f14"><?php echo $this->_tpl_vars['config']['user_balance']; ?>
-</b> <span class="f10Up">руб</span>)</span><span class="rightCor">&nbsp;</span></span><?php endif; ?>
+</b> <span class="f10Up">$</span>)</span><span class="rightCor">&nbsp;</span></span><?php endif; ?>
                         <span class="exit"><a href="/user/logout" title="Выход">Выход</a></span>
                         <?php if ($this->_tpl_vars['config']['userMenuCurrent'] == 4): ?><span class="cont right activeSet"><span class="left"><b class="settings">Настройки</b></span><span class="rightCor">&nbsp;</span></span>
                         <?php else: ?><span class="cont right"><span class="left"><a href="/user/profile" title="Настройки" class="settings">Настройки</a></span><span class="rightCor">&nbsp;</span></span><?php endif; ?>

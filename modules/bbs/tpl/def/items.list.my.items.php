@@ -50,7 +50,7 @@ foreach($aData['items'] as $i)
             <a href="/item/<?= $id; ?>" class="desc-link"><?= tpl::truncate($i['descr'], 330, '...', true); ?></a>
             <div class="address"><?= $i['cat1_title']; ?><? if($i['cat2_id']): ?> <img src="/img/arrowRightSmall.png" /> <?= $i['cat2_title']; ?><? endif; ?> <?= ($i['cat_regions'] && !empty($i['descr_regions'])?'/ '.$i['descr_regions']:''); ?></div>
         </div>
-        <?php if($i['cat_prices']): ?><div class="price"><b class="f18 orange"><?= $i['price']; ?></b> <span class="f11Up orange">руб</span><br/><?= ($i['price_torg'] ? 'торг' : '').($i['price_bart'] ? ($i['price_torg'] ? ', ': '').'бартер' : '' ); ?></div><? endif; ?>
+        <?php if($i['cat_prices']): ?><div class="price"><b class="f18 orange"><?= $i['price']; ?></b> <span class="f11Up orange">$</span><br/><?= ($i['price_torg'] ? 'торг' : '').($i['price_bart'] ? ($i['price_torg'] ? ', ': '').'бартер' : '' ); ?></div><? endif; ?>
         <div class="stat">
             <? if ($fStatus==BBS_STATUS_PUBLICATED): ?><span><?= tpl::date_format3($i['publicated'], 'd.m.Y'); ?></span> по <span><?= tpl::date_format3($i['publicated_to'], 'd.m.Y'); ?></span><? endif; ?>
             Просмотры: <span>всего <b><?= $i['views_total']; ?></b></span> / <span>сегодня <b><?= intval($i['views']); ?></b></span>

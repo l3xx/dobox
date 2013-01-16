@@ -21,7 +21,7 @@ bbsAddClass.prototype =
 
         var $progressAdd = $('#add-form-progress');
         this.formAdd = $('#add-form');
-        this.formAdd.submit(function () {  
+        this.formAdd.submit(function () {
             
             var error = false;
             $('input.req:visible, select.req:visible', this).each(function() {
@@ -38,8 +38,15 @@ bbsAddClass.prototype =
                 this.info.value = self.striptags( this.info.value );
                 this.descr.value = self.striptags( this.descr.value );
                 this.uid.value = app.uid();
-                bff.ajax('/items/add', self.formAdd.serialize(), function(data, errors) {  
-                    if(data && data.res) { self.onPp(data.pp);
+                bff.ajax('/items/add', self.formAdd.serialize(), function(data, errors) {
+                    if(data && data.res) {
+                        bff.ajax('/items/publicate', 'id='+data.id+'&p='+data.pass+'&period=5', function(data, errors) {
+                            if(data && data.res) {
+                                document.location = '/items/publicate';
+                            }
+                        });
+
+                        self.onPp(data.pp);
                         if(self.id) {
                             self.stepReady( 2 );
                         } else {
@@ -62,9 +69,9 @@ bbsAddClass.prototype =
         
         this.$errPublicate = $('#publicate-error', this);
         ( this.formPublicate = $('#publicate-form') ).submit(function () {
-            
-            bff.ajax('/items/publicate', 'id='+self.id+'&p='+self.pass+'&'+$(this).serialize(), function(data, errors) {  
-                if(data && data.res) { 
+
+            bff.ajax('/items/publicate', 'id='+self.id+'&p='+self.pass+'&'+$(this).serialize(), function(data, errors) {
+                if(data && data.res) {
                     if(data.pay) app.pay(data.form);
                     else document.location = '/items/publicate';
                 } else {
@@ -95,8 +102,9 @@ bbsAddClass.prototype =
 //        var cat1_sel = $('select:first', this.steps[1].e);
 //        cat1_sel.val(3);
 //        this.categorySelect(cat1_sel, 1);
-        
-    }, 
+
+        this.photos.init(this.steps[2].e, this.o.plmt, this.o.ssid);
+    },
     
     onLogin: function()
     {
@@ -124,18 +132,18 @@ bbsAddClass.prototype =
                     cats.push( e.options[e.selectedIndex].text );
                 });
                 
-                $('div.selects-edit', $step).fadeOut(0,function(){
-                    $('div.selects-view', $step).html( '<span class="text"><b>'+cats.join('</b></span><span class="arrow"><img src="/img/arrowRight.png" /></span><span class="text"><b>')+'</b></span>' ).fadeIn(0);
-                });
+//                $('div.selects-edit', $step).fadeOut(0,function(){
+//                    $('div.selects-view', $step).html( '<span class="text"><b>'+cats.join('</b></span><span class="arrow"><img src="/img/arrowRight.png" /></span><span class="text"><b>')+'</b></span>' ).fadeIn(0);
+//                });
                 
             } break;
             case 2: { //dynprops, price, geo, images
-                $('div.add-step-content', $step).addClass('hidden'); 
+//                $('div.add-step-content', $step).addClass('hidden');
                    
             } break;
             case 3: //publication
             {
-                $('div.add-step-content', $step).addClass('hidden');
+//                $('div.add-step-content', $step).addClass('hidden');
             } break;
         }
 
@@ -146,10 +154,10 @@ bbsAddClass.prototype =
         if(this.steps[stepNext])
             this.stepEdit( stepNext );
             
-        if(step == 2) {
-            $.scrollTo(this.steps[1].e, { duration:500, offset:-50 } );
-            this.$err.addClass('hidden').html('');
-        }
+//        if(step == 2) {
+//            $.scrollTo(this.steps[1].e, { duration:500, offset:-50 } );
+//            this.$err.addClass('hidden').html('');
+//        }
     }, 
     
     stepEdit: function( step )
@@ -185,6 +193,7 @@ bbsAddClass.prototype =
         else if(step == 3){
             
             this.stepInit(step);
+            console.log(this);
 
             //build preview
             this.$viewPhoto.attr('src', this.photos.getPreviewPhoto(this.id) );
@@ -240,12 +249,14 @@ bbsAddClass.prototype =
             return;
                        
         var $block = this.steps[step].e;
+//        this.photos.init(this.steps[2].e, this.o.plmt, this.o.ssid);
         switch(step)
         {
             case 1: {
+//                this.photos.init($block, this.o.plmt, this.o.ssid);
             } break;
             case 2: {
-                this.photos.init($block, this.o.plmt, this.o.ssid);
+//                this.photos.init($block, this.o.plmt, this.o.ssid);
             } break;
             case 3: {
                 this.$viewPhoto = $('#add-view-image>img', $block);
@@ -303,7 +314,6 @@ bbsAddClass.prototype =
         var id = intval($select.val()); 
         if(id <= 0) return;
 
-        console.log(type);
         if(type == 'subtype') {
             this.stepReady(1);    
             return;

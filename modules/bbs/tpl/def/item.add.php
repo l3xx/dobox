@@ -7,7 +7,7 @@
 <input type="hidden" name="pass" value="" />
 <input type="hidden" name="uid" value="" /> 
 <div class="addStep active" id="add-step-1">
-    <div class="step">шаг 1</div>
+<!--    <div class="step">шаг 1</div>-->
     <span class="caption">Раздел и тип:</span>
 
     <div class="selects-edit">    
@@ -24,11 +24,11 @@
     
 </div>
 <div class="addStep" id="add-step-2">
-    <div class="step">шаг 2</div>
+<!--    <div class="step">шаг 2</div>-->
     <span class="caption">Детали объявления</span>
     <span class="right add-step-edit hidden"><a class="greyBord" href="#" onclick="return bbsAdd.stepEdit(2);">изменить</a></span>
     <div class="clear"></div>
-    <div class="add-step-content hidden">
+    <div class="add-step-content">
         <div class="padBlock">        
             <div class="error hidden" id="add-error"></div> 
                 
@@ -41,7 +41,7 @@
             <div class="padTop"><textarea style="width:652px; height:80px;" id="add-step-infotext" class="inputText2 adtxt" name="info"></textarea></div>            
             
             <div id="add-step-prices" style="display: none;">
-                <div class="padTop">Цена(руб):<span class="req">*</span></div>
+                <div class="padTop">Цена($):<span class="req">*</span></div>
                 <div class="padTop">
                     <input type="text" class="inputText2 adtxt req" name="price" maxlength="25" id="add-step-prices-price" />
                     <label style="display: none;" id="add-step-prices-torg"><input type="checkbox" name="price_torg" class="adtxt" /> возможен торг</label>
@@ -101,7 +101,7 @@
             <div class="caption left">Фотографии</div>
             <div class="left" style="margin:-3px 0 0 10px;"><span id="add-images-button"></span></div>
             <div class="left progress hidden" style="margin-top: 4px;" id="add-images-progress"></div>
-            <div class="button photoBt hidden">
+            <div class="button photoBt">
                 <span class="left">&nbsp;</span>
                 <input type="button" value="загрузить фото" />
             </div>
@@ -135,79 +135,87 @@
                     <param value="true" name="allowFullScreen"><param value="always" name="allowscriptaccess" />
                     <embed height="133" width="160" allowfullscreen="true" allowscriptaccess="always" type="application/x-shockwave-flash" src="" id="embVideo" />
                 </object>
-            </div>                
+            </div>
+            <div class="padBlock">
+                <div class="cpc">
+                    <div class="clear">
+                        <img src='/captcha3.php' />
+                    </div>
+                    <input type="text" name="captcha" class="inputText2">
+                </div>
+            </div>
             <div class="padTop2">
                 <div class="button left">
                     <span class="left">&nbsp;</span>
-                    <input type="submit" value="сохранить и перейти к публикации" style="width:247px;" />
+                    <input type="submit" value="Опубликовать" style="width:247px;" />
                 </div>
                 <div class="left progress hidden" style="margin: 8px 15px 0;" id="add-form-progress"></div>
                 <div class="clear"></div>
-            </div> 
+            </div>
         </div>      
     </div>
 </div>
 </form> 
-<form action="#" id="publicate-form">
-<div class="addStep" id="add-step-3">
-    <div class="step">шаг 3</div>
-    <span class="caption">публикация на <span class="blue">w</span><span class="orange">sell.</span><span class="blue">ru</span></span>
-    <div class="clear"></div>
-    <div class="add-step-content hidden">
-        <div class="padBlock">
-            <div class="error hidden" id="publicate-error" style="margin-bottom: 15px;"></div>
-            <div class="left padRight2">
-                Публиковать:
-                <div class="padTop">
-                    <script type="text/javascript"> 
-                    <?  
-                        $week = (60*60 * 24 * 7);
-                        $now = time();
-                        $periods = bff::getPublicatePeriods( $now );
-                        ?>
-                    var bbsPublicatePeriods = <?= func::php2js( $periods['data'] ); ?>;
-                    </script>
-                    <select class="inputText2" name="period" onchange="$('#add-publicated-till').html( bbsPublicatePeriods[this.value] );">
-                        <?= $periods['html'] ?> 
-                    </select>
-                </div>
-            </div>
-            <div class="left">
-                Срок публикации:
-                <div class="term">с <?= date('d.m.Y'); ?> по <span id="add-publicated-till"><?= date('d.m.Y', $now + $week ); ?></span></div>
-            </div>
-            <div class="clear"></div>
-            <div class="padTop2">
-                <div class="advBlock">
-                    <div class="pic" id="add-view-image"><img src="/img/noImage.gif" /></div>
-                    <div class="desc">
-                        <b class="upper" id="add-view-type"></b> <span id="add-view-text"></span>
-                        <div class="address" id="add-view-region"></div>
-                    </div>
-                    <div class="price"><b class="f18" id="add-view-price">6000</b> <span class="f11Up">руб</span><br/><span id="add-view-price-torg" style="display: none;">торг</span><span id="add-view-price-bart" style="display: none;"> бартер</span></div>
-                    <div class="clear"></div>
-                </div>
-            </div>
-            <div class="padTop2">
-                <? if($this->security->isLogined()): ?>
-                <div class="button left">
-                    <span class="left">&nbsp;</span>
-                    <input type="submit" value="РАЗМЕСТИТЬ ОБЪЯВЛЕНИЕ" style="width:185px;" />
-                </div>
-                <? else: ?>
-                <div class="button left">
-                    <span class="left">&nbsp;</span>
-                    <input type="submit" value="РАЗМЕСТИТЬ ОБЪЯВЛЕНИЕ БЕЗ РЕГИСТРАЦИИ" style="width:280px;"/>
-                </div>
-                <span class="login"><a href="#" class="enter user-enter">Вход</a> / <a href="#" class="user-enter">Регистрация</a></span>
-                <? endif; ?>
-                <div class="left progress hidden" style="margin: 8px 15px 0;" id="publicate-form-progress"></div>
-                <div class="clear"></div>
-            </div>
-        </div>
-    </div>
-</div>
-</form>
+<!--<form action="#" id="publicate-form">-->
+<!--<div class="addStep" id="add-step-3">-->
+<!--    <div class="step">шаг 3</div>-->
+<!--    <span class="caption">публикация на <span class="blue">bulletinb.</span><span class="orange">elitno.</span><span class="blue">net</span></span>-->
+<!--    <div class="clear"></div>-->
+<!--    <div class="add-step-content">-->
+<!--        <div class="padBlock">-->
+<!--            <div class="error hidden" id="publicate-error" style="margin-bottom: 15px;"></div>-->
+<!--            <div class="left padRight2">-->
+<!--                Публиковать:-->
+<!--                <div class="padTop">-->
+<!--                    <script type="text/javascript">-->
+<!--                    --><?//
+//                        $week = (60*60 * 24 * 7);
+//                        $now = time();
+//                        $periods = bff::getPublicatePeriods( $now );
+//                        ?>
+<!--                    var bbsPublicatePeriods = --><?//= func::php2js( $periods['data'] ); ?><!--;-->
+<!--                    </script>-->
+<!--                    <select class="inputText2" name="period" onchange="$('#add-publicated-till').html( bbsPublicatePeriods[this.value] );">-->
+<!--                        --><?//= $periods['html'] ?>
+<!--                    </select>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="left">-->
+<!--                Срок публикации:-->
+<!--                <div class="term">с --><?//= date('d.m.Y'); ?><!-- по <span id="add-publicated-till">--><?//= date('d.m.Y', $now + $week ); ?><!--</span></div>-->
+<!--            </div>-->
+<!--            <div class="clear"></div>-->
+<!--            <div class="padTop2">-->
+<!--                <div class="advBlock">-->
+<!--                    <div class="pic" id="add-view-image"><img src="/img/noImage.gif" /></div>-->
+<!--                    <div class="desc">-->
+<!--                        <b class="upper" id="add-view-type"></b> <span id="add-view-text"></span>-->
+<!--                        <div class="address" id="add-view-region"></div>-->
+<!--                    </div>-->
+<!--                    <div class="price"><b class="f18" id="add-view-price">6000</b> <span class="f11Up">$</span><br/><span id="add-view-price-torg" style="display: none;">торг</span><span id="add-view-price-bart" style="display: none;"> бартер</span></div>-->
+<!--                    <div class="clear"></div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="padTop2">-->
+<!--                --><?// if($this->security->isLogined()): ?>
+<!--                <div class="button left">-->
+<!--                    <span class="left">&nbsp;</span>-->
+<!--                    <input type="submit" value="РАЗМЕСТИТЬ ОБЪЯВЛЕНИЕ" style="width:185px;" />-->
+<!--                </div>-->
+<!--                --><?// else: ?>
+<!--                <div class="button left">-->
+<!--                    <span class="left">&nbsp;</span>-->
+<!--                    <input type="submit" value="РАЗМЕСТИТЬ ОБЪЯВЛЕНИЕ БЕЗ РЕГИСТРАЦИИ" style="width:280px;"/>-->
+<!--                </div>-->
+<!--                <span class="login"><a href="#" class="enter user-enter">Вход</a> / <a href="#" class="user-enter">Регистрация</a></span>-->
+<!--                --><?// endif; ?>
+<!--                <div class="left progress hidden" style="margin: 8px 15px 0;" id="publicate-form-progress"></div>-->
+<!--                <div class="clear"></div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+<!--</form>-->
 
 <script type="text/javascript">
 //<![CDATA[    

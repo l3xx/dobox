@@ -6,7 +6,7 @@ class Services extends ServicesBase
     private function showActivationNomoney( $nUserBalance )
     {
         return $this->showForbidden('Активация услуги', 
-            'Недостаточно средств.<br /> В данный момент на счету '.$nUserBalance.' руб.<br /><a href="/bill">Пополнить счет</a>');
+            'Недостаточно средств.<br /> В данный момент на счету '.$nUserBalance.' $.<br /><a href="/bill">Пополнить счет</a>');
     }
     
     function ajax()

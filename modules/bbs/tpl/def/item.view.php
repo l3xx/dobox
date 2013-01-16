@@ -179,7 +179,7 @@ $(function(){
             </ul>
         </div>
         <span class="grey"><?= ($cat_regions && !empty($descr_regions) ? $descr_regions : ''); ?></span>
-        <?php if($cat_prices): ?><p class="padTop"><b class="orange f24"><?= $price ?></b>&nbsp;<span class="orange f12Up">руб</span><br/><?= ($price_torg ? 'торг' : '').($price_bart ? ($price_torg ? ', ': '').'возможен бартер' : '' ); ?></p><? endif; ?>
+        <?php if($cat_prices): ?><p class="padTop"><b class="orange f24"><?= $price ?></b>&nbsp;<span class="orange f12Up">$</span><br/><?= ($price_torg ? 'торг' : '').($price_bart ? ($price_torg ? ', ': '').'возможен бартер' : '' ); ?></p><? endif; ?>
         <p class="padTop">
             <span class="caption">Контакты:</span>
             <? if(!empty($contacts_phone)): ?><span class="grey">Тел:</span> <span class="blue"><?= $contacts_phone; ?></span><br/><? endif; ?>

@@ -18,7 +18,7 @@
         <div class="textDiv hidden">
           <?= $up['desc']; ?>
             <div class="cost">
-                <div>Стоимость услуги  <b class="f18 orange"><?= $up['price']; ?></b> <span class="f11Up orange">руб</span></div>
+                <div>Стоимость услуги  <b class="f18 orange"><?= $up['price']; ?></b> <span class="f11Up orange">$</span></div>
                 <div class="button left">
                     <span class="left">&nbsp;</span>
                     <input type="submit" value="ОПЛАТИТЬ" />
@@ -35,7 +35,7 @@
         <div class="textDiv hidden">
             <?= $mark['desc']; ?>
             <div class="cost">
-                <div>Стоимость услуги  <b class="f18 orange"><?= $mark['price']; ?></b> <span class="f11Up orange">руб</span></div>
+                <div>Стоимость услуги  <b class="f18 orange"><?= $mark['price']; ?></b> <span class="f11Up orange">$</span></div>
                 <div class="button left">
                     <span class="left">&nbsp;</span>
                     <input type="submit" value="ОПЛАТИТЬ" />
@@ -52,7 +52,7 @@
         <div class="textDiv hidden">
           <?= $premium['desc']; ?>
             <div class="cost">
-                <div>Стоимость услуги  <b class="f18 orange"><?= $premium['price']; ?></b> <span class="f11Up orange">руб</span></div>
+                <div>Стоимость услуги  <b class="f18 orange"><?= $premium['price']; ?></b> <span class="f11Up orange">$</span></div>
                 <div class="button left">
                     <span class="left">&nbsp;</span>
                     <input type="submit" value="ОПЛАТИТЬ" />
@@ -69,7 +69,7 @@
         <div class="textDiv hidden">
           <?= $press['desc']; ?>
             <div class="cost">
-                <div>Стоимость услуги  <b class="f18 orange"><?= $press['price']; ?></b> <span class="f11Up orange">руб</span></div>
+                <div>Стоимость услуги  <b class="f18 orange"><?= $press['price']; ?></b> <span class="f11Up orange">$</span></div>
                 <div class="button left">
                     <span class="left">&nbsp;</span>
                     <input type="submit" value="ОПЛАТИТЬ" />

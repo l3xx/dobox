@@ -12,7 +12,7 @@
         <?php if($cat_subtype>0): ?><b class="upper"><?= $cat_subtype_title; ?>:</b> <?php endif; ?><?= nl2br($descr); ?>
         <div class="address"><?= $descr_regions; ?></div>
       </div>
-      <?php if($cat_prices>0): ?><div class="price"><b class="f18"><?= $price; ?></b> <span class="f11Up">руб</span><br/><?= ($price_torg ? 'торг' : '').($price_bart ? ($price_torg ? ', ': '').'бартер' : '' ); ?></div><?php endif; ?>
+      <?php if($cat_prices>0): ?><div class="price"><b class="f18"><?= $price; ?></b> <span class="f11Up">$</span><br/><?= ($price_torg ? 'торг' : '').($price_bart ? ($price_torg ? ', ': '').'бартер' : '' ); ?></div><?php endif; ?>
       <div class="clear"></div>
     </div>
   </div>
@@ -63,77 +63,77 @@
 //]]>       
 </script>
 
-<div id="svcPublicateBlock">
-  <h1 class="left">сделать объявление более эффективным</h1><div class="progress left" style="margin:13px 0 0 15px; display:none;"></div>
-  <div class="clear"></div>
-  <form action="/ajax/services?act=activate">
-    <input type="hidden" name="item" value="<?= $id; ?>" />
-    <input type="hidden" name="svc" value="0" />
-    <div class="svc-error error hidden"></div>
-  <div class="stepBlock addSuccessBlock">
-    <span class="caption putUp"><a href="#" rel="<?= Services::typeUp ?>" class="togglr">Поднять объявление</a></span>
-    <span class="arrow"><a href="#" rel="<?= Services::typeUp ?>" class="togglr togglr-arrow"><img src="/img/arrowBottom.png" alt=""/></a></span>
-    <div class="clear"></div>
-    <div class="textDiv hidden">
-      <?= $svc['up']['desc']; ?>
-        <div class="cost">
-            <div>Стоимость услуги  <b class="f18 orange"><?= $svc['up']['price']; ?></b> <span class="f11Up orange">руб</span></div>
-            <div class="button left">
-                <span class="left">&nbsp;</span>
-                <input type="submit" value="ОПЛАТИТЬ" />
-            </div>
-            <div class="clear"></div>
-        </div>      
-    </div>
-  </div>
-  <div class="stepBlock addSuccessBlock">
-    <span class="caption mark"><a href="#" rel="<?= Services::typeMark ?>" class="togglr">Выделить объявления</a></span>
-    <span class="arrow"><a href="#" rel="<?= Services::typeMark ?>" class="togglr togglr-arrow"><img src="/img/arrowBottom.png" alt=""/></a></span>
-    <div class="clear"></div>
-    <div class="textDiv hidden">
-      <?= $svc['mark']['desc']; ?>
-        <div class="cost">
-            <div>Стоимость услуги  <b class="f18 orange"><?= $svc['mark']['price']; ?></b> <span class="f11Up orange">руб</span></div>
-            <div class="button left">
-                <span class="left">&nbsp;</span>
-                <input type="submit" value="ОПЛАТИТЬ" />
-            </div>
-            <div class="clear"></div>
-        </div>       
-    </div>
-  </div>
-  <div class="stepBlock addSuccessBlock">
-    <span class="caption premium"><a href="#" rel="<?= Services::typePremium ?>" class="togglr">Премиум</a></span>
-    <span class="arrow"><a href="#" rel="<?= Services::typePremium ?>" class="togglr togglr-arrow"><img src="/img/arrowBottom.png" alt=""/></a></span>
-    <div class="clear"></div>
-    <div class="textDiv hidden">
-      <?= $svc['premium']['desc']; ?>
-        <div class="cost">
-            <div>Стоимость услуги  <b class="f18 orange"><?= $svc['premium']['price']; ?></b> <span class="f11Up orange">руб</span></div>
-            <div class="button left">
-                <span class="left">&nbsp;</span>
-                <input type="submit" value="ОПЛАТИТЬ" />
-            </div>
-            <div class="clear"></div>
-        </div> 
-    </div>
-  </div>
-  <div class="stepBlock addSuccessBlock">
-    <span class="caption public"><a href="#" rel="<?= Services::typePress ?>" class="togglr">Публикация в прессе</a></span>
-    <span class="arrow"><a href="#" rel="<?= Services::typePress ?>" class="togglr togglr-arrow"><img src="/img/arrowBottom.png" alt=""/></a></span>
-    <div class="clear"></div>
-    <div class="textDiv hidden">
-      <?= $svc['press']['desc']; ?>
-        <div class="cost">
-            <div>Стоимость услуги  <b class="f18 orange"><?= $svc['press']['price']; ?></b> <span class="f11Up orange">руб</span></div>
-            <div class="button left">
-                <span class="left">&nbsp;</span>
-                <input type="submit" value="ОПЛАТИТЬ" />
-            </div>
-            <div class="clear"></div>
-        </div>       
-    </div>
-  </div>
-</form>
-
-</div>
+<!--<div id="svcPublicateBlock">-->
+<!--  <h1 class="left">сделать объявление более эффективным</h1><div class="progress left" style="margin:13px 0 0 15px; display:none;"></div>-->
+<!--  <div class="clear"></div>-->
+<!--  <form action="/ajax/services?act=activate">-->
+<!--    <input type="hidden" name="item" value="--><?//= $id; ?><!--" />-->
+<!--    <input type="hidden" name="svc" value="0" />-->
+<!--    <div class="svc-error error hidden"></div>-->
+<!--  <div class="stepBlock addSuccessBlock">-->
+<!--    <span class="caption putUp"><a href="#" rel="--><?//= Services::typeUp ?><!--" class="togglr">Поднять объявление</a></span>-->
+<!--    <span class="arrow"><a href="#" rel="--><?//= Services::typeUp ?><!--" class="togglr togglr-arrow"><img src="/img/arrowBottom.png" alt=""/></a></span>-->
+<!--    <div class="clear"></div>-->
+<!--    <div class="textDiv hidden">-->
+<!--      --><?//= $svc['up']['desc']; ?>
+<!--        <div class="cost">-->
+<!--            <div>Стоимость услуги  <b class="f18 orange">--><?//= $svc['up']['price']; ?><!--</b> <span class="f11Up orange">$</span></div>-->
+<!--            <div class="button left">-->
+<!--                <span class="left">&nbsp;</span>-->
+<!--                <input type="submit" value="ОПЛАТИТЬ" />-->
+<!--            </div>-->
+<!--            <div class="clear"></div>-->
+<!--        </div>      -->
+<!--    </div>-->
+<!--  </div>-->
+<!--  <div class="stepBlock addSuccessBlock">-->
+<!--    <span class="caption mark"><a href="#" rel="--><?//= Services::typeMark ?><!--" class="togglr">Выделить объявления</a></span>-->
+<!--    <span class="arrow"><a href="#" rel="--><?//= Services::typeMark ?><!--" class="togglr togglr-arrow"><img src="/img/arrowBottom.png" alt=""/></a></span>-->
+<!--    <div class="clear"></div>-->
+<!--    <div class="textDiv hidden">-->
+<!--      --><?//= $svc['mark']['desc']; ?>
+<!--        <div class="cost">-->
+<!--            <div>Стоимость услуги  <b class="f18 orange">--><?//= $svc['mark']['price']; ?><!--</b> <span class="f11Up orange">$</span></div>-->
+<!--            <div class="button left">-->
+<!--                <span class="left">&nbsp;</span>-->
+<!--                <input type="submit" value="ОПЛАТИТЬ" />-->
+<!--            </div>-->
+<!--            <div class="clear"></div>-->
+<!--        </div>       -->
+<!--    </div>-->
+<!--  </div>-->
+<!--  <div class="stepBlock addSuccessBlock">-->
+<!--    <span class="caption premium"><a href="#" rel="--><?//= Services::typePremium ?><!--" class="togglr">Премиум</a></span>-->
+<!--    <span class="arrow"><a href="#" rel="--><?//= Services::typePremium ?><!--" class="togglr togglr-arrow"><img src="/img/arrowBottom.png" alt=""/></a></span>-->
+<!--    <div class="clear"></div>-->
+<!--    <div class="textDiv hidden">-->
+<!--      --><?//= $svc['premium']['desc']; ?>
+<!--        <div class="cost">-->
+<!--            <div>Стоимость услуги  <b class="f18 orange">--><?//= $svc['premium']['price']; ?><!--</b> <span class="f11Up orange">$</span></div>-->
+<!--            <div class="button left">-->
+<!--                <span class="left">&nbsp;</span>-->
+<!--                <input type="submit" value="ОПЛАТИТЬ" />-->
+<!--            </div>-->
+<!--            <div class="clear"></div>-->
+<!--        </div> -->
+<!--    </div>-->
+<!--  </div>-->
+<!--  <div class="stepBlock addSuccessBlock">-->
+<!--    <span class="caption public"><a href="#" rel="--><?//= Services::typePress ?><!--" class="togglr">Публикация в прессе</a></span>-->
+<!--    <span class="arrow"><a href="#" rel="--><?//= Services::typePress ?><!--" class="togglr togglr-arrow"><img src="/img/arrowBottom.png" alt=""/></a></span>-->
+<!--    <div class="clear"></div>-->
+<!--    <div class="textDiv hidden">-->
+<!--      --><?//= $svc['press']['desc']; ?>
+<!--        <div class="cost">-->
+<!--            <div>Стоимость услуги  <b class="f18 orange">--><?//= $svc['press']['price']; ?><!--</b> <span class="f11Up orange">$</span></div>-->
+<!--            <div class="button left">-->
+<!--                <span class="left">&nbsp;</span>-->
+<!--                <input type="submit" value="ОПЛАТИТЬ" />-->
+<!--            </div>-->
+<!--            <div class="clear"></div>-->
+<!--        </div>       -->
+<!--    </div>-->
+<!--  </div>-->
+<!--</form>-->
+<!---->
+<!--</div>-->

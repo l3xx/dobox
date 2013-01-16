@@ -32,7 +32,7 @@
                 <div class="address"><?= $i['cat1_title']; ?><? if($i['cat2_id']): ?> <img src="/img/arrowRightSmall.png" /> <?= $i['cat2_title']; ?><? endif; ?> <?= ($i['cat_regions'] && !empty($i['descr_regions'])?'/ '.$i['descr_regions']:''); ?></div>
                 <div class="contact"><?= (!empty($i['contacts_phone']) ? 'Тел: '.$i['contacts_phone'].'&nbsp;&nbsp;':'') ?><?= (!empty($i['contacts_email']) ? 'E-mail: '.$i['contacts_email'].'&nbsp;&nbsp;':'') ?><?= (!empty($i['contacts_skype']) ? 'Skype: '.$i['contacts_skype'].'&nbsp;&nbsp;':'') ?><?= $i['contacts_name'] ?></div>
             </div>
-            <div class="price"><span class="date"><?= tpl::date_format3($i['publicated'], 'd.m.Y') ?></span><?php if($i['cat_prices']): ?><b class="f18 orange"><?= $i['price']; ?></b> <span class="f11Up orange">руб</span><br/><?= ($i['price_torg'] ? 'торг' : '').($i['price_bart'] ? ($i['price_torg'] ? ', ': '').'бартер' : '' ); ?><? endif; ?></div>
+            <div class="price"><span class="date"><?= tpl::date_format3($i['publicated'], 'd.m.Y') ?></span><?php if($i['cat_prices']): ?><b class="f18 orange"><?= $i['price']; ?></b> <span class="f11Up orange">$</span><br/><?= ($i['price_torg'] ? 'торг' : '').($i['price_bart'] ? ($i['price_torg'] ? ', ': '').'бартер' : '' ); ?><? endif; ?></div>
             <div class="clear"></div>
         </div>
         <? } ?>

@@ -45,7 +45,7 @@
       </div>
       <div class="centerBlock">
         <?= ($cat_regions && !empty($descr_regions) ? $descr_regions : ''); ?>
-        <?php if($cat_prices): ?><p><b class="orange f24"><?= $price; ?></b><span class="orange f12Up">руб</span><br/><?= ($price_torg ? 'торг' : '').($price_bart ? ($price_torg ? ', ': '').'возможен бартер' : '' ); ?></p><? endif; ?>
+        <?php if($cat_prices): ?><p><b class="orange f24"><?= $price; ?></b><span class="orange f12Up">$</span><br/><?= ($price_torg ? 'торг' : '').($price_bart ? ($price_torg ? ', ': '').'возможен бартер' : '' ); ?></p><? endif; ?>
         <p>
           <span class="caption">Контакты:</span>
           <? if(!empty($contacts_phone)): ?><?= $contacts_phone; ?><br/><? endif; ?>

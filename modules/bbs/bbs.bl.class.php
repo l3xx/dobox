@@ -43,7 +43,7 @@ abstract class BBSBase extends Module
     // возможно ли наличие объявлений и подкатегорий на одном уровне  
     var $category_mixed = false; 
     // название валюты
-    var $items_currency = array('sign'=>'р.', 'short'=>'руб.', 'forms'=>'рубль;рубля;рублей');
+    var $items_currency = array('sign'=>'$', 'short'=>'usd.', 'forms'=>'usd;usd;usd');
     // используются ли URL keywords
     var $url_keywords = false;
                  

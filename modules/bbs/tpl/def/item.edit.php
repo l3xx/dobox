@@ -54,7 +54,7 @@
     
     <? if($cat_prices) { ?>
     <div id="edit-prices">
-        <div class="padTop">Цена(руб):<span class="req">*</span></div>
+        <div class="padTop">Цена($):<span class="req">*</span></div>
         <div class="padTop">
             <input type="text" class="inputText2 adtxt req" name="price" value="<?= $price; ?>" maxlength="25" id="edit-prices-price" />
             <? if($prices_sett['torg']): ?><label id="edit-prices-torg"><input type="checkbox" <?= ($price_torg?'checked':'') ?> name="price_torg" class="adtxt" /> возможен торг</label><? endif; ?>

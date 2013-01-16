@@ -196,8 +196,8 @@ h3 {padding:0; margin:0; font-size:12px; font-weight:normal; color:#7b8080;}
 .leftBlock .addStep .caption {float:left; color:#7b8080; font-size:12px; font-weight:bold; text-transform:uppercase; padding:11px 14px 0 17px;}
 .leftBlock .addStep select.cat { margin-top:8px; border: 1px solid #ccc; padding: 1px; font-size: 12px; float: left; width: 105px; }
 
-.leftBlock .active {background-color:#fff;}
-.leftBlock .active .step {background:url(../img/stepActive.png) 0 0 no-repeat;}
+/*.leftBlock .active {background-color:#fff;}*/
+/*.leftBlock .active .step {background:url(../img/stepActive.png) 0 0 no-repeat;}*/
 
 .leftBlock .done .step {background:url(../img/stepDone.png) 0 0 no-repeat;}
 
