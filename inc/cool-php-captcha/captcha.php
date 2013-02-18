@@ -208,9 +208,7 @@ class SimpleCaptcha {
 
         $_SESSION[$this->session_var] = $text;
 
-        require './bff/captcha/captcha.protection.php';
-        $oProtection = new CCaptchaProtection();
-        setcookie('c3', $oProtection->generate_hash($text, date('j')), time() +(1*60*10), '/');
+        setcookie('c4', md5($text), time() +(1*60*10), '/');
 
         /** Transformations */
         if (!empty($this->lineWidth)) {

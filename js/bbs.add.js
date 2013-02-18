@@ -22,14 +22,14 @@ bbsAddClass.prototype =
         var $progressAdd = $('#add-form-progress');
         this.formAdd = $('#add-form');
         this.formAdd.submit(function () {
-            
+
             var error = false;
             $('input.req:visible, select.req:visible', this).each(function() {
                 var val = $(this).val();
                 if( $.trim(val) == '' || val == 0 || val === undefined || val == $(this).attr('placeholder')) {
                     error = true;
                 }
-            });            
+            });
             
             if(error) { 
                 self.showError(self.$err, 'Заполните все необходимые поля');   
@@ -383,7 +383,7 @@ bbsAddClass.prototype =
             return false;
 
         var html = '<span class="arrow"><img src="/img/arrowRight.png" /></span>\
-                <select name="cat['+type+']" class="cat" onchange="bbsAdd.categorySelect(this, '+((type=='type' || type=='subtype')?'\''+type+'\'':type)+');">\
+                <select name="cat['+type+']" class="cat '+((type=='type' || type=='subtype')?'':'cat-hint')+' stepc-'+type+'" onchange="bbsAdd.categorySelect(this, '+((type=='type' || type=='subtype')?'\''+type+'\'':type)+');">\
                     <option value="0">выбрать</option>';
                     for(var i in data.cats) {
                           html += '<option value="'+data.cats[i].id+'">'+data.cats[i].title+'</option>';

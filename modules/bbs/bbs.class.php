@@ -12,7 +12,8 @@ class BBS extends BBSBase
             'c'     => TYPE_UINT, // категория  
             'pp'    => TYPE_UINT, //кол-во на страницу
             'page'  => TYPE_UINT, //номер страницы
-        )); 
+        ));
+        $filter['c'] = ($filter['c'] == 0) ? 1 : $filter['c'];
                           
         if(!$filter['pp'] || !in_array($filter['pp'], array(10,20,30))) { $filter['pp'] = 10; }
         if(!$filter['page']) $filter['page'] = 1;
@@ -38,7 +39,7 @@ class BBS extends BBSBase
             
             //$sql[] = 'I.descr LIKE '.$this->db->str2sql('%'.$sQ.'%');
         }
-        
+
         //период
         if($filter['p']>=1 && $filter['p']<=3) {
             switch($filter['p']) {
@@ -51,7 +52,7 @@ class BBS extends BBSBase
 
         $aData = array();
         $aData['f'] = &$filter;
-        
+
         if(!$filter['quick']) 
         {
             //поиск с фильтрами
@@ -85,14 +86,16 @@ class BBS extends BBSBase
             ));
 
             extract($filter);
-            
+
             $cat = $this->db->one_array('SELECT * FROM '.TABLE_BBS_CATEGORIES.' WHERE id='.$c.' LIMIT 1');
-            if(empty($cat)) func::JSRedirect('/');
+//            if(empty($cat)) func::JSRedirect('/');
             
             $cat['prices_sett'] = unserialize($cat['prices_sett']);
             
             $aData['items'] = array();
-                        
+
+            ($cat['items'] == 0) ? $cat['items']++ : '';
+
             if($cat['items']>0) {
                 //категория
                  if($cat['numlevel'] == 1) {
@@ -104,9 +107,51 @@ class BBS extends BBSBase
                  }
                 
                 //тип категории
-                if($ct>0) $sql[] = 'I.cat_type = '.$ct;
+                switch ($ct) {
+                    case 1111:
+                        $aa = $this->db->select("SELECT id FROM bff_bbs_categories_types WHERE title LIKE 'Частные'");
+                        $id = array();
+                        foreach ($aa as $k) {
+                            $id[] = $k['id'];
+                        }
+                        $sql[] = "I.cat_type IN ('".implode("','",$id)."')";
+                        break;
+                    case 2222:
+                        $aa = $this->db->select("SELECT id FROM bff_bbs_categories_types WHERE title LIKE 'Компании'");
+                        $id = array();
+                        foreach ($aa as $k) {
+                            $id[] = $k['id'];
+                        }
+                        $sql[] = "I.cat_type IN ('".implode("','",$id)."')";
+                        break;
+                    default:
+                        if($ct>0) $sql[] = 'I.cat_type = '.$ct;
+                        break;
+                }
+                switch ($sct) {
+                    case 3333:
+                        $aa = $this->db->select("SELECT id FROM bff_bbs_categories_subtypes WHERE title LIKE 'Предлагаю'");
+                        $id = array();
+                        foreach ($aa as $k) {
+                            $id[] = $k['id'];
+                        }
+                        $sql[] = "I.cat_subtype IN ('".implode("','",$id)."')";
+                        break;
+                    case 4444:
+                        $aa = $this->db->select("SELECT id FROM bff_bbs_categories_subtypes WHERE title LIKE 'Ищу'");
+                        $id = array();
+                        foreach ($aa as $k) {
+                            $id[] = $k['id'];
+                        }
+                        $sql[] = "I.cat_subtype IN ('".implode("','",$id)."')";
+                        break;
+                    default:
+                        if($sct>0) $sql[] = 'I.cat_subtype = '.$sct;
+                        break;
+                }
+//                if($ct>0) $sql[] = 'I.cat_type = '.$ct;
 
-                if($sct>0) $sql[] = 'I.cat_subtype = '.$sct;
+//                if($sct>0) $sql[] = 'I.cat_subtype = '.$sct;
 
                 if($fe) {
                     //цена
@@ -167,7 +212,8 @@ class BBS extends BBSBase
                         $isTable = false;
                     }
                 }
-                
+
+
                 $aData['total'] = $this->db->one_data('SELECT COUNT(I.id) FROM '.TABLE_BBS_ITEMS.' I 
                     '.(!empty($sql) ? 'WHERE '.join(' AND ', $sql):'')); 
                 
@@ -180,7 +226,7 @@ class BBS extends BBSBase
                   I.cat_id,    C.regions as cat_regions, C.prices as cat_prices, C.prices_sett as cat_prices_sett,
                   I.cat_type,  CT.title as cat_type_title,
                   I.cat_subtype,  CST.title as cat_subtype_title,
-                  I.imgfav, I.imgcnt, I.price, I.descr, I.descr_regions, I.price, I.price_torg, I.price_bart,
+                  I.imgfav, I.imgcnt, I.price, I.title, I.descr, I.descr_regions, I.price, I.price_torg, I.price_bart,
                   I.publicated, U.blocked as user_blocked
                   '.($isTable ? ', '.join(', ', $sqlTableDF) : '').'
                   FROM '.TABLE_BBS_ITEMS.' I
@@ -233,8 +279,52 @@ class BBS extends BBSBase
                         WHERE '.$this->db->prepareIN('T.cat_id', $aParentCatsID).' AND T.cat_id = C.id
                         ORDER BY C.numleft, T.num ASC');
 
-            $aData['types'] = func::array_transparent($aData['types'], 'id', true);   
+            $aData['types'] = func::array_transparent($aData['types'], 'id', true);
             $aData['subtypes'] = func::array_transparent($aData['subtypes'], 'id', true);
+
+            ////////////////////////////////////////////////////========================================================
+            if ($c == 1 || $c == 0) {
+               $aData['types'] = array(
+                   495 => array(
+                       'id' => '1111',
+                       'cat_id' => '48',
+                       'title' => 'Частные',
+                       'enabled' => '1',
+                       'items' => '1',
+                       'num' => '1',
+                   ),
+                   496 => array(
+                       'id' => '2222',
+                       'cat_id' => '48',
+                       'title' => 'Компании',
+                       'enabled' => '1',
+                       'items' => '1',
+                       'num' => '2',
+                   ),
+               );
+
+               $aData['subtypes'] =array (
+                   7 => array (
+                       'id' => '3333',
+                       'cat_id' => '48',
+                       'title' => 'Предлагаю',
+                       'enabled' => '1',
+                       'items' => '0',
+                       'num' => '1',
+                   ),
+                   8 => array (
+                       'id' => '4444',
+                       'cat_id' => '48',
+                       'title' => 'Ищу',
+                       'enabled' => '1',
+                       'items' => '0',
+                       'num' => '2',
+                   ),
+                );
+            }
+//            var_export($aData['subtypes']);
+//            die($c);
+            ////////////////////////////////////////////////////========================================================
 
             $dp = $this->initDynprops();
             $aData['dp'] = $dp->form($c, false, true, array(), 'f', 'search.dp.php', $this->module_dir_tpl, true);
@@ -254,14 +344,17 @@ class BBS extends BBSBase
             config::set(array(
                     'title' => (!empty($cat['mtitle']) ? $cat['mtitle'] : $cat['title']) .' | '.config::get('title', ''),
                     'mkeywords' => $cat['mkeywords'],
-                    'mdescription' => $cat['mdescription'],
+                    'mdescription' => "Купить, продать {$cat['title']} в Украине. Более 10000 объявлений. Цены на {$cat['title']} в Украине. Подать объявление {$cat['title']} бесплатно",
+//                    'mdescription' => $cat['mdescription'],
                     'bbsCurrentCategory' => reset($aParentCatsID),
                 ));
             
-            $aData['period_select'] = $this->periodSelect($p); 
+            $aData['period_select'] = $this->periodSelect($p);
+            $aData['categ'] = $c;
             $this->includeJS(array('history.packed', 'bbs.search', 'jquery.paginator'));  
             return $this->tplFetchPHP($aData, 'search.php');
-        } else {
+        }
+        else {
             //простой поиск
 
             extract($filter);
@@ -285,7 +378,7 @@ class BBS extends BBSBase
               I.cat_id,    C.regions as cat_regions, C.prices as cat_prices, C.prices_sett as cat_prices_sett,
               I.cat_type,  CT.title as cat_type_title,
               I.cat_subtype,  CST.title as cat_subtype_title,
-              I.imgfav, I.imgcnt, I.price, I.descr, I.descr_regions, I.price, I.price_torg, I.price_bart,
+              I.imgfav, I.imgcnt, I.price, I.title, I.descr, I.descr_regions, I.price, I.price_torg, I.price_bart,
               I.publicated
               FROM '.TABLE_BBS_ITEMS.' I
                 LEFT JOIN '.TABLE_BBS_CATEGORIES.' CAT2 ON I.cat2_id = CAT2.id
@@ -341,7 +434,8 @@ class BBS extends BBSBase
                 'reg'        => TYPE_ARRAY_UINT,
                 //'dp'         => TYPE_ARRAY_ARRAY, 
                 'contacts'   => TYPE_ARRAY_NOHTML, 
-                'descr'      => TYPE_NOTAGS, 
+                'title'      => TYPE_NOTAGS,
+                'descr'      => TYPE_NOTAGS,
                 'info'       => TYPE_NOTAGS,
                 'img'        => TYPE_ARRAY_NOHTML,
                 'imgfav'     => TYPE_NOHTML,
@@ -354,9 +448,7 @@ class BBS extends BBSBase
                 'captcha' => TYPE_NOTAGS,
             ), $p);
 
-            require './bff/captcha/captcha.protection.php';
-            $oProtection = new CCaptchaProtection();
-            if ($_COOKIE['c3'] != $oProtection->generate_hash($p['captcha'], date('j'))){
+            if ($_COOKIE['c4'] != md5($p['captcha'])){
               $this->ajaxResponse(Errors::WRONGCAPTCHA);
             }
 
@@ -417,9 +509,10 @@ class BBS extends BBSBase
             }                    
             
             if($this->errors->no())
-            {   
+            {
+                if(!isset($p['contacts']['site']) || empty($p['contacts']['site'])) $p['contacts']['site'] = '';
                 $p['contacts']['site'] = str_replace(array('http://','https://', 'ftp://'), '', $p['contacts']['site']);
-                if(empty($p['contacts']['site'])) $p['contacts']['site'] = '';
+
                 
                 $adtxtLimit = config::get('bbs_adtxt_limit');
                 if(!empty($adtxtLimit)) {
@@ -461,7 +554,7 @@ class BBS extends BBSBase
                         img = :img, imgcnt = '.sizeof($p['img']).', imgfav = :imgfav, 
                         price = '.$p['price'].', price_torg = '.$p['price_torg'].', price_bart = '.$p['price_bart'].',   
                         contacts_name = :c_name, contacts_email = :c_email, contacts_phone = :c_phone, contacts_skype = :c_skype, contacts_site = :c_site, video = :video, 
-                        descr = :descr, descr_regions = :descr_regions, info = :info, mkeywords = :mkeywords, mdescription = :mdescription, modified = '.$sqlNOW.'
+                        title = :title, descr = :descr, descr_regions = :descr_regions, info = :info, mkeywords = :mkeywords, mdescription = :mdescription, modified = '.$sqlNOW.'
                         '.(!empty($aDynpropsData) ? $aDynpropsData : '').'
                         WHERE id = '.$p['id'].'              
                     ', array(       
@@ -473,7 +566,8 @@ class BBS extends BBSBase
                         array(':c_skype', (isset($p['contacts']['skype']) ? $p['contacts']['skype'] : ''), PDO::PARAM_STR),
                         array(':c_site', (isset($p['contacts']['site']) ? $p['contacts']['site'] : ''), PDO::PARAM_STR),
                         array(':video', $p['video'], PDO::PARAM_STR),
-                        array(':descr', $p['descr'], PDO::PARAM_STR), 
+                        array(':title', $p['title'], PDO::PARAM_STR),
+                        array(':descr', $p['descr'], PDO::PARAM_STR),
                         array(':descr_regions', $sRegionsTitle, PDO::PARAM_STR),
                         array(':info', $p['info'], PDO::PARAM_STR), 
                         array(':mkeywords', $keywords, PDO::PARAM_STR),
@@ -493,13 +587,13 @@ class BBS extends BBSBase
                         img, imgcnt, imgfav, 
                         price, price_torg, price_bart,        
                         contacts_name, contacts_email, contacts_phone, contacts_skype, contacts_site, video, pass,
-                        descr, descr_regions, info, mkeywords, mdescription, created, modified'.(!empty($aDynpropsData['fields']) ? $aDynpropsData['fields'] : '').')
+                        title, descr, descr_regions, info, mkeywords, mdescription, created, modified'.(!empty($aDynpropsData['fields']) ? $aDynpropsData['fields'] : '').')
                         VALUES ('.$nUserID.', :uid, '.BBS_STATUS_NEW.', '.$p['cat'][1].', '.$p['cat'][2].', '.$nCategoryID.', '.$p['cat']['type'].', '.$p['cat']['subtype'].',
                             '.(isset($p['reg'][1]) ? $p['reg'][1] : 0).','.(isset($p['reg'][2]) ? $p['reg'][2] : 0).','.(isset($p['reg'][3]) ? $p['reg'][3] : 0).',
                             :img, '.sizeof($p['img']).', :imgfav,
                             '.$p['price'].', '.$p['price_torg'].', '.$p['price_bart'].',
                             :c_name, :c_email, :c_phone, :c_skype, :c_site, :video, '.$this->security->encodeBBSEditPass($sPassword).',
-                            :descr, :descr_regions, :info, :mkeywords, :mdescription, '.$sqlNOW.', '.$sqlNOW.' 
+                            :title, :descr, :descr_regions, :info, :mkeywords, :mdescription, '.$sqlNOW.', '.$sqlNOW.'
                             '.(!empty($aDynpropsData['values']) ? $aDynpropsData['values'] : '').'
                         )              
                     ', array(       
@@ -512,6 +606,7 @@ class BBS extends BBSBase
                         array(':c_skype', (isset($p['contacts']['skype']) ? $p['contacts']['skype'] : ''), PDO::PARAM_STR),
                         array(':c_site', (isset($p['contacts']['site']) ? $p['contacts']['site'] : ''), PDO::PARAM_STR),
                         array(':video', $p['video'], PDO::PARAM_STR),
+                        array(':title', $p['title'], PDO::PARAM_STR),
                         array(':descr', $p['descr'], PDO::PARAM_STR),
                         array(':descr_regions', $sRegionsTitle, PDO::PARAM_STR),
                         array(':info', $p['info'], PDO::PARAM_STR),
@@ -741,7 +836,7 @@ class BBS extends BBSBase
                               I.cat_id,    C.regions as cat_regions, C.prices as cat_prices, C.prices_sett as cat_prices_sett,
                               I.cat_type,  CT.title as cat_type_title,
                               I.cat_subtype,  CST.title as cat_subtype_title,
-                              I.imgfav, I.imgcnt, I.descr, I.descr_regions, I.price, I.price_torg, I.price_bart
+                              I.imgfav, I.imgcnt, I.title, I.descr, I.descr_regions, I.price, I.price_torg, I.price_bart
                               FROM '.TABLE_BBS_ITEMS.' I
                                 LEFT JOIN '.TABLE_BBS_CATEGORIES.' CAT2 ON I.cat2_id = CAT2.id
                                 LEFT JOIN '.TABLE_BBS_CATEGORIES_TYPES.' CT ON I.cat_type = CT.id
@@ -1091,7 +1186,7 @@ class BBS extends BBSBase
                               I.cat_type, CT.title as cat_type_title,
                               I.cat_subtype,  CST.title as cat_subtype_title,
                               I.views_total, IV.views as views_today,
-                              I.img, I.imgfav, I.imgcnt, I.descr, I.descr_regions, I.info, I.price, I.price_torg, I.price_bart, I.video,
+                              I.img, I.imgfav, I.imgcnt, I.title, I.descr, I.descr_regions, I.info, I.price, I.price_torg, I.price_bart, I.video,
                               I.contacts_name, I.contacts_email, I.contacts_phone, I.contacts_skype, I.contacts_site,
                               I.mkeywords, I.mdescription, U.email2 as contacts_email2, U.blocked as user_blocked, U.blocked_reason as user_blocked_reason, 
                               I.f'.join(', I.f', range($dp->datafield_int_first, $dp->datafield_text_last) ).'
@@ -2189,6 +2284,11 @@ class BBS extends BBSBase
         }
         
         $this->ajaxResponse(Errors::IMPOSSIBLE);
+    }
+
+    function menu(){
+        $aData = array();
+        return $this->tplFetchPHP($aData, 'menu.php');
     }
     
 }

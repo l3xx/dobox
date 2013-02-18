@@ -17,15 +17,18 @@ if(!config::get('enabled', 0) && !bff::$isAjax && !FORDEV) {
 $oSm->assign('userLogined', $oSecurity->isLogined());
 
 //run module method
-if(bff::$class == 1) 
-{              
-    $sCenterArea = tpl::fetchPHP($aData, TPL_PATH.'index.php'); 
+if(bff::$class == 1)
+{
+    $sCenterArea = $oBff->callModule('bbs_search');
+//    $sCenterArea = tpl::fetchPHP($aData, TPL_PATH.'index.php');
 }
 else
 {
     $sCenterArea = $oBff->callModule(bff::$class.'_'.bff::$event);
     Errors::i()->assign();
-} 
+}
+
+$menu = $oBff->callModule('bbs_menu');
 
 $oBff->Banners_assignFrontendBanners();  
 $oBff->Bbs_getFavorites();
@@ -43,6 +46,13 @@ if(!$oSecurity->isLogined() && config::get('tpl_bbs_item_edit')!=1) {
 }
 
 $oSm->assign_by_ref('center_area', $sCenterArea );
-$oSm->display('template.tpl', __FILE__, __FILE__);
+$oSm->assign_by_ref('menu', $menu );
+if (bff::$class == 'bbs' && bff::$event == 'add') {
+    $oSm->display('template-no-menu.tpl', __FILE__, __FILE__);
+}
+
+else {
+    $oSm->display('template.tpl', __FILE__, __FILE__);
+}
 
 exit(0);

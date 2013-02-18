@@ -5,28 +5,37 @@
 <form action="#" id="add-form">
 <input type="hidden" name="id" value="0" />
 <input type="hidden" name="pass" value="" />
-<input type="hidden" name="uid" value="" /> 
+<input type="hidden" name="uid" value="" />
+
 <div class="addStep active" id="add-step-1">
 <!--    <div class="step">шаг 1</div>-->
-    <span class="caption">Раздел и тип:</span>
-
-    <div class="selects-edit">    
-        <select name="cat[1]" class="cat" onchange="bbsAdd.categorySelect(this, 1);">
-            <option value="0">выбрать</option>
-            <?php foreach($cats as $v) { ?>    
-                <option value="<?= $v['id'] ?>"><?= $v['title'] ?></option>
-            <?php } ?>
-        </select>  
+    <div class="" style="clear: both; overflow: hidden;">
+        <div class="add-ad-capt left">
+            <span class="caption ">Раздел и тип:</span>
+        </div>
+        <div class="add-ad-field">
+            <div class="selects-edit" style="position: relative; float: left;">
+                <select name="cat[1]" class="cat cat-hint" onchange="bbsAdd.categorySelect(this, 1);">
+                    <option value="0">выбрать</option>
+                    <?php foreach($cats as $v) { ?>
+                        <option value="<?= $v['id'] ?>"><?= $v['title'] ?></option>
+                    <?php } ?>
+                </select>
+            </div>
+        </div>
     </div>
+
+    <span class="hint">Выберите категорию, которая максимально соответствует Вашему объявлению.<span class="hint-pointer">&nbsp;</span></span>
+
     <div class="selects-view"></div>
     
-    <span class="right add-step-edit hidden"><a class="greyBord" href="#" onclick="return bbsAdd.stepEdit(1);">изменить</a></span>
+<!--    <span class="right add-step-edit hidden"><a class="greyBord" href="#" onclick="return bbsAdd.stepEdit(1);">изменить</a></span>-->
     
 </div>
 <div class="addStep" id="add-step-2">
 <!--    <div class="step">шаг 2</div>-->
     <span class="caption">Детали объявления</span>
-    <span class="right add-step-edit hidden"><a class="greyBord" href="#" onclick="return bbsAdd.stepEdit(2);">изменить</a></span>
+<!--    <span class="right add-step-edit hidden"><a class="greyBord" href="#" onclick="return bbsAdd.stepEdit(2);">изменить</a></span>-->
     <div class="clear"></div>
     <div class="add-step-content">
         <div class="padBlock">        
@@ -37,74 +46,73 @@
             </div>
         </div>
         <div class="padBlock">
-            <div>Текст вашего объявления:</div>
-            <div class="padTop"><textarea style="width:652px; height:80px;" id="add-step-infotext" class="inputText2 adtxt" name="info"></textarea></div>            
-            
+
+            <div class="add-ad-name padTop">
+                <div class="add-ad-capt left">Заголовок:<span class="req">*</span></div>
+                <div class="add-ad-field">
+                    <input type="text" name="title" class="inputText2 req" style="width:427px;" />
+                    <span class="hint" style="">
+                        Заголовок - это первое, что увидит Ваш потенциальный клиент/покупатель, поэтому используйте краткое, понятное и привлекательное описание Вашего товара/услуги. Помните! В заголовке запрещено использовать ЗАГЛАВНЫЕ БУКВЫ в каждом слове, контактный телефон, ссылки, цену.
+                        <span class="hint-pointer">&nbsp;</span>
+                    </span>
+                </div>
+            </div>
+
             <div id="add-step-prices" style="display: none;">
-                <div class="padTop">Цена($):<span class="req">*</span></div>
-                <div class="padTop">
+                <div class="add-ad-capt left">Цена(usd):<span class="req">*</span></div>
+                <div class="add-ad-field">
                     <input type="text" class="inputText2 adtxt req" name="price" maxlength="25" id="add-step-prices-price" />
                     <label style="display: none;" id="add-step-prices-torg"><input type="checkbox" name="price_torg" class="adtxt" /> возможен торг</label>
                     <label style="display: none;" id="add-step-prices-bart"><input type="checkbox" name="price_bart" class="adtxt" /> возможен бартер</label>
                 </div>
-            </div>            
+            </div>
+
+            <div class="add-ad-adtext padTop">
+                <div class="add-ad-capt left">Текст вашего объявления:</div>
+                <div class="add-ad-field">
+                    <textarea style="width:427px; height:80px;" id="add-step-infotext" class="inputText2 adtxt" name="info"></textarea>
+                    <span class="hint" style="">
+                            Составьте детальное и привлекательное описание Вашего товара/услуги:
+                            <li>Пишите грамотно, не допускайте опечаток и не используйте неузнаваемые сокращения.</li>
+                            <li>Не используйте в тексте ненормативную лексику, а также оскорбительные высказывания.</li>
+                            <li>Избегайте написания слов c CAPS LOCK</li>                        <span class="hint-pointer">&nbsp;</span>
+                    </span>
+                </div>
+            </div>
+
+
             
             <div id="add-step-regions" class="hidden">
+                <div class="add-ad-capt left">Местоположение:</div>
+
                 <div class="left padRight" id="add-step-region-1">
-                    <div class="padTop">Местоположение:</div>
-                    <div class="padTop"><select name="reg[1]" class="inputText2" onchange="bbsAdd.regionSelect(this, 1);">
-                    <option value="0">Выберите...</option>
-                    <?php foreach($regions as $v) { ?>    
-                        <option value="<?= $v['id'] ?>"><?= $v['title'] ?></option>
-                    <?php } ?>
-                    </select></div>
+                    <div class="padTop">
+                        <select name="reg[1]" class="inputText2" onchange="bbsAdd.regionSelect(this, 1);">
+                        <option value="0">Выберите...</option>
+                        <?php foreach($regions as $v) { ?>
+                            <option value="<?= $v['id'] ?>"><?= $v['title'] ?></option>
+                        <?php } ?>
+                        </select>
+                    </div>
                 </div>
                 <div class="left padRight hidden" id="add-step-region-2">
-                    <div class="padTop">&nbsp;</div>
                     <div class="padTop"><select name="reg[2]" class="inputText2" onchange="bbsAdd.regionSelect(this, 2);"><option value="0">Выберите...</option></select></div>
                 </div>
                 <div class="left hidden" id="add-step-region-3">
-                    <div class="padTop">&nbsp;</div>
                     <div class="padTop"><select name="reg[3]" class="inputText2"><option value="0">Выберите...</option></select></div>
                 </div>
                 <div class="clear"></div>        
             </div>
         </div>
-        <div class="padBlock"> 
-                <div class="clear"></div>
-                <div class="caption padBig">контактная информация<span class="req">*</span></div>
-                <div class="padTop">Имя:<span class="req">*</span></div>
-                <div class="padTop"><input type="text" name="contacts[name]" value="<?= $contacts['name']; ?>" class="inputText2 req" style="width:427px;" /></div>
-                <div class="left padRight">
-                    <div class="padTop">Телефон:<span class="req">*</span></div>
-                    <div class="padTop"><input type="text" name="contacts[phone]" value="<?= $contacts['phone']; ?>" class="inputText2 req" /></div>
-                </div>
-                <div class="left padRight">
-                    <div class="padTop padLeft">E-mail:</div>
-                    <div class="padTop"><input type="text" name="contacts[email]" value="<?= $contacts['email2']; ?>" class="inputText2 adtxt" /></div>
-                </div>
-                <div class="left">
-                    <div class="padTop padLeft">Skype:</div>
-                    <div class="padTop"><input type="text" name="contacts[skype]" value="<?= $contacts['skype']; ?>" class="inputText2" /></div>
-                </div>
-                <div class="clear"></div>
-                <div class="padTop">Ccылка на сайт:</div>
-                <div class="padTop"><input type="text" class="inputText2" name="contacts[site]" value="http://" style="width:427px;" /></div>
 
-        </div>
-        <div class="padBlock">
-            <div class="caption">Текст вашего объявления при публикации</div>
-            <div class="textDiv"><textarea class="adText" id="add-ad-text" name="descr" readonly="readonly"></textarea></div>
-            <div class="simbol">Осталось: <span class="orange" id="add-ad-text-counter"><?= func::declension($config['adtxt_limit'], array('символ','символа','символов')); ?></span></div>
-        </div>
         <div class="padBlock">
             <div class="caption left">Фотографии</div>
             <div class="left" style="margin:-3px 0 0 10px;"><span id="add-images-button"></span></div>
             <div class="left progress hidden" style="margin-top: 4px;" id="add-images-progress"></div>
-            <div class="button photoBt">
+            <!--<div class="button photoBt">
                 <span class="left">&nbsp;</span>
                 <input type="button" value="загрузить фото" />
-            </div>
+            </div> -->
             <div class="clear"></div>
             <div class="padTop">
                 <input type="hidden" name="imgfav" id="add-images-fav" value="" />
@@ -114,32 +122,100 @@
             </div>
             <div class="hint" id="add-images-tip" style="display:none;">Нажмите на звездочку под фото, для того чтобы отметить основное</div>
         </div>
-        <div class="padBlock">
-            <div class="caption">видео <span class="lower">(You Tube)</span></div>
-            <div class="padTop">
-                <span class="left"><input type="text" class="inputText2" name="video" id="add-video-code" style="width:325px;"/></span>
-                <div class="button addBt">
-                    <span class="left">&nbsp;</span>
-                    <input type="button" value="добавить видео" onclick="bbsAdd.addVideo();" />
-                </div>
-                <div class="button addBt hidden" id="add-video-del" style="padding-left: 0px;">
-                    <span class="left">&nbsp;</span>
-                    <input type="button" value="удалить видео" onclick="bbsAdd.delVideo(this);" />
-                </div>                        
-                <!--<span class="left" style="padding-top:2px;"><a href="#" class="greyBord">инструкция по размещению</a></span>-->
+
+        <div class="padBlock"> 
                 <div class="clear"></div>
-            </div>
-            <div class="padTop hidden" id="add-video-preview">
-                <object height="133" width="160">
-                    <param value="" name="movie" />
-                    <param value="true" name="allowFullScreen"><param value="always" name="allowscriptaccess" />
-                    <embed height="133" width="160" allowfullscreen="true" allowscriptaccess="always" type="application/x-shockwave-flash" src="" id="embVideo" />
-                </object>
-            </div>
+                <div class="caption padBig">контактная информация<span class="req">*</span></div>
+
+            <div class="clear"></div>
+
+                <div class="add-ad-name padTop">
+                    <div class="add-ad-capt left">Имя:<span class="req">*</span></div>
+                    <div class="add-ad-field">
+                        <input type="text" name="contacts[name]" value="<?= $contacts['name']; ?>" class="inputText2 req" style="width:427px;" />
+                        <span class="hint" style="">
+                            Укажите, пожалуйста, Ваше имя.
+                            <span class="hint-pointer">&nbsp;</span>
+                        </span>
+                    </div>
+                </div>
+
+            <div class="clear"></div>
+
+                <div class="add-ad-phone padTop">
+                    <div class="add-ad-capt left">Телефон:<span class="req">*</span></div>
+                    <div class="add-ad-field">
+                        <input type="text" name="contacts[phone]" value="<?= $contacts['phone']; ?>" class="inputText2 req" />
+                        <span class="hint" style="">
+                            Укажите, пожалуйста, Ваш телефон.
+                            <span class="hint-pointer">&nbsp;</span>
+                        </span>
+                    </div>
+                </div>
+
+            <div class="clear"></div>
+
+                <div class="add-ad-email padTop">
+                    <div class="add-ad-capt left">E-mail:</div>
+                    <div class="add-ad-field">
+                        <input type="text" name="contacts[email]" value="<?= $contacts['email2']; ?>" class="inputText2 adtxt" />
+                        <span class="hint" style="">
+                            Укажите, пожалуйста, Ваш электронный почтовый ящик.
+                            <span class="hint-pointer">&nbsp;</span>
+                        </span>
+                    </div>
+                </div>
+
+            <div class="clear"></div>
+
+                <div class="add-ad-skype padTop">
+                    <div class="add-ad-capt left">Skype:</div>
+                    <div class="add-ad-field">
+                        <input type="text" name="contacts[skype]" value="<?= $contacts['skype']; ?>" class="inputText2" />
+                        <span class="hint" style="">
+                            Укажите, пожалуйста, Ваше логин в Skype.
+                            <span class="hint-pointer">&nbsp;</span>
+                        </span>
+                    </div>
+                </div>
+
+             <div class="clear"></div>
+<!--                <div class="padTop">Ccылка на сайт:</div>-->
+<!--                <div class="padTop"><input type="text" class="inputText2" name="contacts[site]" value="http://" style="width:427px;" /></div>-->
+
+        </div>
+        <div class="padBlock" style="display: none;">
+            <div class="caption">Текст вашего объявления при публикации</div>
+            <div class="textDiv"><textarea class="adText" id="add-ad-text" name="descr" readonly="readonly"></textarea></div>
+            <div class="simbol">Осталось: <span class="orange" id="add-ad-text-counter"><?= func::declension($config['adtxt_limit'], array('символ','символа','символов')); ?></span></div>
+        </div>
+
+        <div class="padBlock">
+<!--            <div class="caption">видео <span class="lower">(You Tube)</span></div>-->
+<!--            <div class="padTop">-->
+<!--                <span class="left"><input type="text" class="inputText2" name="video" id="add-video-code" style="width:325px;"/></span>-->
+<!--                <div class="button addBt">-->
+<!--                    <span class="left">&nbsp;</span>-->
+<!--                    <input type="button" value="добавить видео" onclick="bbsAdd.addVideo();" />-->
+<!--                </div>-->
+<!--                <div class="button addBt hidden" id="add-video-del" style="padding-left: 0px;">-->
+<!--                    <span class="left">&nbsp;</span>-->
+<!--                    <input type="button" value="удалить видео" onclick="bbsAdd.delVideo(this);" />-->
+<!--                </div>                        -->
+<!--                <!--<span class="left" style="padding-top:2px;"><a href="#" class="greyBord">инструкция по размещению</a></span>-->
+<!--                <div class="clear"></div>-->
+<!--            </div>-->
+<!--            <div class="padTop hidden" id="add-video-preview">-->
+<!--                <object height="133" width="160">-->
+<!--                    <param value="" name="movie" />-->
+<!--                    <param value="true" name="allowFullScreen"><param value="always" name="allowscriptaccess" />-->
+<!--                    <embed height="133" width="160" allowfullscreen="true" allowscriptaccess="always" type="application/x-shockwave-flash" src="" id="embVideo" />-->
+<!--                </object>-->
+<!--            </div>-->
             <div class="padBlock">
                 <div class="cpc">
                     <div class="clear">
-                        <img src='/captcha3.php' />
+                        <img src='/captcha3.php?<?php print rand(0,100000); ?>' />
                     </div>
                     <input type="text" name="captcha" class="inputText2">
                 </div>
@@ -230,6 +306,28 @@
        bffDynpropsTextify.init({block:'#add-form', prefix:'#add_d_', selector:'.adtxt', process: function(){ bbsAdd.txtBuild();}  });
 
     });
+
+    var hint_sel = jQuery('#add-step-1 .cat-hint');
+    var hint =  jQuery('#add-step-1 .hint');
+    hint_sel.live('focus', function(){
+        hint.show();
+    });
+    hint_sel.live('blur', function(){
+        hint.hide();
+    });
+
+    var inputs = jQuery('input, textarea');
+    inputs.each(function() {
+        var qq = jQuery(this);
+        qq.bind('focus', function(){
+            var aa = jQuery(this);
+            aa.parent().find('.hint').show();
+        });
+        qq.bind('blur', function(){
+            var aa = jQuery(this);
+            aa.parent().find('.hint').hide();
+        });
+    })
 
 //]]>       
 </script>

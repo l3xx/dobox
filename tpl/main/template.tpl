@@ -17,12 +17,16 @@
         <div class="container">
           <span class="left"><a href="/" title=""><img src="/img/logo.png" alt=""/></a></span>
           <span class="right">{$aBanners.top}</span>
+            <div class="advertise" style="float: right;"><a href="/items/add">
+                <span class="left">&nbsp;</span>
+                <span class="btCont"><input type="button" value="РАЗМЕСТИТЬ ОБЪЯВЛЕНИЕ" /></span></a>
+            </div>
           <div class="clear"></div>
       </div>
     </div>
         <div class="content">
             <div class="container">
-            <div class="leftBlock">
+            <div class="leftBlock" style="width: 968px;">
                 <div class="topLinks {if $userLogined} logined{/if}" id="userMenu">
                     {if $userLogined}
                         {if $config.userMenuCurrent == 1}<span class="cont left activeFav"><span class="left"><b class="favorite">Избранное</b> (<span id="favCounter">{$config.bbs_favs.total}</span>)</span><span class="rightCor">&nbsp;</span></span>
@@ -39,7 +43,7 @@
                         {else}<span class="cont left"><span class="left"><a href="/items/fav" class="favorite">Избранное</a> (<span id="favCounter">{$config.bbs_favs.total}</span>)</span><span class="rightCor">&nbsp;</span></span>{/if}
                         <span class="cont right"><span class="left"><a href="#" class="enter user-enter">Вход</a> / <a href="#" class="user-enter">Регистрация</a></span><span class="rightCor">&nbsp;</span></span>
                     
-                        <div class="popupCont" id="ipopup-user-enter" style="display:none;">
+                        <div class="popupCont" id="ipoРАЗМЕЩЕНИЕ ОБЪЯВЛЕНИЯpup-user-enter" style="display:none;">
                           <div class="popup">
                             <div class="top"></div>
                             <div class="center">
@@ -69,54 +73,60 @@
                         </div>
                     {/if}
                     <div class="clear"></div>
-                </div>                
+
+                </div>
+            </div>
+            <div class="leftBlock" style="width: 220px; margin-right: 52px;">
+                {$menu}
+            </div>
+                <div class="leftBlock" style="">
                 {$center_area}
             </div>
-            <div class="rightBlock">
-                <div class="advertise"><a href="/items/add">
-                    <span class="left">&nbsp;</span>
-                    <span class="btCont"><input type="button" value="РАЗМЕСТИТЬ ОБЪЯВЛЕНИЕ" /></span></a>
-                </div>
-                <div class="clear"></div>
-                <div class="padTop">
-                {if $config.bbs_instruction}
-                    <div class="textDiv" id="add-intructions">
-                        <span class="caption">Инструкция</span>
-                        {if $bbsInstructions.cur<4}
-                        <div class="add-instruction-1">{$bbsInstructions.i.add_instruct1}</div>
-                        <div class="add-instruction-2 hidden">{$bbsInstructions.i.add_instruct2}</div>
-                        <div class="add-instruction-3 hidden">{$bbsInstructions.i.add_instruct3}</div>
-                        {else}
-                        <div>{$bbsInstructions.i}</div>
-                        {/if}
-                    </div>
-                {else}
-                    {if $aBanners.right1}<div class="padTop">{$aBanners.right1}</div>{/if}
-                    {if $aBanners.right2}<div class="padTop">{$aBanners.right2}</div>{/if}
-                    {if $aBanners.right3}<div class="padTop">{$aBanners.right3}</div>{/if}
-                {/if}
-                </div>
-                <div class="padTop useful">
-                    <span class="caption">полезное</span>
-                    <ul>
-                        {foreach from=$menu_useful item=v name=menu_useful}
-                            <li{if $smarty.foreach.menu_useful.last} class="last"{/if}><a href="{$v.menu_link}">{$v.menu_title}</a></li>
-                        {/foreach}
-                    </ul>
-                </div>
-                <div class="popupCont" id="ipopup-common" style="display:none;">
-                  <div class="popup">
-                    <div class="top"></div>
-                    <div class="center">
-                      <div class="close"><a href="#" rel="close"><img src="/img/close.png" alt=""/></a></div>
-                      <h1 class="ipopup-title"></h1>
-                      <div class="ipopup-content">
-                      </div>
-                    </div>
-                    <div class="bottom"></div>
-                  </div>
-                </div>
-            </div>
+            {*<div class="rightBlock">*}
+                {*<div class="advertise"><a href="/items/add">*}
+                    {*<span class="left">&nbsp;</span>*}
+                    {*<span class="btCont"><input type="button" value="РАЗМЕСТИТЬ ОБЪЯВЛЕНИЕ" /></span></a>*}
+                {*</div>*}
+                {*<div class="clear"></div>*}
+                {*<div class="padTop">*}
+                {*{if $config.bbs_instruction}*}
+                    {*<div class="textDiv" id="add-intructions">*}
+                        {*<span class="caption">Инструкция</span>*}
+                        {*{if $bbsInstructions.cur<4}*}
+                        {*<div class="add-instruction-1">{$bbsInstructions.i.add_instruct1}</div>*}
+                        {*<div class="add-instruction-2 hidden">{$bbsInstructions.i.add_instruct2}</div>*}
+                        {*<div class="add-instruction-3 hidden">{$bbsInstructions.i.add_instruct3}</div>*}
+                        {*{else}*}
+                        {*<div>{$bbsInstructions.i}</div>*}
+                        {*{/if}*}
+                    {*</div>*}
+                {*{else}*}
+                    {*{if $aBanners.right1}<div class="padTop">{$aBanners.right1}</div>{/if}*}
+                    {*{if $aBanners.right2}<div class="padTop">{$aBanners.right2}</div>{/if}*}
+                    {*{if $aBanners.right3}<div class="padTop">{$aBanners.right3}</div>{/if}*}
+                {*{/if}*}
+                {*</div>*}
+                {*<div class="padTop useful">*}
+                    {*<span class="caption">полезное</span>*}
+                    {*<ul>*}
+                        {*{foreach from=$menu_useful item=v name=menu_useful}*}
+                            {*<li{if $smarty.foreach.menu_useful.last} class="last"{/if}><a href="{$v.menu_link}">{$v.menu_title}</a></li>*}
+                        {*{/foreach}*}
+                    {*</ul>*}
+                {*</div>*}
+                {*<div class="popupCont" id="ipopup-common" style="display:none;">*}
+                  {*<div class="popup">*}
+                    {*<div class="top"></div>*}
+                    {*<div class="center">*}
+                      {*<div class="close"><a href="#" rel="close"><img src="/img/close.png" alt=""/></a></div>*}
+                      {*<h1 class="ipopup-title"></h1>*}
+                      {*<div class="ipopup-content">*}
+                      {*</div>*}
+                    {*</div>*}
+                    {*<div class="bottom"></div>*}
+                  {*</div>*}
+                {*</div>*}
+            {*</div>*}
             <div class="clear"></div>
         </div>
     </div>

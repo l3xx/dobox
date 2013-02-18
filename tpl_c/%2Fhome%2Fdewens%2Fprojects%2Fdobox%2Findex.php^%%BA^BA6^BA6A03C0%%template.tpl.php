@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.7, created on 2012-12-29 12:25:28
+<?php /* Smarty version 2.6.7, created on 2013-02-07 23:10:05
          compiled from template.tpl */ ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -30,12 +30,16 @@ unset($_smarty_tpl_vars);
           <span class="left"><a href="/" title=""><img src="/img/logo.png" alt=""/></a></span>
           <span class="right"><?php echo $this->_tpl_vars['aBanners']['top']; ?>
 </span>
+            <div class="advertise" style="float: right;"><a href="/items/add">
+                <span class="left">&nbsp;</span>
+                <span class="btCont"><input type="button" value="РАЗМЕСТИТЬ ОБЪЯВЛЕНИЕ" /></span></a>
+            </div>
           <div class="clear"></div>
       </div>
     </div>
         <div class="content">
             <div class="container">
-            <div class="leftBlock">
+            <div class="leftBlock" style="width: 968px;">
                 <div class="topLinks <?php if ($this->_tpl_vars['userLogined']): ?> logined<?php endif; ?>" id="userMenu">
                     <?php if ($this->_tpl_vars['userLogined']): ?>
                         <?php if ($this->_tpl_vars['config']['userMenuCurrent'] == 1): ?><span class="cont left activeFav"><span class="left"><b class="favorite">Избранное</b> (<span id="favCounter"><?php echo $this->_tpl_vars['config']['bbs_favs']['total']; ?>
@@ -58,7 +62,7 @@ unset($_smarty_tpl_vars);
 </span>)</span><span class="rightCor">&nbsp;</span></span><?php endif; ?>
                         <span class="cont right"><span class="left"><a href="#" class="enter user-enter">Вход</a> / <a href="#" class="user-enter">Регистрация</a></span><span class="rightCor">&nbsp;</span></span>
                     
-                        <div class="popupCont" id="ipopup-user-enter" style="display:none;">
+                        <div class="popupCont" id="ipoРАЗМЕЩЕНИЕ ОБЪЯВЛЕНИЯpup-user-enter" style="display:none;">
                           <div class="popup">
                             <div class="top"></div>
                             <div class="center">
@@ -88,69 +92,18 @@ unset($_smarty_tpl_vars);
                         </div>
                     <?php endif; ?>
                     <div class="clear"></div>
-                </div>                
+
+                </div>
+            </div>
+            <div class="leftBlock" style="width: 220px; margin-right: 52px;">
+                <?php echo $this->_tpl_vars['menu']; ?>
+
+            </div>
+                <div class="leftBlock" style="">
                 <?php echo $this->_tpl_vars['center_area']; ?>
 
             </div>
-            <div class="rightBlock">
-                <div class="advertise"><a href="/items/add">
-                    <span class="left">&nbsp;</span>
-                    <span class="btCont"><input type="button" value="РАЗМЕСТИТЬ ОБЪЯВЛЕНИЕ" /></span></a>
-                </div>
-                <div class="clear"></div>
-                <div class="padTop">
-                <?php if ($this->_tpl_vars['config']['bbs_instruction']): ?>
-                    <div class="textDiv" id="add-intructions">
-                        <span class="caption">Инструкция</span>
-                        <?php if ($this->_tpl_vars['bbsInstructions']['cur'] < 4): ?>
-                        <div class="add-instruction-1"><?php echo $this->_tpl_vars['bbsInstructions']['i']['add_instruct1']; ?>
-</div>
-                        <div class="add-instruction-2 hidden"><?php echo $this->_tpl_vars['bbsInstructions']['i']['add_instruct2']; ?>
-</div>
-                        <div class="add-instruction-3 hidden"><?php echo $this->_tpl_vars['bbsInstructions']['i']['add_instruct3']; ?>
-</div>
-                        <?php else: ?>
-                        <div><?php echo $this->_tpl_vars['bbsInstructions']['i']; ?>
-</div>
-                        <?php endif; ?>
-                    </div>
-                <?php else: ?>
-                    <?php if ($this->_tpl_vars['aBanners']['right1']): ?><div class="padTop"><?php echo $this->_tpl_vars['aBanners']['right1']; ?>
-</div><?php endif; ?>
-                    <?php if ($this->_tpl_vars['aBanners']['right2']): ?><div class="padTop"><?php echo $this->_tpl_vars['aBanners']['right2']; ?>
-</div><?php endif; ?>
-                    <?php if ($this->_tpl_vars['aBanners']['right3']): ?><div class="padTop"><?php echo $this->_tpl_vars['aBanners']['right3']; ?>
-</div><?php endif; ?>
-                <?php endif; ?>
-                </div>
-                <div class="padTop useful">
-                    <span class="caption">полезное</span>
-                    <ul>
-                        <?php $this->_foreach['menu_useful'] = array('total' => count($_from = (array)$this->_tpl_vars['menu_useful']), 'iteration' => 0);
-if ($this->_foreach['menu_useful']['total'] > 0):
-    foreach ($_from as $this->_tpl_vars['v']):
-        $this->_foreach['menu_useful']['iteration']++;
-?>
-                            <li<?php if (($this->_foreach['menu_useful']['iteration'] == $this->_foreach['menu_useful']['total'])): ?> class="last"<?php endif; ?>><a href="<?php echo $this->_tpl_vars['v']['menu_link']; ?>
-"><?php echo $this->_tpl_vars['v']['menu_title']; ?>
-</a></li>
-                        <?php endforeach; endif; unset($_from); ?>
-                    </ul>
-                </div>
-                <div class="popupCont" id="ipopup-common" style="display:none;">
-                  <div class="popup">
-                    <div class="top"></div>
-                    <div class="center">
-                      <div class="close"><a href="#" rel="close"><img src="/img/close.png" alt=""/></a></div>
-                      <h1 class="ipopup-title"></h1>
-                      <div class="ipopup-content">
-                      </div>
-                    </div>
-                    <div class="bottom"></div>
-                  </div>
-                </div>
-            </div>
-            <div class="clear"></div>
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    <div class="clear"></div>
         </div>
     </div>
     <div class="push"></div>

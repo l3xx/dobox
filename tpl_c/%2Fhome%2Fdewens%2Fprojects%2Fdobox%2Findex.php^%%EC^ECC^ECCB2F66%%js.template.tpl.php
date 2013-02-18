@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.7, created on 2012-12-29 12:25:28
+<?php /* Smarty version 2.6.7, created on 2013-02-07 23:10:05
          compiled from js.template.tpl */ ?>
 <script type="text/javascript">window.locDomain = '<?php echo @SITEHOST; ?>
 '; window.bff_table = <?php global $oSecurity; echo $oSecurity->getUID(); ?></script>                 

@@ -1,7 +1,7 @@
 /* === Tags ======================================================================================= */
 
 html {height:100%;} 
-body {margin:0;    padding:0; font-family:Arial, Verdana, Tahoma, Sans-serif, Helvetica;    font-size:12px;    color:#333737; background:#f6f7f8; height: 100%;}
+body {margin:0;    padding:0; font-family:Arial, Verdana, Tahoma, Sans-serif, Helvetica;    font-size:12px;    color:#333737; /*background:#f6f7f8;*/ height: 100%;}
 img {border: 0;    padding: 0;    margin: 0;}
 form {margin: 0;    padding: 0;    font-family: Arial, Tahoma, Sans-serif, Helvetica;}
     
@@ -64,7 +64,7 @@ html > body #wrap { height: auto;}
 
 .content {margin:0; padding:12px 0 24px 0;}
 
-.leftBlock {width:696px; float:left;}
+.leftBlock {width:696px; /*width: 968px;*/ float:left;}
 
 h1 {padding:10px 0 24px 16px; margin:0; font-size:14px; font-weight:bold; text-transform:uppercase; color:#1b67a2;}
 h2 {padding:0; margin:0; font-size:12px; font-weight:bold; text-transform:uppercase; color:#7b8080;}
@@ -105,7 +105,7 @@ h3 {padding:0; margin:0; font-size:12px; font-weight:normal; color:#7b8080;}
 .leftBlock .topLinks .activeCount .left {padding-left:15px; background:url(../img/bgCountLeft.gif) 0 0 no-repeat;}
 .leftBlock .topLinks .activeCount .count {padding-left:24px; background:url(../img/icoCount2.png) 0 0 no-repeat;}
 
-.greyLine {padding:0 16px; background-color: #ECEEEE;}
+.greyLine {padding:5px 16px; background-color: #ECEEEE;}
 .greyLine h1 {float:left; padding:0; padding-top:13px;}
 .greyLine .right {padding:12px 0; padding-left:14px; color:#7b8080;}
 .greyLine .left {padding:12px 0; padding-right:8px;}
@@ -147,19 +147,36 @@ h3 {padding:0; margin:0; font-size:12px; font-weight:normal; color:#7b8080;}
 .leftBlock .buttonsOb .dropdown ul li a:hover {background:#a9d4f5; color:#333737; text-decoration:none;}
 .leftBlock .buttonsOb .dropdown ul li a.select {background:#f0efee; color:#7b8080; text-decoration:none;}
 
-.leftBlock .categories {padding-top:24px; margin-right:-24px; width:720px; position:relative;}
-.leftBlock .categories .blockCat {width:696px/*216px*/; /*float:left;*/ margin:0 24px 24px 0;}
-/*.leftBlock .categories .blockCat .top {width:216px; height:10px; background:url(../img/bgBlockCatTop.png) 0 0 no-repeat;}
-.leftBlock .categories .blockCat .bottom {width:216px; height:10px; background:url(../img/bgBlockCatBottom.png) 0 0 no-repeat;}*/
-.leftBlock .categories .blockCat .top {width:696px; height:10px; background:url(../img/bgBlockCatTop696.png) 0 0 no-repeat;}
-.leftBlock .categories .blockCat .bottom {width:696px; height:10px; background:url(../img/bgBlockCatBottom696.png) 0 0 no-repeat;}
+.leftBlock .categories {/*margin-top:24px;*/ margin-right:-24px; width:720px; position:relative;border:1px solid #dfdede; width: 216px; float: left; background-color: #FFFFFF;}
+.leftBlock .categories .blockCat {width:216px; /*float:left;*/ margin:10px;}
+.leftBlock .categories .blockCat .top {width:216px; height:10px; background:url(../img/bgBlockCatTop.png) 0 0 no-repeat;}
+.leftBlock .categories .blockCat .bottom {width:216px; height:10px; background:url(../img/bgBlockCatBottom.png) 0 0 no-repeat;}
+/*.leftBlock .categories .blockCat .top {width:696px; height:10px; background:url(../img/bgBlockCatTop696.png) 0 0 no-repeat;}*/
+/*.leftBlock .categories .blockCat .bottom {width:696px; height:10px; background:url(../img/bgBlockCatBottom696.png) 0 0 no-repeat;}*/
 
 
-.block_front {display: none;}
+/*.block_front {display: none;}*/
 .blockClick {cursor: pointer;}
-.leftBlock .categories .blockCat .center {/*padding:4px 16px 2px 16px;*/ padding:0px 16px 0px 16px; min-height:20px; color:#7b8080; background:url(../img/bgBlockCat696.gif) 0 0 repeat-y;}
-/*.leftBlock .categories .blockCat .center {/*padding:4px 16px 2px 16px;*/ /*padding:0px 16px 0px 16px; min-height:160px; color:#7b8080; background:url(../img/bgBlockCat.gif) 0 0 repeat-y;}*/  
-.leftBlock .categories .blockCat .center span.caption {display:block; padding-bottom:9px; color:#1b67a2; font-size:18px; line-height:24px; font-weight:bold; text-transform:uppercase;}
+
+.leftBlock .categories .blockCat .center {
+    /*padding:4px 16px 2px 16px;*/
+    padding: 0px 16px 0px 16px;
+    min-height: 20px;
+    color: #7b8080;
+    /*background: url(../img/bgBlockCat696.gif) 0 0 repeat-y;*/
+}
+
+/*.leftBlock .categories .blockCat .center {/*padding:4px 16px 2px 16px;*/ /*padding:0px 16px 0px 16px; min-height:160px; color:#7b8080; background:url(../img/bgBlockCat.gif) 0 0 repeat-y;}*/
+.leftBlock .categories .blockCat .center span.caption {
+    display: block;
+    padding-bottom: 9px;
+    color: #1b67a2;
+    font-size: 12px;
+    line-height: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
 .leftBlock .categories .blockCat .center ul {list-style:none; padding:0; margin:1px 0 0px 0;}
 .leftBlock .categories .blockCat .center ul li {padding:3px 0 3px 0; margin:0;}
 
@@ -191,11 +208,17 @@ h3 {padding:0; margin:0; font-size:12px; font-weight:normal; color:#7b8080;}
 .leftBlock .categories .openBlock .top {background:url(../img/bgBlockCatOpenTop.png) 0 0 no-repeat;}
 .leftBlock .categories .openBlock .bottom {background:url(../img/bgBlockCatOpenBottom.png) 0 0 no-repeat;} 
 
-.leftBlock .addStep {border:1px solid #e2e2e4; margin-bottom:12px; min-height:38px;}
+.leftBlock .addStep {border:1px solid #e2e2e4; margin-bottom:12px; min-height:38px; position: relative;}
 .leftBlock .addStep .step {width:75px; height:29px; padding-top:11px; float:left; margin:-1px 0 0 -1px; background:url(../img/stepGrey.png) 0 0 no-repeat; color:#fff; font-size:14px; font-weight:bold; text-transform:uppercase; text-align:center;}
-.leftBlock .addStep .caption {float:left; color:#7b8080; font-size:12px; font-weight:bold; text-transform:uppercase; padding:11px 14px 0 17px;}
-.leftBlock .addStep select.cat { margin-top:8px; border: 1px solid #ccc; padding: 1px; font-size: 12px; float: left; width: 105px; }
+.leftBlock .addStep .caption {/*float:left;*/  display: block; color:#7b8080; font-size:12px; font-weight:bold; text-transform:uppercase; padding:11px 14px 0 17px;}
+.leftBlock .addStep select.cat { margin: 6px 15px; border: 1px solid #ccc; padding: 1px; font-size: 12px; /*clear: both;*/ display: block; width: 260px; }
 
+.leftBlock .addStep select.cat.stepc-type {
+    margin-top: 30px;
+}
+#add-intructions {
+    display: none;
+}
 /*.leftBlock .active {background-color:#fff;}*/
 /*.leftBlock .active .step {background:url(../img/stepActive.png) 0 0 no-repeat;}*/
 
@@ -216,7 +239,7 @@ h3 {padding:0; margin:0; font-size:12px; font-weight:normal; color:#7b8080;}
 .leftBlock .addStep .text {float:left; padding:11px 0 0 0;}
 .leftBlock .addStep .right {font-size:11px; padding:12px 15px 0 0;}
 
-.leftBlock .addStep .arrow {float:left; padding:14px 6px 0 6px;}
+.leftBlock .addStep .arrow {float:left; padding:14px 6px 0 6px; display: none;}
 
 .leftBlock .padBlock {padding:12px 16px 13px 16px; color:#7b8080; border-bottom:1px solid #e2e2e4;}
 .leftBlock .padBlock .textPad {padding-top:12px;}
@@ -277,10 +300,10 @@ h3 {padding:0; margin:0; font-size:12px; font-weight:normal; color:#7b8080;}
 .leftBlock .active .clear {:border-bottom:1px solid #fff;}
 
 .leftBlock .item { cursor: pointer; }
-.leftBlock .item:hover { background-color: #fff;}
+.leftBlock .item:hover { background-color: #f6f7f8;}
 .leftBlock .item a.desc-link { color: #333737; text-decoration: none; } 
 
-.blockOb {padding:9px 14px 0px 10px; border:1px solid #e2e2e3; background-color:#f6f7f8; margin-bottom:12px;}
+.blockOb {padding:9px 14px 0px 10px; border:1px solid #e2e2e3; background-color:#fff; margin-bottom:12px;}
 .blockOb .action {width:25px; float:left; padding-top:35px;}
 .blockOb .action input {width:13px; heght:13px; margin:8px 0 0 1px;}
 .blockOb .pic {width:110px; height:110px; float:left; margin-right:15px; background:url(../img/bgPic.gif) right bottom no-repeat;}
@@ -354,7 +377,7 @@ a.write {padding-left:23px; background:url(../img/writeBg.png) 1px 0 no-repeat;}
 
 .centerBlock .playerCont {margin-top:24px; padding:7px 11px; border:1px solid #cdcec8; background-color:#e5e5e2;}
 
-.leftBlock .tabs {padding-top:20px; padding-left:16px; border-bottom:2px solid #225b9b;}
+.leftBlock .tabs {padding-top:0px; padding-left:16px; border-bottom:2px solid #225b9b;}
 .leftBlock .tabs a {float:left; height:30px; text-decoration:none; color:#333737; font-size:14px; margin-right:1px; text-transform:capitalize; }
 .leftBlock .tabs a span {float:left; padding-top:7px; border-bottom:1px dashed #333737;}
 .leftBlock .tabs a span.left {padding:0px; border-bottom:none; font-size:0; height:30px; width:24px;}
@@ -367,7 +390,7 @@ a.write {padding-left:23px; background:url(../img/writeBg.png) 1px 0 no-repeat;}
 .leftBlock .tabs a.active span.left {width:19px; background:url(../img/tabLeftA.gif) 0 0 no-repeat;}
 .leftBlock .tabs a.active span.right {width:20px; background:url(../img/tabRightA.gif) right 0 no-repeat;}
 
-#searchCatSubTypes {padding-top:20px; padding-left:16px; border-bottom:none;}
+#searchCatSubTypes {padding-top:0px; padding-left:16px; border-bottom:none;}
 #searchCatSubTypes a {float:left; height:30px; text-decoration:none; color:#333737; font-size:14px; margin-right:1px; text-transform:capitalize; }
 #searchCatSubTypes a span {float:left; padding-top:7px; border-bottom:1px dashed #333737;}
 #searchCatSubTypes a span.left {padding:0px; border-bottom:none; font-size:0; height:30px; width:24px;}
@@ -455,7 +478,7 @@ a.write {padding-left:23px; background:url(../img/writeBg.png) 1px 0 no-repeat;}
 .filter .bottom {background:url(../img/bgFilterPix.gif) 0 bottom repeat-x; font-size:0;}
 .filter .bottom span.left {width:10px; height:10px; background:url(../img/bgFilter_cbl.gif) 0 0 no-repeat;}
 .filter .bottom span.right {width:10px; height:10px; background:url(../img/bgFilter_cbr.gif) 0 0 no-repeat;}
-.filter .center {border-left:2px solid #d5d4d5; padding:4px 14px; :padding:1px 14px 4px 14px; margin:0; border-right:2px solid #d5d4d5;}
+/*.filter .center {border-left:2px solid #d5d4d5; padding:4px 14px; :padding:1px 14px 4px 14px; margin:0; border-right:2px solid #d5d4d5;}*/
 .filter .center .on {float:left; margin-left:16px; padding-left:14px; color:#80a82e; font-size:11px; background:url(../img/on.png) 0 4px no-repeat;}
 .filter .center .on a {color:#80a82e; text-decoration:none; float:left; border-bottom:1px dashed #80a82e;}
 .filter .center .on a:hover {color:#80a82e; text-decoration:none; border-bottom:none; padding-bottom:1px;}
@@ -474,65 +497,76 @@ a.write {padding-left:23px; background:url(../img/writeBg.png) 1px 0 no-repeat;}
 .open .bottom {background:url(../img/bgFilterOPix.gif) 0 bottom repeat-x; font-size:0;}
 .open .bottom span.left {width:10px; height:10px; background:url(../img/bgFilterO_cbl.gif) 0 0 no-repeat;}
 .open .bottom span.right {width:10px; height:10px; background:url(../img/bgFilterO_cbr.gif) 0 0 no-repeat;}
-.open .center {border-left:2px solid #89b8d5; border-right:2px solid #89b8d5;}
+/*.open .center {border-left:2px solid #89b8d5; border-right:2px solid #89b8d5;}*/
 
-.kindBlock {padding:20px 16px; :padding:10px 16px 20px 16px; color:#7b8080;}
-.kindBlock .left span {color:#80a82e; line-height:18px;}
-.kindBlock .left a {color:#333737; text-decoration:none; line-height:18px;}
-.kindBlock .left a span {color:#333737; border-bottom:1px dashed #333737;}
-.kindBlock .left a:hover span { border-bottom:none;}                                                           
-.kindBlock .left a.table {padding-left:17px; margin-left:7px; background:url(../img/table2.png) 0 1px no-repeat;}
-.kindBlock .left a.table-active {background:url(../img/table.png) 0 1px no-repeat;}
-.kindBlock .left a.list {padding-left:18px; margin-left:12px; background:url(../img/list2.png) 0 1px no-repeat;}
-.kindBlock .left a.list-active {background:url(../img/list.png) 0 1px no-repeat;}  
-.kindBlock .left a.active span {color:#80a82e; border-bottom:none;}  
-.kindBlock .right {line-height:18px;}
-.kindBlock .right a.down {color:#333737; text-decoration:none; background:url(../img/arrowBottom2.png) right 6px no-repeat;}
-.kindBlock .right a.down span {color:#333737; border-bottom:1px dashed #333737; margin-right:13px;}
-.kindBlock .right a:hover.down span {color:#333737; border-bottom:none;}
+/*#searchSett.kindBlock {padding:20px 16px; :padding:10px 16px 20px 16px; color:#7b8080;}*/
+#searchSett.kindBlock {padding-top: 6px;}
+#searchSett.kindBlock .left span {color:#80a82e; line-height:18px;}
+#searchSett.kindBlock .left a {color:#333737; text-decoration:none; line-height:18px; font-size: 12px; float: none;}
+#searchSett.kindBlock .left a span {color:#333737; border-bottom:1px dashed #333737; display: inline;}
+#searchSett.kindBlock .left a:hover span { border-bottom:none;}
+#searchSett.kindBlock .left a.table {padding-left:17px; margin-left:7px; background:url(../img/table2.png) 0 1px no-repeat;}
+#searchSett.kindBlock .left a.table-active {background:url(../img/table.png) 0 1px no-repeat;}
+#searchSett.kindBlock .left a.list {padding-left:18px; margin-left:12px; background:url(../img/list2.png) 0 1px no-repeat;}
+#searchSett.kindBlock .left a.list-active {background:url(../img/list.png) 0 1px no-repeat;}
+#searchSett.kindBlock .left a.active span {color:#80a82e; border-bottom:none;}
+#searchSett.kindBlock .right {line-height:18px;}
+#searchSett.kindBlock .right a.down {color:#333737; text-decoration:none; background:url(../img/arrowBottom2.png) right 6px no-repeat;}
+#searchSett.kindBlock .right a.down span {color:#333737; border-bottom:1px dashed #333737; margin-right:13px;}
+#searchSett.kindBlock .right a:hover.down span {color:#333737; border-bottom:none;}
 
-.kindBlock .dropdown {position:absolute; width:50px; padding:2px 0; margin-top:-1px; margin-left:70px; background-color:#fff; border:1px solid #dedede; z-index:100;}
-.kindBlock .dropdown ul {padding:0; margin:0; list-style:none;}
-.kindBlock .dropdown ul li {padding:0; margin:0;}
-.kindBlock .dropdown ul li a {background:none; float:none; display:block; height:12px; padding:3px 0px 5px 9px; color:#333737; text-decoration:none; line-height:1;}
-.kindBlock .dropdown ul li a:hover {background:#99cc33; color:#fff; text-decoration:none;}
-.kindBlock .dropdown ul li a.select {background:#f0efee; color:#7b8080; text-decoration:none;}
+#searchSett.kindBlock .dropdown {position:absolute; width:50px; padding:2px 0; margin-top:-1px; margin-left:70px; background-color:#fff; border:1px solid #dedede; z-index:100;}
+#searchSett.kindBlock .dropdown ul {padding:0; margin:0; list-style:none;}
+#searchSett.kindBlock .dropdown ul li {padding:0; margin:0;}
+#searchSett.kindBlock .dropdown ul li a {background:none; float:none; display:block; height:12px; padding:3px 0px 5px 9px; color:#333737; text-decoration:none; line-height:1;}
+#searchSett.kindBlock .dropdown ul li a:hover {background:#99cc33; color:#fff; text-decoration:none;}
+#searchSett.kindBlock .dropdown ul li a.select {background:#f0efee; color:#7b8080; text-decoration:none;}
 
 .advanced {margin-right:-28px; width:670px; padding-right:42px; position:relative; z-index:10;}
 .advanced .actionsLink {width:17px; position:absolute; padding-left:14px; right:10px; top:10px; z-index:10;}
 .advanced .actionsLink a {display:block; margin-bottom:12px;}
 .advanced .actionsLink a.last {margin-bottom:0px;}
 
-.filterContent {margin-top:12px;}
-.filterContent .photo {float:left; margin-top:9px;}
-.filterContent .photo input {float:left;}
-.filterContent .photo .left {padding-top:2px; padding-left:3px;}
-.filterContent .selectBlock {float:left; margin-right:10px; margin-bottom: 10px;}
-.filterContent .selectBlock .left {width:10px; height:42px; padding:0; background:url(../img/selBigLeft.png) 0 0 no-repeat;}
-.filterContent .selectBlock .right {float:left; color:#7b8080; text-decoration:none; padding:3px 3px 0 0px; height:39px; background:url(../img/selBigRight.png) right 0 no-repeat;}
-.filterContent .selectBlock .right b {color:#1b67a2; font-size:16px;}
-.filterContent .selectBlock .right span.pad {float:left; padding:0 16px 0 0;}
-.filterContent .selectBlock .right span.drop {float:left; width:24px; height:36px; background:url(../img/bgDrop.png) 0 0 no-repeat; cursor: pointer;}     
-.filterContent .selectBlock .childseparator { background: url(../img/child-legend.gif) repeat-x scroll center center transparent; font-weight: bold; width: 100%;}
-.filterContent .selectBlock .childseparator b { background-color: #FFFFFF; padding-right: 18px; }
-.filterContent .open .right span.drop {background:url(../img/bgDropOpen.png) 0 0 no-repeat;}
-.filterContent .active .left {background:url(../img/selBigLeftActive.png) 0 0 no-repeat;}
-.filterContent .active .right {color:#a9d4f5; background:url(../img/selBigRightActive.png) right 0 no-repeat;}
-.filterContent .active .right b {color:#fff;}
-.filterContent .active .right span.drop {background:url(../img/bgDropActive.png) 0 0 no-repeat;}
-.filterContent .active .right span.plus {padding-right:17px; background:url(../img/plus.gif) right 0 no-repeat;}
+#searchFilter .left {padding: 0;}
+#searchFilter .right {padding: 0;}
+#searchFilter .filterContent {margin-top:12px;}
+#searchFilter .filterContent .photo {float:left; margin-top:9px;}
+#searchFilter .filterContent .photo input {float:left;}
+#searchFilter .filterContent .photo .left {padding-top:2px; padding-left:3px;}
+#searchFilter .filterContent .selectBlock {float:left; margin-right:0px; margin-bottom: 0px; padding: 5px;}
+#searchFilter .filterContent .selectBlock .left {display: none; width:10px; height:42px; padding:0; background:url(../img/selBigLeft.png) 0 0 no-repeat;}
+/*#searchFilter .filterContent .selectBlock .right {float:left; color:#7b8080; text-decoration:none; padding:3px 3px 0 0px; height:39px; background:url(../img/selBigRight.png) right 0 no-repeat;}*/
+#searchFilter .filterContent .selectBlock .right {float:left; color:#7b8080; text-decoration:none; padding:3px; height:20px; background-color:white; border-radius: 3px;}
+#searchFilter .filterContent .selectBlock .right b {color:#1b67a2; font-size:12px; font-weight: normal;}
+#searchFilter .filterContent .selectBlock .right span.pad {float:left; padding:0 16px 0 0; line-height: 20px;}
+#searchFilter .filterContent .selectBlock .right span.pad br{display: none;}
+#searchFilter .filterContent .selectBlock .right span.sel {display: none; }
+#searchFilter .filterContent .selectBlock.active .right span.sel {display: block; }
+/*#searchFilter .filterContent .selectBlock .right span.drop {float:left; width:24px; height:36px; background:url(../img/bgDrop.png) 0 0 no-repeat; cursor: pointer; padding-right: 0;}*/
+#searchFilter .filterContent .selectBlock .right span.drop {float:left; width:20px; height:20px; background:url(../img/dropdown.png) 0 0 no-repeat; cursor: pointer; padding-right: 0;}
+#searchFilter .filterContent .selectBlock .childseparator { background: url(../img/child-legend.gif) repeat-x scroll center center transparent; font-weight: bold; width: 100%;}
+#searchFilter .filterContent .selectBlock .childseparator b { background-color: #FFFFFF; padding-right: 18px; }
+#searchFilter .filterContent .open .right span.drop {background:url(../img/dropdownUp.png) 0 0 no-repeat;}
+/*#searchFilter .filterContent .open .right span.drop {background:url(../img/bgDropOpen.png) 0 0 no-repeat;}*/
+#searchFilter .filterContent .active .left {background:url(../img/selBigLeftActive.png) 0 0 no-repeat;}
+/*#searchFilter .filterContent .active .right {color:#a9d4f5; background:url(../img/selBigRightActive.png) right 0 no-repeat;}*/
+#searchFilter .filterContent .active .right {color:white; background-color: #808080;}
+#searchFilter .filterContent .active .right b {color:#fff; display: none;}
+/*#searchFilter .filterContent .active .right span.drop {background:url(../img/dropdownUp.png) 0 0 no-repeat;}*/
+/*#searchFilter .filterContent .active .right span.drop {background:url(../img/bgDropActive.png) 0 0 no-repeat;}*/
+#searchFilter .filterContent .active .right span.plus {padding-right:17px; background:url(../img/plus.gif) right 4px no-repeat;}
 
-.filterContent .dropdown {position:absolute; /*width:334px;*/ padding:10px 10px 14px 16px; margin-top:3px; background-color:#fff; border:1px solid #dfdede; z-index:100;}
-.filterContent .dropdown ul {padding:0; margin: 0 0 5px; list-style:none; float: left;}
-.filterContent .dropdown ul li {padding:4px 0; margin:0; line-height:16px; /*float:left;*/ width:158px;}
-.filterContent .dropdown ul li input {float:left;}
-.filterContent .dropdown ul li.select {color:#7b8080;}
+#searchFilter .filterContent .dropdown {position:absolute; /*width:334px;*/ padding:10px 10px 14px 16px; margin-top:3px; background-color:#fff; border:1px solid #dfdede; z-index:100;}
+#searchFilter .filterContent .dropdown ul {padding:0; margin: 0 0 5px; list-style:none; float: left;}
+#searchFilter .filterContent .dropdown ul li {padding:4px 0; margin:0; line-height:16px; /*float:left;*/ width:158px;}
+#searchFilter .filterContent .dropdown ul li input {float:left;}
+#searchFilter .filterContent .dropdown ul li.select {color:#7b8080;}
 
-.filterContent .dropdown .buttonsCont {margin:12px 0 0 0px;}
-.filterContent .dropdown .buttonsCont .button input {border:0; float:left; background:url(../img/button-bg.png) right top no-repeat; height:24px; padding-left:8px; padding-right:11px; :padding-left:2px; :padding-right:5px; font-family:Arial; text-transform:uppercase; font-size:11px; color:#fff; padding-bottom:2px; :padding-bottom:0px; cursor:pointer;}
-.filterContent .dropdown .buttonsCont .button:hover input {background:url(../img/button-bg.png) right bottom no-repeat;}
-.filterContent .dropdown .buttonsCont .button span.left {display:block; float:left; width:4px; font-size:0; height:24px; background:url(../img/button-left-bg.png) 0 0 no-repeat;}
-.filterContent .dropdown .buttonsCont .button:hover span {background:url(../img/button-left-bg.png) 0 bottom no-repeat;}
+#searchFilter .filterContent .dropdown .buttonsCont {margin:12px 0 0 0px;}
+#searchFilter .filterContent .dropdown .buttonsCont .button input {border:0; float:left; background:url(../img/button-bg.png) right top no-repeat; height:24px; padding-left:8px; padding-right:11px; :padding-left:2px; :padding-right:5px; font-family:Arial; text-transform:uppercase; font-size:11px; color:#fff; padding-bottom:2px; :padding-bottom:0px; cursor:pointer;}
+#searchFilter .filterContent .dropdown .buttonsCont .button:hover input {background:url(../img/button-bg.png) right bottom no-repeat;}
+#searchFilter .filterContent .dropdown .buttonsCont .button span.left {display:block; float:left; width:4px; font-size:0; height:24px; background:url(../img/button-left-bg.png) 0 0 no-repeat;}
+#searchFilter .filterContent .dropdown .buttonsCont .button:hover span {background:url(../img/button-left-bg.png) 0 bottom no-repeat;}
 
 /*====================================================================================================*/
 
@@ -677,4 +711,49 @@ html>body #shadow {height:auto;}
 .bill td.pagenation span.prevnactive i { background-position: 0 0;} 
 
 .bill td.pagenation span.next i {background-position:-5px -10px;} 
-.bill td.pagenation span.nextnactive i { background-position: -5px 0;} 
+.bill td.pagenation span.nextnactive i { background-position: -5px 0;}
+
+/* The hint to Hide and Show */
+.hint {
+    z-index: 3;
+    display: none;
+    position: absolute;
+    left: 500px;
+    top: 10px;
+    width: 200px;
+    margin-top: -4px;
+    border: 1px solid #c93;
+    padding: 10px 12px !important;
+    color: #000000;
+    /* to fix IE6, I can't just declare a background-color,
+    I must do a bg image, too!  So I'm duplicating the pointer.gif
+    image, and positioning it so that it doesn't show up
+    within the box */
+    background: #ffc url(../img/pointer.gif) no-repeat -10px 5px;
+}
+
+/* The pointer image is hadded by using another span */
+.hint .hint-pointer {
+    position: absolute;
+    left: -10px;
+    top: 5px;
+    width: 10px;
+    height: 19px;
+    background: url(../img/pointer.gif) left top no-repeat;
+}
+
+.add-ad-capt {
+    width: 180px;
+    padding-right: 20px;
+    text-align: right;
+    font-weight: bold;
+}
+
+.add-ad-field {
+    position: relative;
+}
+
+.add-ad-field .hint{
+    left: 650px;
+    top: 5px;
+}

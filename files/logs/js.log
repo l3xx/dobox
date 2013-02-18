@@ -38,3 +38,25 @@
 2013/01/12 21:08:44 Uncaught TypeError: Cannot set property 'value' of undefined; http://dobox.local/js/bbs.add.js; 79
 2013/01/12 21:11:52 Uncaught SyntaxError: Unexpected token ,; http://dobox.local/js/bbs.add.js; 78
 2013/01/12 21:11:52 Uncaught ReferenceError: bbsAddClass is not defined; http://dobox.local/items/add?period=1#; 272
+2013/01/28 21:02:07 Uncaught ReferenceError: indexCatExpand2 is not defined; http://dobox.local/; 141
+2013/01/28 21:02:41 Uncaught ReferenceError: indexCatExpand2 is not defined; http://dobox.local/; 141
+2013/01/29 20:12:12 Uncaught TypeError: Cannot read property 'value' of undefined; http://dobox.local/js/bbs.add.js; 39
+2013/01/29 20:13:50 Uncaught TypeError: Cannot read property 'value' of undefined; http://dobox.local/js/bbs.add.js; 39
+2013/01/29 20:25:02 Uncaught TypeError: Cannot read property 'value' of undefined; http://dobox.local/js/bbs.add.js; 39
+2013/01/29 20:27:34 Uncaught TypeError: Cannot read property 'value' of undefined; http://dobox.local/js/bbs.add.js; 39
+2013/01/29 20:27:37 Uncaught TypeError: Cannot read property 'value' of undefined; http://dobox.local/js/bbs.add.js; 39
+2013/01/29 20:27:40 Uncaught TypeError: Cannot read property 'value' of undefined; http://dobox.local/js/bbs.add.js; 39
+2013/01/29 20:28:25 Uncaught TypeError: Cannot read property 'value' of undefined; http://dobox.local/js/bbs.add.js; 40
+2013/01/29 20:28:41 Uncaught TypeError: Cannot read property 'value' of undefined; http://dobox.local/js/bbs.add.js; 40
+2013/01/29 20:32:08 Uncaught TypeError: Cannot read property 'value' of undefined; http://dobox.local/js/bbs.add.js; 40
+2013/01/29 20:39:51 Uncaught TypeError: Cannot read property 'value' of undefined; http://dobox.local/js/bbs.add.js; 39
+2013/01/29 20:39:53 Uncaught TypeError: Cannot read property 'value' of undefined; http://dobox.local/js/bbs.add.js; 39
+2013/01/29 20:41:25 Uncaught TypeError: Cannot set property 'value' of undefined; http://dobox.local/js/bbs.add.js; 40
+2013/01/29 20:41:27 Uncaught TypeError: Cannot set property 'value' of undefined; http://dobox.local/js/bbs.add.js; 40
+2013/01/29 20:41:31 Uncaught TypeError: Cannot set property 'value' of undefined; http://dobox.local/js/bbs.add.js; 40
+2013/02/02 21:07:23 Uncaught ReferenceError: indexCatExpand2 is not defined; http://dobox.local/search?c=51; 137
+2013/02/02 21:08:03 Uncaught ReferenceError: $indexCatList is not defined; http://dobox.local/search?c=51; 403
+2013/02/02 21:08:10 Uncaught ReferenceError: $indexCatList is not defined; http://dobox.local/search?c=41; 403
+2013/02/02 21:08:27 Uncaught ReferenceError: $indexCatList is not defined; http://dobox.local/search?c=41; 403
+2013/02/02 21:08:28 Uncaught ReferenceError: $indexCatList is not defined; http://dobox.local/search?c=41; 403
+2013/02/02 21:08:28 Uncaught ReferenceError: $indexCatList is not defined; http://dobox.local/search?c=41; 403

@@ -23,8 +23,9 @@ $(function(){
         <span class="right appdd-opener"><a href="#" class="appdd-link"><span class="appdd-title"><?= $cat_data['title']; ?></span> <img src="/img/dropdown.png" /></a></span>
         <div class="dropdown appdd-dropbox hidden">
             <ul>
-                <? if($cats_numlevel>1) { ?> <li><a href="/search?c=<?= $cats_parent; ?>">Все разделы</a></li>
-                <? } foreach($cats_level as $k=>$i) { ?>
+                <? //if($cats_numlevel>1) { ?> <li><a href="/search?c=<?= $cats_parent; ?>">Все объявления</a></li>
+                <? //}
+                    foreach($cats_level as $k=>$i) { ?>
                     <li><a href="/search?c=<?= $i['id'] ?>"<? if($i['id'] == $cat_id): ?> class="select" onclick="return false;"<? endif; ?>><?= $i['title'] ?></a></li>
                 <? } $cats_level = &$cat_data['sub'];  ?>
             </ul>
@@ -190,7 +191,7 @@ $(function(){
             <? if($user_id>0): ?><a href="/items/user?id=<?= $user_id; ?>" class="grey f11">Все объявления этого пользователя</a><? endif; ?>
         </p>
         <p class="padTop">
-            <?php if($cat_type): ?><b class="grey f12Up"><?= $cat_type_title; ?>:</b> <?php endif; ?><?= nl2br($descr); ?><br/>
+            <?php if($cat_type): ?><b class="grey f12Up"><?= $cat_type_title; ?>:</b> <?php endif; ?><?= nl2br($title); ?><br/>
             <?php if($cat_subtype): ?><b class="grey f12Up"><?= $cat_subtype_title; ?></b> <?php endif; ?><?= nl2br($descr); ?><br/>
         </p> <?
         
