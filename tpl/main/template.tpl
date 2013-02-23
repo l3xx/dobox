@@ -9,17 +9,17 @@
 {include file="style.tpl"}
 {include file="js.template.tpl"}
 </head>
-<body> 
+<body>
 <div id="wsPay"></div>
 <div id="wrap">
-    
+
     <div class="header">
         <div class="container">
           <span class="left"><a href="/" title=""><img src="/img/logo.png" alt=""/></a></span>
           <span class="right">{$aBanners.top}</span>
             <div class="advertise" style="float: right;"><a href="/items/add">
                 <span class="left">&nbsp;</span>
-                <span class="btCont"><input type="button" value="РАЗМЕСТИТЬ ОБЪЯВЛЕНИЕ" /></span></a>
+                <span class="btCont"><input type="button" value="РАЗМЕСТИТЬ ОБЪЯВЛЕНИЕ"/></span></a>
             </div>
           <div class="clear"></div>
       </div>
@@ -42,15 +42,15 @@
                         {if $config.userMenuCurrent == 1}<span class="cont left activeFav"><span class="left"><b class="favorite">Избранное</b> (<span id="favCounter">{$config.bbs_favs.total}</span>)</span><span class="rightCor">&nbsp;</span></span>
                         {else}<span class="cont left"><span class="left"><a href="/items/fav" class="favorite">Избранное</a> (<span id="favCounter">{$config.bbs_favs.total}</span>)</span><span class="rightCor">&nbsp;</span></span>{/if}
                         <span class="cont right"><span class="left"><a href="#" class="enter user-enter">Вход</a> / <a href="#" class="user-enter">Регистрация</a></span><span class="rightCor">&nbsp;</span></span>
-                    
-                        <div class="popupCont" id="ipoРАЗМЕЩЕНИЕ ОБЪЯВЛЕНИЯpup-user-enter" style="display:none;">
+
+                        <div class="popupCont" id="ipopup-user-enter" style="display:none;">
                           <div class="popup">
                             <div class="top"></div>
                             <div class="center">
                               <div class="close"><a href="#" title="" rel="close"><img src="/img/close.png" alt=""/></a></div>
                               <h1 class="ipopup-title"><span class="enter-title">Вход</span> на <span class="blue">w</span><span class="orange">sell.</span><span class="blue">ru</span></h1>
                               <div class="ipopup-content">
-                                
+
                                   <form action="/ajax/users?act=enter">
                                     <div class="error enter-error hidden"></div>
                                     <div class="padTop">Введите ваш e-mail:</div>
@@ -61,11 +61,11 @@
                                     <div class="padTop">
                                         <div class="button left">
                                             <span class="left">&nbsp;</span>
-                                            <input type="submit" class="enter-submit" tabindex="3" value="войти"/> 
+                                            <input type="submit" class="enter-submit" tabindex="3" value="войти"/>
                                         </div><div class="progress enter-progress" style="margin:7px 0 0 12px; display:none;"></div>
                                         <div class="clear"></div>
                                     </div>
-                                  </form> 
+                                  </form>
                               </div>
                             </div>
                             <div class="bottom"></div>
@@ -162,6 +162,6 @@
             <div class="clear"></div>
         </div>
     </div>
-</div>    
+</div>
 </body>
 </html>

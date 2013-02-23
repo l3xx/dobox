@@ -1,0 +1,36 @@
+RewriteEngine on 
+
+ErrorDocument 401                                   /errors.php?errno=401
+ErrorDocument 403                                   /errors.php?errno=403
+ErrorDocument 404                                   /errors.php?errno=404
+ErrorDocument 500                                   /errors.php?errno=500
+                      
+DirectoryIndex index.php                       
+Options -Indexes                                                    
+Options +FollowSymlinks
+
+#------------------------------------------------------------------------------
+
+#Redirect FROM www.example.com TO example.com
+RewriteCond %{HTTP_HOST} ^www\.example\.com
+RewriteRule (.*) http://example.com/$1 [R=301,L]
+
+RewriteRule ^$                                 index.php?s=1 [L,QSA]          
+RewriteRule ^item/(.*)$                        index.php?s=bbs&ev=view&id=$1 [L,QSA]  
+RewriteRule ^ajax/(.*)$                        index.php?s=$1&ev=ajax [L,QSA]    
+RewriteRule ^items/(.*)$                       index.php?s=bbs&ev=$1 [L,QSA]  
+RewriteRule ^search(.*)$                       index.php?s=bbs&ev=search [L,QSA]  
+RewriteRule ^bill$                             index.php?s=bills&ev=manage [L,QSA] 
+RewriteRule ^bill/(.*)$                        index.php?s=bills&ev=$1 [L,QSA] 
+RewriteRule ^user/(.*)$                        index.php?s=users&ev=$1 [L,QSA]
+RewriteRule ^bn/(click|show)/(.*)$             index.php?s=banners&ev=$1&id=$2 [L,QSA]
+RewriteRule ^help/(.*)$                        index.php?s=faq&ev=view&rec=$1 [L,QSA]
+RewriteRule ^help                              index.php?s=faq&ev=view&rec=0 [L,QSA]
+
+RewriteRule ^contact$                          index.php?s=contacts&ev=write [L]
+
+RewriteCond %{REQUEST_FILENAME} !-f 
+RewriteRule ^(.*).html$                        index.php?s=pages&ev=show&page=$1 [L]  
+
+
+

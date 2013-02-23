@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.7, created on 2013-02-07 23:10:05
+<?php /* Smarty version 2.6.7, created on 2013-02-23 13:55:20
          compiled from template.tpl */ ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -21,10 +21,10 @@ $this->_tpl_vars = $_smarty_tpl_vars;
 unset($_smarty_tpl_vars);
  ?>
 </head>
-<body> 
+<body>
 <div id="wsPay"></div>
 <div id="wrap">
-    
+
     <div class="header">
         <div class="container">
           <span class="left"><a href="/" title=""><img src="/img/logo.png" alt=""/></a></span>
@@ -32,7 +32,7 @@ unset($_smarty_tpl_vars);
 </span>
             <div class="advertise" style="float: right;"><a href="/items/add">
                 <span class="left">&nbsp;</span>
-                <span class="btCont"><input type="button" value="РАЗМЕСТИТЬ ОБЪЯВЛЕНИЕ" /></span></a>
+                <span class="btCont"><input type="button" value="РАЗМЕСТИТЬ ОБЪЯВЛЕНИЕ"/></span></a>
             </div>
           <div class="clear"></div>
       </div>
@@ -61,15 +61,15 @@ unset($_smarty_tpl_vars);
                         <?php else: ?><span class="cont left"><span class="left"><a href="/items/fav" class="favorite">Избранное</a> (<span id="favCounter"><?php echo $this->_tpl_vars['config']['bbs_favs']['total']; ?>
 </span>)</span><span class="rightCor">&nbsp;</span></span><?php endif; ?>
                         <span class="cont right"><span class="left"><a href="#" class="enter user-enter">Вход</a> / <a href="#" class="user-enter">Регистрация</a></span><span class="rightCor">&nbsp;</span></span>
-                    
-                        <div class="popupCont" id="ipoРАЗМЕЩЕНИЕ ОБЪЯВЛЕНИЯpup-user-enter" style="display:none;">
+
+                        <div class="popupCont" id="ipopup-user-enter" style="display:none;">
                           <div class="popup">
                             <div class="top"></div>
                             <div class="center">
                               <div class="close"><a href="#" title="" rel="close"><img src="/img/close.png" alt=""/></a></div>
                               <h1 class="ipopup-title"><span class="enter-title">Вход</span> на <span class="blue">w</span><span class="orange">sell.</span><span class="blue">ru</span></h1>
                               <div class="ipopup-content">
-                                
+
                                   <form action="/ajax/users?act=enter">
                                     <div class="error enter-error hidden"></div>
                                     <div class="padTop">Введите ваш e-mail:</div>
@@ -80,11 +80,11 @@ unset($_smarty_tpl_vars);
                                     <div class="padTop">
                                         <div class="button left">
                                             <span class="left">&nbsp;</span>
-                                            <input type="submit" class="enter-submit" tabindex="3" value="войти"/> 
+                                            <input type="submit" class="enter-submit" tabindex="3" value="войти"/>
                                         </div><div class="progress enter-progress" style="margin:7px 0 0 12px; display:none;"></div>
                                         <div class="clear"></div>
                                     </div>
-                                  </form> 
+                                  </form>
                               </div>
                             </div>
                             <div class="bottom"></div>
@@ -146,6 +146,6 @@ unset($_smarty_tpl_vars);
             <div class="clear"></div>
         </div>
     </div>
-</div>    
+</div>
 </body>
 </html>
