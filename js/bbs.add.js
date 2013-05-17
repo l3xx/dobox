@@ -37,6 +37,7 @@ bbsAddClass.prototype =
                // self.$adText.removeAttr('disabled');
                 this.info.value = self.striptags( this.info.value );
                 this.descr.value = self.striptags( this.descr.value );
+                console.log(this.descr.value);
                 this.uid.value = app.uid();
                 bff.ajax('/items/add', self.formAdd.serialize(), function(data, errors) {
                     if(data && data.res) {
@@ -525,9 +526,9 @@ bbsAddClass.prototype =
                 button_cursor: SWFUpload.CURSOR.HAND,
                 
                 debug: false 
-            }); 
-                              
-            $('a.del', $block).live('click', function (e) {
+            });
+
+            $(document).on('click', '.del', function (e) {
                 nothing(e);
                 var lnk = $(this);
                 if(confirm('Удалить фото?')) {
@@ -542,7 +543,7 @@ bbsAddClass.prototype =
                 } return false;
             });
 
-            $('a.star', $block).live('click', function (e) {
+            $(document).on('click', '.star', function (e) {
                 nothing(e);
                 var lnk = $(this);
                 $('div.picCont a.star', $block).removeClass('select');

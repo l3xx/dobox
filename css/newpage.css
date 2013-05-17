@@ -1,0 +1,99 @@
+.container {
+    width: 1170px;
+}
+
+.ad-list {
+    border: 1px solid #d3d3d3;
+    /*padding: 5px 10px;*/
+}
+
+.ad-list .ad-list-title {
+    margin: 10px;
+    text-align: center;
+}
+
+.ad-list-item {
+    padding: 5px 0px;
+    display: block;
+}
+
+.ad-list-item.current{
+    background-color: #efefef;
+}
+.ad-list-item:hover {
+    background-color: #eeeeee;
+}
+
+.main-image {
+    border: 1px solid #d3d3d3;
+    margin: 0 5px 5px 5px;
+    text-align: center;
+}
+
+.main-image img{
+    display: inline-block;
+}
+
+.add-image {
+    text-align: center;
+}
+
+.add-image:hover {
+    outline: 1px dashed #d3d3d3;
+}
+
+.add-image img{
+    display: inline-block;
+    cursor: pointer;
+}
+
+#search-form {
+    background-color: #eeeeee;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    border-radius: 6px;
+    padding: 60px 20px 0 20px;
+    margin-bottom: 20px;
+}
+
+.nav-put-ad-button {
+    margin-right: 74px;
+}
+
+.form-horizontal .control-group {
+    margin-bottom: 0;
+}
+
+.hidden {
+    display: none;
+}
+
+.dropdown {
+    position: absolute;
+    border: 1px solid #0088cc;
+    background-color: white;
+    padding: 5px;
+    box-shadow: 10px 10px 5px #888888;;
+}
+
+.dropdown li {
+    list-style: none;
+}
+
+.dropdown input {
+    float: left;
+}
+.dropdown input[type=text] {
+    float: right;
+    display: inline;
+}
+
+.selectBlock {
+    float: left;
+}
+
+.clear {
+    clear: both;
+    overflow: hidden;
+}
+

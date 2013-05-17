@@ -1,5 +1,8 @@
 <?php 
-    extract($aData);  
+    extract($aData);
+    $get = array('item' => $id);
+
+    header( 'Location: '.bff::buildUrl('', 'newpage').'?'.http_build_query($get) )
 ?>
 
 <div class="padBlock noBorder">

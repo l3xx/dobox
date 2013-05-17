@@ -354,6 +354,7 @@ class bffBase
         {
             //http://img.SITEHOST/part/ => http://SITEHOST/files/images/part/'
             case 'images': return 'http://'.SITEHOST.'/files/images/'.$sPart.'/'; break;
+            case 'newpage': return 'http://'.SITEHOST.''; break;
         }
         return '';
     }
@@ -529,7 +530,7 @@ class config
      * @param string ключ настройки, array массив ключ=>значение
      * @param mixed значение                  
      */
-    static function set($sConfigKey, $mConfigValue, $sConfigKeyPrefix = false)
+    static function set($sConfigKey, $mConfigValue = false, $sConfigKeyPrefix = false)
     {
         $prefix = ($sConfigKeyPrefix!==false?$sConfigKeyPrefix:'');
         if(is_array($sConfigKey)) {

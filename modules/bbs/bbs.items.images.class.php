@@ -46,8 +46,8 @@ class BBSItemsImages extends dbImagesField
                           'quality'=>90 );
         
         $aSave[] = array( 'filename'=>$sPath.$nID.$sFilename,
-                          'width'=>350,
-                          'height'=>false,
+                          'width'=>600,
+                          'height'=>480,
                           'autofit'=>true,
                           'crop_h'=>'center',
                           'crop_v'=>'center',                   

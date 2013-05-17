@@ -249,7 +249,7 @@ h3 {padding:0; margin:0; font-size:12px; font-weight:normal; color:#7b8080;}
 .leftBlock .padBlock .caption {color:#7b8080; font-size:12px; font-weight:bold; text-transform:uppercase; padding:0 0 16px 0;}
 .leftBlock .padBlock .caption .lower {text-transform:none;}
 .leftBlock .addStep .padBlock .left {float:left;}
-.leftBlock .padBlock .padTop {padding-top:8px;}
+.leftBlock .padBlock .padTop {padding-top:8px; clear: both; overflow: hidden;}
 .leftBlock .padBlock .padTop2 {padding-top:21px;}
 .leftBlock .padBlock .padBig {padding-top:30px;}
 .leftBlock .padBlock .padRight {padding-right:14px;}
@@ -693,6 +693,7 @@ html>body #shadow {height:auto;}
 .progress { background: url('../img/progressMini.gif') 0 0 no-repeat; display: inline-block; width: 32px; height: 8px; }
 .hidden {display: none;}
 .req {font-size:14px; color:#ff6002;}
+.req-ad {margin-bottom: 20px;}
 .notify {padding: 12px 0;}
 
 .bill h1 {padding-bottom: 16px;}

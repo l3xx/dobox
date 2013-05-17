@@ -38,7 +38,7 @@ class bff extends bffBase
     {
         self::includeJS(array('jquery.min', 'bff.base'), false, true);
         if($isFrontend) {
-            self::includeJS('jquery.corner');
+//            self::includeJS('jquery.corner');
             self::includeJS('app');
         } else {
             self::includeJS('fancybox', false, true);    

@@ -5,7 +5,7 @@
     
     foreach($aData['dynprops'] as $d)
     {
-        $d['title'] = '<span>'.$d['title'].':&nbsp;</span>';
+        $d['title'] = '<span><b>'.$d['title'].':&nbsp;</b></span>';
         
         if(empty($d['value'])) continue;
         switch($d['type'])
@@ -70,7 +70,7 @@
                        $dmv = current( $aData['children'][$d['id']] );
                        foreach($dmv['multi'] as $dm) {
                            if($dm['value'] == $dmv['value']) {
-                               echo '<div class="padTop"><span>'.$d['child_title'].':&nbsp;</span>'.$dm['name'].'</div>'; break;
+                               echo '<div class="padTop"><span><b>'.$d['child_title'].':&nbsp;</b></span>'.$dm['name'].'</div>'; break;
                            }
                        }
                     }

@@ -15,12 +15,14 @@ Options +FollowSymlinks
 RewriteCond %{HTTP_HOST} ^www\.example\.com
 RewriteRule (.*) http://example.com/$1 [R=301,L]
 
-RewriteRule ^$                                 index.php?s=1 [L,QSA]          
+#RewriteRule ^$                                 index.php?s=1 [L,QSA]
 RewriteRule ^item/(.*)$                        index.php?s=bbs&ev=view&id=$1 [L,QSA]  
 RewriteRule ^ajax/(.*)$                        index.php?s=$1&ev=ajax [L,QSA]    
 RewriteRule ^items/(.*)$                       index.php?s=bbs&ev=$1 [L,QSA]  
 RewriteRule ^search(.*)$                       index.php?s=bbs&ev=search [L,QSA]  
-RewriteRule ^bill$                             index.php?s=bills&ev=manage [L,QSA] 
+#RewriteRule ^newpage(.*)$                      index.php?s=bbs&ev=newpage [L,QSA]
+RewriteRule ^$                      index.php?s=bbs&ev=newpage [L,QSA]
+RewriteRule ^bill$                             index.php?s=bills&ev=manage [L,QSA]
 RewriteRule ^bill/(.*)$                        index.php?s=bills&ev=$1 [L,QSA] 
 RewriteRule ^user/(.*)$                        index.php?s=users&ev=$1 [L,QSA]
 RewriteRule ^bn/(click|show)/(.*)$             index.php?s=banners&ev=$1&id=$2 [L,QSA]

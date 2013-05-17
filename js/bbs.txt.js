@@ -113,15 +113,15 @@ var bffDynpropsTextify = (function(){
             selector = o.selector;
             process = o.process;
             var timeout = 100;
-            $('select'+selector, $block).live('change', $.debounce( function() { 
+            $('select'+selector, $block).on('change', $.debounce( function() {
                 process();
             }, timeout));
 
-            $('input[type="checkbox"]'+selector+',input[type="radio"]'+selector, $block).live('click', $.debounce( function() { 
+            $('input[type="checkbox"]'+selector+',input[type="radio"]'+selector, $block).on('click', $.debounce( function() {
                 process();
             }, timeout));
             
-            $('textarea'+selector+',input[type="text"]'+selector, $block).live('keyup', $.debounce( function() { 
+            $('textarea'+selector+',input[type="text"]'+selector, $block).on('keyup', $.debounce( function() {
                 process();
             }, timeout));
             process();

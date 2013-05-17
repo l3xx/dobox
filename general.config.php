@@ -6,7 +6,7 @@ define('PATH_BASE', $sMAINDIR.DIRECTORY_SEPARATOR);
 define('PATH_CORE', $sMAINDIR.DIRECTORY_SEPARATOR.'bff'.DIRECTORY_SEPARATOR);
 define('PATH_MODULES', PATH_BASE.'modules'.DIRECTORY_SEPARATOR);
 
-error_reporting(E_ALL & ~E_NOTICE & ~E_WARNING);
+error_reporting(E_ALL & ~E_NOTICE & ~E_WARNING & ~E_STRICT);
 ini_set('display_errors', 1);     
 
 ini_set('upload_tmp_dir', PATH_BASE.'temp');

@@ -1,7 +1,379 @@
 <?php
 
+include('krumo/class.krumo.php');
+
 class BBS extends BBSBase
 {
+    function newpage()
+    {
+        $inputSource = bff::$isAjax ? 'postm' : 'getm';
+        $filter = $this->input->$inputSource(array(
+            'item' => TYPE_UINT,
+            'text'     => TYPE_NOHTML,  // строка поиска
+            'rubric'     => TYPE_UINT, //
+            'subrubric' => TYPE_UINT, //
+            'country'     => TYPE_UINT, //
+            'region'     => TYPE_UINT, //
+            'city'     => TYPE_UINT, //
+            'l_price'     => TYPE_UINT, //
+            'h_price'     => TYPE_UINT, //
+            'in_title'    => TYPE_BOOL, //
+            'with_photo'    => TYPE_BOOL, //
+            'private'    => TYPE_BOOL, //
+            'business'    => TYPE_BOOL, //
+            'page'  => TYPE_UINT, //номер страницы
+            'sort'  => TYPE_UINT, //
+            'buy' => TYPE_BOOL, //
+            //дин.свойства
+            'f' => TYPE_ARRAY_ARRAY,
+            'fc' => TYPE_ARRAY_ARRAY,
+        ));
+
+        if(!$filter['page']) $filter['page'] = 1;
+
+        $sql = array();
+        $sql[] = 'I.status = '.BBS_STATUS_PUBLICATED;
+
+        # подготавливаем строку поиска
+        if(!empty($filter['text']))
+        {
+            $sQ = &$filter['text'];
+            if(mb_detect_encoding($sQ,'UTF-8, CP1251')!='UTF-8') {
+                $sQ = iconv('CP1251','UTF-8', $sQ);
+            }
+            $sQ = trim( mb_substr($sQ, 0, 64) ); //урезаем до 64-х символов
+            $sQ = preg_replace("/ +/", " ", $sQ); //сжимаем двойные пробелы
+
+            $nQ_ID = intval( preg_replace('/[^0-9]+/', '', $sQ) );
+
+            if (!$filter['in_title']) {
+                $add_str = ' OR '.$this->db->prepareFulltextQuery($sQ, 'I.descr').
+                    ' OR I.contacts_phone = '.$this->db->str2sql($sQ).''
+                    .(!empty($nQ_ID) ? ' OR I.contacts_phone LIKE '.$this->db->str2sql('%'.$sQ.'%').' OR I.id = '.$nQ_ID : '');
+            }
+
+            // полнотекстовый поиск
+            $sql[] = '('.$this->db->prepareFulltextQuery($sQ, 'I.title').')';
+            //echo '<pre>', print_r($sql, true), '</pre>'; exit;
+
+            //$sql[] = 'I.descr LIKE '.$this->db->str2sql('%'.$sQ.'%');
+        }
+        // Цена
+        if ($filter['l_price']){
+            $sql[] = 'I.price >= '.$filter['l_price'];
+        }
+        if ($filter['h_price']){
+            $sql[] = 'I.price <= '.$filter['h_price'];
+        }
+
+        // регионы
+        if($filter['country']) { $sql[] = 'I.country_id = '.$filter['country'];
+            if($filter['region']) { $sql[] = 'I.region_id = '.$filter['region'];
+                if($filter['city']) $sql[] = 'I.city_id = '.$filter['city'];
+            }
+        }
+
+        $aData = array();
+
+        $aData['f'] = &$filter;
+
+        // subrubric items
+        if ($filter['rubric'] != 0 && $filter['rubric'] != 1) {
+            $subCats = $this->db->select('SELECT id, title, numlevel FROM '.TABLE_BBS_CATEGORIES.' WHERE pid = '.$filter['rubric'].' AND enabled = 1 ORDER BY numleft');
+            $aData['sub_cats'] = $subCats;
+        }
+
+        // region and city items
+        if ($filter['country'] != 0 ) {
+            $regions = $this->db->select('SELECT id, title, numlevel FROM '.TABLE_BBS_REGIONS.' WHERE pid = '.$filter['country'].'');
+            $aData['regions_items'] = $regions;
+            if ($filter['region'] != 0 ) {
+                $cities = $this->db->select('SELECT id, title, numlevel FROM '.TABLE_BBS_REGIONS.' WHERE pid = '.$filter['region'].'');
+                $aData['cities_items'] = $regions;
+            }
+        }
+
+        extract($filter);
+        // all elements needs cat to be set in 1
+        $rubric = !$rubric ? 1 : $rubric;
+        $rubric = !$subrubric ? $rubric : $subrubric;
+
+
+        $cat = $this->db->one_array('SELECT * FROM '.TABLE_BBS_CATEGORIES.' WHERE id='.$rubric.' LIMIT 1');
+        if($cat['numlevel'] == 1) {
+            $sql[] = 'I.cat1_id = '.$rubric;
+        } elseif($cat['numlevel'] == 2) {
+            $sql[] = 'I.cat2_id = '.$rubric;
+        } elseif($cat['numlevel']==3 || ($cat['numright']-$cat['numleft']==1)) {
+            $sql[] = 'I.cat_id = '.$rubric;
+        }
+
+        // private
+        if ((bool) $filter['private']) {
+            $aa = $this->db->select("SELECT id FROM bff_bbs_categories_types WHERE title LIKE 'Частные'");
+            $id = array();
+            foreach ($aa as $k) {
+                $id[] = $k['id'];
+            }
+            $sql[] = "I.cat_type IN ('".implode("','",$id)."')";
+        }
+
+        if ((bool) $filter['business']) {
+            $aa = $this->db->select("SELECT id FROM bff_bbs_categories_types WHERE title LIKE 'Компании'");
+            $id = array();
+            foreach ($aa as $k) {
+                $id[] = $k['id'];
+            }
+            $sql[] = "I.cat_type IN ('".implode("','",$id)."')";
+        }
+
+        if ((bool) $filter['buy']){
+            $aa = $this->db->select("SELECT id FROM bff_bbs_categories_subtypes WHERE title LIKE 'Ищу'");
+            $id = array();
+            foreach ($aa as $k) {
+                $id[] = $k['id'];
+            }
+            $sql[] = "I.cat_subtype IN ('".implode("','",$id)."')";
+        }
+        else {
+            $aa = $this->db->select("SELECT id FROM bff_bbs_categories_subtypes WHERE title LIKE 'Предлагаю'");
+            $id = array();
+            foreach ($aa as $k) {
+                $id[] = $k['id'];
+            }
+            $sql[] = "I.cat_subtype IN ('".implode("','",$id)."')";
+        }
+
+        //с фото
+        if($with_photo) $sql[] = 'I.imgcnt > 0';
+
+        $aData['total'] = $this->db->one_data('SELECT COUNT(I.id) FROM '.TABLE_BBS_ITEMS.' I
+                    '.(!empty($sql) ? 'WHERE '.join(' AND ', $sql):''));
+
+        $itemsPerPage = 10;
+
+        $aData['itemsPerPage'] = $itemsPerPage;
+        $aData['pages'] = ceil($aData['total'] / $itemsPerPage);
+        $aData['currentPage'] = ($filter['page']>$aData['pages']) ? $aData['pages'] : $filter['page'];
+        if ($aData['currentPage']< 1) $aData['currentPage'] = 1;
+        $currentPage = $aData['currentPage'];
+
+        $paginationItemsCount = 5;
+        $paginatorItems = array();
+        if ($aData['pages'] == 1) {
+
+        }
+        else {
+            if ($aData['pages'] <= $paginationItemsCount) {
+                for ($i = 1; $i<=$aData['pages']; $i++) {
+                    $paginatorItems[] = $i;
+                }
+            }
+            else {
+                $count = 0;
+                if ($currentPage - 2 >= 1 ){
+                    $paginatorItems[] = $currentPage - 2;
+                }
+                if ($currentPage - 1 >= 1 ){
+                    $paginatorItems[] = $currentPage - 1;
+                }
+
+                $paginatorItems[] = $currentPage;
+
+                if ($currentPage + 1 <= $aData['pages'] ){
+                    $paginatorItems[] = $currentPage + 1;
+                }
+                if ($currentPage + 2 <= $aData['pages'] ){
+                    $paginatorItems[] = $currentPage + 2;
+                }
+
+            }
+        }
+
+        $aData['paginatorItems'] = $paginatorItems;
+
+        $offset = ($aData['currentPage'] - 1) * $itemsPerPage;
+
+
+        $sqlLimit = 'LIMIT '.$offset.','.$itemsPerPage;
+
+        $order = 'ORDER BY premium DESC, I.premium_order DESC, I.publicated_order DESC';
+        switch ($filter['sort']) {
+            case 0:
+                $order = 'ORDER BY  I.publicated_order DESC';
+                break;
+
+            case 1:
+                $order = 'ORDER BY  I.publicated_order ASC';
+                break;
+
+            case 2:
+                $order = 'ORDER BY  I.price DESC';
+                break;
+
+            case 3:
+                $order = 'ORDER BY  I.price ASC';
+                break;
+        }
+
+      $dp = $this->initDynprops();
+      $sqlDP = $dp->prepareSearchQuery($f, $fc, $dp->getByOwner($subrubric, true, true, true), 'I.');
+      if(!empty($sqlDP)) {
+        $sql[] = $sqlDP;
+      }
+
+      $sQuery = 'SELECT
+                  I.id, I.title, I.user_id, I.status, I.press, I.svc,(I.svc = '.Services::typePremium.') as premium,
+                  I.cat1_id,   CAT1.title as cat1_title,
+                  I.cat2_id,   CAT2.title as cat2_title,
+                  I.cat_id,    C.regions as cat_regions, C.prices as cat_prices, C.prices_sett as cat_prices_sett,
+                  I.cat_type,  CT.title as cat_type_title,
+                  I.cat_subtype,  CST.title as cat_subtype_title,
+                  I.imgfav, I.img, I.imgcnt, I.price, I.title, I.descr, I.descr_regions, I.price, I.price_torg, I.price_bart,
+                  I.contacts_name, I.contacts_phone, I.contacts_skype, I.contacts_email,
+                  I.views_total, I.created,
+                  I.info,
+                  I.f1,I.f2,I.f3,I.f4,I.f5,I.f6,I.f7,I.f8,I.f9,I.f10,I.f11,I.f12,I.f13,I.f14,
+                  I.publicated, U.blocked as user_blocked
+                  FROM '.TABLE_BBS_ITEMS.' I
+                    LEFT JOIN '.TABLE_BBS_CATEGORIES.' CAT2 ON I.cat2_id = CAT2.id
+                    LEFT JOIN '.TABLE_BBS_CATEGORIES_TYPES.' CT ON I.cat_type = CT.id
+                    LEFT JOIN '.TABLE_BBS_CATEGORIES_SUBTYPES.' CST ON I.cat_subtype = CST.id
+                    LEFT JOIN '.TABLE_BBS_ITEMS_VIEWS.' IV ON I.id = IV.item_id AND IV.views_date
+                    LEFT JOIN '.TABLE_USERS.' U ON I.user_id = U.user_id,
+                    '.TABLE_BBS_CATEGORIES.' CAT1,
+                    '.TABLE_BBS_CATEGORIES.' C
+                  WHERE '.(!empty($sql) ? join(' AND ', $sql).' AND ':'').'
+                        C.id = I.cat_id
+                    AND CAT1.id = I.cat1_id
+                    AND (I.user_id = 0 OR U.blocked!=1)
+                  GROUP BY I.id '.$order.' '.$sqlLimit;
+
+        $aData['items'] = $this->db->select( $sQuery );
+
+        if ($item == 0) {
+            $item_view = current($aData['items']);
+        }
+        else {
+            $sql = array();
+            $sql[] = 'I.id = '.$item;
+
+            $sQuery = 'SELECT
+                  I.id, I.title, I.user_id, I.status, I.press, I.svc,(I.svc = '.Services::typePremium.') as premium,
+                  I.cat1_id,   CAT1.title as cat1_title,
+                  I.cat2_id,   CAT2.title as cat2_title,
+                  I.cat_id,    C.regions as cat_regions, C.prices as cat_prices, C.prices_sett as cat_prices_sett,
+                  I.cat_type,  CT.title as cat_type_title,
+                  I.cat_subtype,  CST.title as cat_subtype_title,
+                  I.imgfav, I.img, I.imgcnt, I.price, I.title, I.descr, I.descr_regions, I.price, I.price_torg, I.price_bart,
+                  I.contacts_name, I.contacts_phone, I.contacts_skype, I.contacts_email,
+                  I.views_total, I.created,
+                  I.f1,I.f2,I.f3,I.f4,I.f5,I.f6,I.f7,I.f8,I.f9,I.f10,I.f11,I.f12,I.f13,I.f14,
+                  I.info, I.mkeywords, I.mdescription,
+                  I.publicated, U.blocked as user_blocked
+                  FROM '.TABLE_BBS_ITEMS.' I
+                    LEFT JOIN '.TABLE_BBS_CATEGORIES.' CAT2 ON I.cat2_id = CAT2.id
+                    LEFT JOIN '.TABLE_BBS_CATEGORIES_TYPES.' CT ON I.cat_type = CT.id
+                    LEFT JOIN '.TABLE_BBS_CATEGORIES_SUBTYPES.' CST ON I.cat_subtype = CST.id
+                    LEFT JOIN '.TABLE_BBS_ITEMS_VIEWS.' IV ON I.id = IV.item_id AND IV.views_date
+                    LEFT JOIN '.TABLE_USERS.' U ON I.user_id = U.user_id,
+                    '.TABLE_BBS_CATEGORIES.' CAT1,
+                    '.TABLE_BBS_CATEGORIES.' C
+                  WHERE '.(!empty($sql) ? join(' AND ', $sql).' AND ':'').'
+                        C.id = I.cat_id
+                    AND CAT1.id = I.cat1_id
+                    AND (I.user_id = 0 OR U.blocked!=1)
+                  GROUP BY I.id
+                  ORDER BY premium DESC, I.premium_order DESC, I.publicated_order DESC
+                  ';
+
+            $items_view = $this->db->select( $sQuery );
+            $item_view = current($items_view);
+        }
+
+        $next = 0;
+        $previous = 0;
+        $itemid = $item_view['id'];
+        foreach ($aData['items'] as $key => $ii) {
+            if ($ii['id'] == $itemid) {
+                if (isset($aData['items'][$key-1])) {
+                    $previous = $aData['items'][$key-1]['id'];
+                }
+                if (isset($aData['items'][$key+1])) {
+                    $next = $aData['items'][$key+1]['id'];
+                }
+                break;
+            }
+        }
+        $item_view['previous'] = $previous;
+        $item_view['next'] = $next;
+
+
+
+        config::set(array(
+                'title' => $item_view['title'] . ' | Dobox',
+                'mkeywords' => $item_view['mkeywords'],
+                'mdescription' => $item_view['mdescription'],
+                'bbsCurrentCategory' => $item_view['cat_id'],
+            ));
+
+        $dp = $this->initDynprops();
+        $aDynprops = $dp->form($item_view['cat_id'], $item_view, true, array(), 'dp', 'dynprops.form.view.php', $this->module_dir_tpl);
+        $item_view['aDynprops'] = $aDynprops['form'];
+
+
+        $aParentCatsID = $this->db->select_one_column('SELECT id FROM '.TABLE_BBS_CATEGORIES.'
+                        WHERE ((numleft < '.$cat['numleft'].' AND numright > '.$cat['numright'].') OR id = '.$cat['id'].') AND numlevel>0
+                        ORDER BY numleft');
+        $aData['cats'] = $this->db->select('SELECT id, pid, title
+                FROM '.TABLE_BBS_CATEGORIES.'
+                WHERE enabled = 1 AND (numlevel = 1 '.(!empty($aParentCatsID) ? '
+                        OR pid IN ('.join(',', $aParentCatsID).')
+                        OR id IN ('.join(',', $aParentCatsID).')' : '').')
+                ORDER BY numleft');
+        $aData['cats'] = $this->db->transformRowsToTree($aData['cats'], 'id', 'pid', 'sub');
+        $aData['cats_active'] = $aParentCatsID;
+
+        $aData['types'] = $this->db->select('SELECT T.*
+                        FROM '.TABLE_BBS_CATEGORIES_TYPES.' T, '.TABLE_BBS_CATEGORIES.' C
+                        WHERE '.$this->db->prepareIN('T.cat_id', $aParentCatsID).' AND T.cat_id = C.id
+                        ORDER BY C.numleft, T.num ASC');
+
+        $aData['subtypes'] = $this->db->select('SELECT T.*
+                        FROM '.TABLE_BBS_CATEGORIES_SUBTYPES.' T, '.TABLE_BBS_CATEGORIES.' C
+                        WHERE '.$this->db->prepareIN('T.cat_id', $aParentCatsID).' AND T.cat_id = C.id
+                        ORDER BY C.numleft, T.num ASC');
+
+        $aData['countries_list'] = $this->db->select('SELECT * FROM '.TABLE_BBS_REGIONS.' WHERE numlevel=1');
+
+        $aData['types'] = func::array_transparent($aData['types'], 'id', true);
+        $aData['subtypes'] = func::array_transparent($aData['subtypes'], 'id', true);
+
+        if (!isset($item_view['id'])) {
+            $aData['no_view'] = true;
+        }
+        else {
+            $aData['no_view'] = false;
+            $aData['list'] = $this->tplFetchPHP($aData, 'newpage.list.php');
+            $aData['item_view'] = $this->tplFetchPHP($item_view, 'newpage.view.php');
+            $aData['item_view_obj'] = $item_view;
+        }
+        $this->includeJS(array('newpage.search'));
+
+        //update item views
+        $sqlDate = $this->db->str2sql(date('Y-m-d'));
+
+        $this->db->execute('UPDATE '.TABLE_BBS_ITEMS.' SET views_total = views_total + 1 WHERE id = '.$item_view['id']);
+        $this->db->execute('INSERT INTO '.TABLE_BBS_ITEMS_VIEWS.' (item_id, views, views_date) VALUES('.$item_view['id'].', 1, '.$sqlDate.')
+                                ON DUPLICATE KEY UPDATE views = views + 1');
+
+
+      $dp = $this->initDynprops();
+      $dpform = $dp->form($filter['subrubric'], false, true, array(), 'f', 'search.dp.php', $this->module_dir_tpl, true);
+      $aData['dpform'] = $dpform;
+        return $this->tplFetchPHP($aData, 'newpage.php');
+    }
+
     function search()
     {   
         $inputSource = bff::$isAjax ? 'postm' : 'getm';
@@ -29,7 +401,7 @@ class BBS extends BBSBase
                 $sQ = iconv('CP1251','UTF-8', $sQ);
             }
             $sQ = trim( mb_substr($sQ, 0, 64) ); //урезаем до 64-х символов  
-            $sQ = ereg_replace(" +", " ", $sQ); //сжимаем двойные пробелы
+            $sQ = preg_replace("/ +/", " ", $sQ); //сжимаем двойные пробелы
             
             $nQ_ID = intval( preg_replace('/[^0-9]+/', '', $sQ) );
             
@@ -322,12 +694,11 @@ class BBS extends BBSBase
                    ),
                 );
             }
-//            var_export($aData['subtypes']);
-//            die($c);
             ////////////////////////////////////////////////////========================================================
 
             $dp = $this->initDynprops();
             $aData['dp'] = $dp->form($c, false, true, array(), 'f', 'search.dp.php', $this->module_dir_tpl, true);
+          krumo($aData['dp']);
 
             $aData['regions'] = $this->db->select('SELECT R.id, R.pid, R.title
                                            FROM '.TABLE_BBS_REGIONS.' R, '.TABLE_BBS_REGIONS.' R2
@@ -524,7 +895,7 @@ class BBS extends BBSBase
 
                 include_once('counter.php');
                 $word_counter = new Counter();
-                $content = $p['descr'];
+                $content = $p['info'];
 
                 if (strlen($content)>50000)
                 {
@@ -571,7 +942,7 @@ class BBS extends BBSBase
                         array(':descr_regions', $sRegionsTitle, PDO::PARAM_STR),
                         array(':info', $p['info'], PDO::PARAM_STR), 
                         array(':mkeywords', $keywords, PDO::PARAM_STR),
-                        array(':mdescription', $mdescription, PDO::PARAM_STR),
+                        array(':mdescription', substr($content, 0, 160), PDO::PARAM_STR),
                     ));
                     
                     $this->ajaxResponse(array('res'=>($res === 1), 'pp'=>$bPayPublication));
@@ -1217,7 +1588,7 @@ class BBS extends BBSBase
 
 
         $aDynprops = $dp->form($aData['cat_id'], $aData, true, array(), 'dp', 'dynprops.form.view.php', $this->module_dir_tpl);
-        $aData['dp'] = $aDynprops['form']; unset($aDynprops);  
+        $aData['dp'] = $aDynprops['form']; unset($aDynprops);
         
         if(!empty($_GET['print'])) 
         {
@@ -2156,6 +2527,31 @@ class BBS extends BBSBase
                         'prices' =>$aParentInfo['prices'], 'prices_sett' =>$aParentInfo['prices_sett'], //определяем наличие блока "Цена"
                         ));
             } break;
+
+            case 'get-sub-cats':
+                $p = $this->input->postm(array(
+                    'cat'    => TYPE_UINT,
+                ));
+                $subCats = $this->db->select('SELECT id, title, numlevel FROM '.TABLE_BBS_CATEGORIES.' WHERE pid = '.$p['cat'].' AND enabled = 1 ORDER BY numleft');
+                $this->ajaxResponse( $subCats );
+                break;
+
+            case 'get-regions':
+                $p = $this->input->postm(array(
+                    'country'    => TYPE_UINT,
+                ));
+                $regions = $this->db->select('SELECT id, title, numlevel FROM '.TABLE_BBS_REGIONS.' WHERE pid = '.$p['country'].'');
+                $this->ajaxResponse( $regions );
+                break;
+
+            case 'get-cities':
+                $p = $this->input->postm(array(
+                    'region'    => TYPE_UINT,
+                ));
+                $cities = $this->db->select('SELECT id, title, numlevel FROM '.TABLE_BBS_REGIONS.' WHERE pid = '.$p['region'].'');
+                $this->ajaxResponse( $cities );
+                break;
+
             case 'dp-child':
             {
                 $p = $this->input->postm(array(

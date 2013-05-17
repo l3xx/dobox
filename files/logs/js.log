@@ -60,3 +60,234 @@
 2013/02/02 21:08:27 Uncaught ReferenceError: $indexCatList is not defined; http://dobox.local/search?c=41; 403
 2013/02/02 21:08:28 Uncaught ReferenceError: $indexCatList is not defined; http://dobox.local/search?c=41; 403
 2013/02/02 21:08:28 Uncaught ReferenceError: $indexCatList is not defined; http://dobox.local/search?c=41; 403
+2013/03/13 21:03:34 Uncaught TypeError: Object #<Object> has no method 'on'; http://dobox.local/js/bootstrap.js; 156
+2013/03/13 21:09:24 Uncaught TypeError: Object #<Object> has no method 'on'; http://dobox.local/js/bootstrap.js; 156
+2013/03/13 21:09:58 Uncaught TypeError: Object #<Object> has no method 'on'; http://dobox.local/js/bootstrap.js; 156
+2013/03/13 21:10:21 Uncaught TypeError: Object #<Object> has no method 'on'; http://dobox.local/js/bootstrap.js; 156
+2013/03/13 21:10:24 Uncaught TypeError: Object #<Object> has no method 'on'; http://dobox.local/js/bootstrap.js; 156
+2013/03/13 21:10:44 Uncaught TypeError: Object #<Object> has no method 'on'; http://dobox.local/js/bootstrap.js; 156
+2013/03/13 21:10:48 Uncaught TypeError: Object #<Object> has no method 'on'; http://dobox.local/js/bootstrap.js; 156
+2013/03/13 21:14:41 Uncaught TypeError: Object #<Object> has no method 'on'; http://dobox.local/js/bootstrap.js; 156
+2013/03/13 21:14:43 Uncaught TypeError: Object #<Object> has no method 'on'; http://dobox.local/js/bootstrap.js; 156
+2013/03/13 21:14:47 Uncaught TypeError: Object #<Object> has no method 'on'; http://dobox.local/js/bootstrap.js; 156
+2013/03/13 21:15:09 Uncaught TypeError: Object #<Object> has no method 'on'; http://dobox.local/js/bootstrap.js; 156
+2013/03/13 21:15:53 Uncaught TypeError: Object #<Object> has no method 'on'; http://dobox.local/js/bootstrap.js; 156
+2013/03/13 21:19:47 Uncaught TypeError: Object #<Object> has no method 'on'; http://dobox.local/js/bootstrap.js; 156
+2013/03/13 21:19:48 Uncaught TypeError: Object #<Object> has no method 'on'; http://dobox.local/js/bootstrap.js; 156
+2013/03/13 21:20:36 Uncaught TypeError: Object #<Object> has no method 'on'; http://dobox.local/js/bootstrap.js; 156
+2013/03/13 21:22:30 Uncaught TypeError: Object #<Object> has no method 'on'; http://dobox.local/js/bootstrap.js; 156
+2013/03/13 21:22:46 Uncaught TypeError: Object #<Object> has no method 'on'; http://dobox.local/js/bootstrap.js; 156
+2013/03/13 21:22:54 Uncaught TypeError: Object #<Object> has no method 'on'; http://dobox.local/js/bootstrap.js; 156
+2013/03/13 21:23:04 Uncaught TypeError: Object #<Object> has no method 'on'; http://dobox.local/js/bootstrap.js; 156
+2013/03/13 21:23:09 Uncaught TypeError: Object #<Object> has no method 'on'; http://dobox.local/js/bootstrap.js; 156
+2013/03/13 21:23:47 Uncaught TypeError: Object #<Object> has no method 'on'; http://dobox.local/js/bootstrap.js; 156
+2013/03/13 21:23:49 Uncaught TypeError: Object #<Object> has no method 'on'; http://dobox.local/js/bootstrap.js; 156
+2013/03/13 21:24:13 Uncaught TypeError: Object #<Object> has no method 'on'; http://dobox.local/js/bootstrap.js; 156
+2013/03/13 21:24:15 Uncaught TypeError: Object #<Object> has no method 'on'; http://dobox.local/js/bootstrap.js; 156
+2013/03/13 21:24:50 Uncaught TypeError: Object #<Object> has no method 'on'; http://dobox.local/js/bootstrap.js; 156
+2013/03/13 21:24:51 Uncaught TypeError: Object #<Object> has no method 'on'; http://dobox.local/js/bootstrap.js; 156
+2013/03/13 21:24:55 Uncaught TypeError: Object #<Object> has no method 'on'; http://dobox.local/js/bootstrap.js; 156
+2013/03/13 21:25:18 Uncaught TypeError: Object #<Object> has no method 'on'; http://dobox.local/js/bootstrap.js; 156
+2013/03/13 21:25:21 Uncaught TypeError: Object #<Object> has no method 'on'; http://dobox.local/js/bootstrap.js; 156
+2013/03/13 21:25:30 Uncaught TypeError: Object #<Object> has no method 'on'; http://dobox.local/js/bootstrap.js; 156
+2013/03/13 21:26:05 Uncaught TypeError: Object #<Object> has no method 'on'; http://dobox.local/js/bootstrap.js; 156
+2013/03/13 21:26:07 Uncaught TypeError: Object #<Object> has no method 'on'; http://dobox.local/js/bootstrap.js; 156
+2013/03/16 13:42:27 Uncaught TypeError: Object #<Object> has no method 'on'; http://dobox.local/js/bootstrap.js; 156
+2013/03/16 13:49:51 Uncaught TypeError: Object #<Object> has no method 'on'; http://dobox.local/js/bootstrap.js; 156
+2013/03/16 13:50:22 Uncaught TypeError: Object #<Object> has no method 'on'; http://dobox.local/js/bootstrap.js; 156
+2013/03/16 13:50:26 Uncaught TypeError: Object #<Object> has no method 'on'; http://dobox.local/js/bootstrap.js; 156
+2013/03/16 13:50:42 Uncaught TypeError: Object #<Object> has no method 'on'; http://dobox.local/js/bootstrap.js; 156
+2013/03/16 13:50:47 Uncaught TypeError: Object #<Object> has no method 'on'; http://dobox.local/js/bootstrap.js; 156
+2013/03/16 13:50:53 Uncaught TypeError: Object #<Object> has no method 'on'; http://dobox.local/js/bootstrap.js; 156
+2013/03/16 13:51:18 Uncaught TypeError: Object #<Object> has no method 'on'; http://dobox.local/js/bootstrap.js; 156
+2013/03/16 13:51:30 Uncaught TypeError: Object #<Object> has no method 'on'; http://dobox.local/js/bootstrap.js; 156
+2013/03/16 13:51:47 Uncaught TypeError: Object #<Object> has no method 'on'; http://dobox.local/js/bootstrap.js; 156
+2013/03/16 13:52:09 Uncaught TypeError: Object #<Object> has no method 'on'; http://dobox.local/js/bootstrap.js; 156
+2013/03/16 13:52:28 Uncaught TypeError: Object #<Object> has no method 'on'; http://dobox.local/js/bootstrap.js; 156
+2013/03/16 13:53:43 Uncaught TypeError: Object #<Object> has no method 'on'; http://dobox.local/js/bootstrap.js; 156
+2013/03/16 13:55:06 Uncaught TypeError: Object #<Object> has no method 'on'; http://dobox.local/js/bootstrap.js; 156
+2013/03/16 13:55:12 Uncaught TypeError: Object #<Object> has no method 'on'; http://dobox.local/js/bootstrap.js; 156
+2013/03/16 13:55:17 Uncaught TypeError: Object #<Object> has no method 'on'; http://dobox.local/js/bootstrap.js; 156
+2013/03/16 13:56:18 Uncaught TypeError: Object #<Object> has no method 'on'; http://dobox.local/js/bootstrap.js; 156
+2013/03/16 13:56:27 Uncaught TypeError: Object #<Object> has no method 'on'; http://dobox.local/js/bootstrap.js; 156
+2013/03/16 13:57:00 Uncaught TypeError: Object #<Object> has no method 'on'; http://dobox.local/js/bootstrap.js; 156
+2013/03/16 13:57:27 Uncaught TypeError: Object #<Object> has no method 'on'; http://dobox.local/js/bootstrap.js; 156
+2013/03/16 13:57:54 Uncaught TypeError: Object #<Object> has no method 'on'; http://dobox.local/js/bootstrap.js; 156
+2013/03/16 13:58:04 Uncaught TypeError: Object #<Object> has no method 'on'; http://dobox.local/js/bootstrap.js; 156
+2013/03/16 13:58:13 Uncaught TypeError: Object #<Object> has no method 'on'; http://dobox.local/js/bootstrap.js; 156
+2013/03/16 14:00:16 Uncaught TypeError: Object #<Object> has no method 'on'; http://dobox.local/js/bootstrap.js; 156
+2013/03/16 14:00:36 Uncaught TypeError: Object #<Object> has no method 'on'; http://dobox.local/js/bootstrap.js; 156
+2013/03/16 14:03:20 Uncaught TypeError: Object #<Object> has no method 'on'; http://dobox.local/js/bootstrap.js; 156
+2013/03/16 14:03:33 Uncaught TypeError: Object #<Object> has no method 'on'; http://dobox.local/js/bootstrap.js; 156
+2013/03/16 14:03:52 Uncaught TypeError: Object #<Object> has no method 'on'; http://dobox.local/js/bootstrap.js; 156
+2013/03/16 14:04:14 Uncaught TypeError: Object #<Object> has no method 'on'; http://dobox.local/js/bootstrap.js; 156
+2013/03/16 14:04:29 Uncaught TypeError: Object #<Object> has no method 'on'; http://dobox.local/js/bootstrap.js; 156
+2013/03/16 14:04:42 Uncaught TypeError: Object #<Object> has no method 'on'; http://dobox.local/js/bootstrap.js; 156
+2013/03/16 14:05:00 Uncaught TypeError: Object #<Object> has no method 'on'; http://dobox.local/js/bootstrap.js; 156
+2013/03/16 14:05:07 Uncaught TypeError: Object #<Object> has no method 'on'; http://dobox.local/js/bootstrap.js; 156
+2013/03/16 14:05:31 Uncaught TypeError: Object #<Object> has no method 'on'; http://dobox.local/js/bootstrap.js; 156
+2013/03/16 14:06:09 Uncaught TypeError: Object #<Object> has no method 'on'; http://dobox.local/js/bootstrap.js; 156
+2013/03/16 14:06:16 Uncaught TypeError: Object #<Object> has no method 'on'; http://dobox.local/js/bootstrap.js; 156
+2013/03/16 14:06:21 Uncaught TypeError: Object #<Object> has no method 'on'; http://dobox.local/js/bootstrap.js; 156
+2013/03/16 14:06:57 Uncaught TypeError: Object #<Object> has no method 'on'; http://dobox.local/js/bootstrap.js; 156
+2013/03/16 14:08:39 Uncaught TypeError: Object #<Object> has no method 'on'; http://dobox.local/js/bootstrap.js; 156
+2013/03/16 14:08:43 Uncaught TypeError: Object #<Object> has no method 'on'; http://dobox.local/js/bootstrap.js; 156
+2013/03/16 14:09:48 Uncaught TypeError: Cannot read property 'msie' of undefined; http://dobox.local/js/jquery.corner.js; 17
+2013/03/16 14:11:34 Uncaught TypeError: Object [object Object] has no method 'live'; http://dobox.local/items/add; 391
+2013/03/16 14:11:34 Uncaught TypeError: Object [object Object] has no method 'live'; http://dobox.local/js/bbs.txt.js; 116
+2013/03/16 14:14:39 Uncaught TypeError: Object [object Object] has no method 'live'; http://dobox.local/items/add; 391
+2013/03/16 14:14:39 Uncaught TypeError: Object [object Object] has no method 'live'; http://dobox.local/js/bbs.txt.js; 120
+2013/03/16 14:15:03 Uncaught TypeError: Object [object Object] has no method 'live'; http://dobox.local/items/add; 391
+2013/03/16 14:15:03 Uncaught TypeError: Cannot read property 'p' of undefined; http://dobox.local/js/bbs.add.js; 417
+2013/03/16 14:16:06 Uncaught TypeError: Cannot read property 'p' of undefined; http://dobox.local/js/bbs.add.js; 417
+2013/03/16 14:17:45 Uncaught TypeError: Cannot read property 'p' of undefined; http://dobox.local/js/bbs.add.js; 418
+2013/03/16 14:18:22 Uncaught TypeError: Cannot read property 'p' of undefined; http://dobox.local/js/bbs.add.js; 418
+2013/03/16 14:18:52 Uncaught TypeError: Cannot read property 'p' of undefined; http://dobox.local/js/bbs.add.js; 418
+2013/03/16 14:18:52 Uncaught TypeError: Cannot read property 'p' of undefined; http://dobox.local/js/bbs.add.js; 418
+2013/03/16 14:18:53 Uncaught TypeError: Cannot read property 'p' of undefined; http://dobox.local/js/bbs.add.js; 418
+2013/03/16 14:18:54 Uncaught TypeError: Cannot read property 'p' of undefined; http://dobox.local/js/bbs.add.js; 418
+2013/03/16 14:18:55 Uncaught TypeError: Cannot read property 'p' of undefined; http://dobox.local/js/bbs.add.js; 418
+2013/03/16 14:18:55 Uncaught TypeError: Cannot read property 'p' of undefined; http://dobox.local/js/bbs.add.js; 418
+2013/03/16 14:19:15 Uncaught TypeError: Cannot read property 'p' of undefined; http://dobox.local/js/bbs.add.js; 418
+2013/03/16 14:19:17 Uncaught TypeError: Object 0 has no method 'html'; http://dobox.local/bff/js/jquery.min.js; 5
+2013/03/16 14:20:20 Uncaught TypeError: Object 0 has no method 'html'; http://dobox.local/bff/js/jquery.min.js; 5
+2013/03/16 14:20:22 Uncaught TypeError: Object 0 has no method 'html'; http://dobox.local/bff/js/jquery.min.js; 5
+2013/03/16 14:22:19 Uncaught TypeError: Object 0 has no method 'html'; http://dobox.local/bff/js/jquery.min.js; 5
+2013/03/16 14:22:21 Uncaught TypeError: Object 0 has no method 'html'; http://dobox.local/bff/js/jquery.min.js; 5
+2013/03/16 14:23:12 Uncaught TypeError: Cannot read property 'p' of undefined; http://dobox.local/js/bbs.add.js; 419
+2013/03/16 14:23:50 Uncaught TypeError: Cannot read property 'p' of undefined; http://dobox.local/js/bbs.add.js; 419
+2013/03/16 14:24:05 Uncaught TypeError: Cannot read property 'p' of undefined; http://dobox.local/js/bbs.add.js; 418
+2013/03/16 14:26:12 Uncaught TypeError: Cannot read property 'p' of undefined; http://dobox.local/js/bbs.add.js; 417
+2013/03/16 14:26:19 Uncaught TypeError: Cannot call method 'txtBuild' of undefined; http://dobox.local/items/add; 385
+2013/03/16 14:26:32 Uncaught TypeError: Object [object Object] has no method 'live'; http://dobox.local/js/bbs.add.js; 530
+2013/03/16 14:26:54 Uncaught TypeError: Object [object Object] has no method 'live'; http://dobox.local/js/bbs.add.js; 545
+2013/03/16 14:34:17 Uncaught TypeError: Object [object Object] has no method 'live'; http://dobox.local/js/app.js; 288
+2013/03/16 14:49:23 Uncaught TypeError: Object [object Object] has no method 'live'; http://dobox.local/js/app.js; 288
+2013/03/16 15:53:56 Uncaught TypeError: Object [object Object] has no method 'live'; http://dobox.local/js/app.js; 288
+2013/03/16 15:56:11 Uncaught TypeError: Object [object Object] has no method 'live'; http://dobox.local/js/app.js; 288
+2013/03/16 16:42:42 Uncaught TypeError: Object [object Object] has no method 'live'; http://dobox.local/js/app.js; 288
+2013/03/16 17:09:50 Uncaught TypeError: Object [object Object] has no method 'live'; http://dobox.local/js/app.js; 288
+2013/03/17 07:52:31 Uncaught TypeError: Object [object Object] has no method 'live'; http://dobox.local/js/app.js; 288
+2013/03/17 08:10:50 Uncaught TypeError: Cannot call method 'getAttribute' of undefined; http://dobox.local/bff/js/jquery.min.js; 5
+2013/03/17 08:10:51 Uncaught TypeError: Cannot call method 'getAttribute' of undefined; http://dobox.local/js/bbs.txt.js; 68
+2013/03/17 08:10:52 Uncaught TypeError: Cannot call method 'getAttribute' of undefined; http://dobox.local/js/bbs.txt.js; 68
+2013/03/17 08:11:11 TypeError: $(...).on is not a function; http://dobox.local/js/bootstrap.js; 156
+2013/03/17 08:11:12 TypeError: $(...).corner is not a function; http://dobox.local/; 99
+2013/03/17 08:11:14 TypeError: hint_sel.on is not a function; http://dobox.local/items/add#; 389
+2013/03/17 08:11:14 TypeError: $(...).on is not a function; http://dobox.local/js/bbs.add.js; 530
+2013/03/17 08:11:19 TypeError: bbsAdd is undefined; http://dobox.local/items/add#; 1
+2013/03/17 08:27:35 Uncaught TypeError: Object [object Object] has no method 'corner'; http://dobox.local/items/fav; 101
+2013/03/17 08:27:38 Uncaught TypeError: Object [object Object] has no method 'corner'; http://dobox.local/items/fav; 101
+2013/03/17 08:43:34 Uncaught TypeError: Object [object Object] has no method 'live'; http://dobox.local/js/app.js; 288
+2013/03/17 08:44:06 Uncaught TypeError: Object [object Object] has no method 'live'; http://dobox.local/js/app.js; 288
+2013/03/17 08:44:55 Uncaught TypeError: Object [object Object] has no method 'live'; http://dobox.local/js/app.js; 288
+2013/03/17 08:59:22 Uncaught TypeError: Property 'value' of object #<HTMLSelectElement> is not a function; http://dobox.local/js/newpage.search.js; 9
+2013/03/17 09:02:55 Uncaught SyntaxError: Unexpected identifier; http://dobox.local/js/newpage.search.js; 15
+2013/03/17 09:45:10 Uncaught TypeError: Object [object Object] has no method 'live'; http://dobox.local/js/app.js; 288
+2013/03/17 11:26:59 Uncaught TypeError: Object [object Object] has no method 'live'; http://dobox.local/js/app.js; 288
+2013/03/17 11:38:17 Uncaught TypeError: Object [object Object] has no method 'live'; http://dobox.local/js/app.js; 288
+2013/03/17 11:38:21 Uncaught TypeError: Object [object Object] has no method 'live'; http://dobox.local/js/app.js; 288
+2013/03/17 11:38:25 Uncaught TypeError: Object [object Object] has no method 'live'; http://dobox.local/js/app.js; 288
+2013/03/17 11:43:13 Uncaught TypeError: Cannot read property 'safari' of undefined; http://dobox.local/bff/js/jquery.min.js; 5
+2013/03/20 19:58:38 Uncaught TypeError: Object [object Object] has no method 'live'; http://dobox.local/js/app.js; 288
+2013/03/20 20:44:25 Uncaught TypeError: Object [object Object] has no method 'live'; http://dobox.local/js/app.js; 288
+2013/03/20 20:47:41 Uncaught TypeError: Object [object Object] has no method 'live'; http://dobox.local/js/app.js; 288
+2013/03/20 20:47:42 Uncaught TypeError: Object [object Object] has no method 'live'; http://dobox.local/js/app.js; 288
+2013/03/20 20:47:47 Uncaught TypeError: Object [object Object] has no method 'live'; http://dobox.local/js/app.js; 288
+2013/03/20 21:15:13 Uncaught TypeError: Object [object Object] has no method 'live'; http://dobox.local/js/app.js; 288
+2013/03/23 10:51:21 Uncaught TypeError: Object [object Object] has no method 'live'; http://dobox.local/js/app.js; 288
+2013/03/23 10:51:21 Uncaught TypeError: Object [object Object] has no method 'live'; http://dobox.local/js/app.js; 288
+2013/03/23 10:51:24 Uncaught TypeError: Object [object Object] has no method 'live'; http://dobox.local/js/app.js; 288
+2013/03/23 19:58:27 Uncaught TypeError: Object [object Object] has no method 'live'; http://dobox.local/js/app.js; 288
+2013/03/23 19:58:27 Uncaught TypeError: Object [object Object] has no method 'live'; http://dobox.local/js/app.js; 288
+2013/03/23 19:58:27 Uncaught TypeError: Object [object Object] has no method 'live'; http://dobox.local/js/app.js; 288
+2013/03/23 20:11:39 Uncaught TypeError: Object [object Object] has no method 'live'; http://dobox.local/js/app.js; 288
+2013/03/24 20:34:53 Uncaught TypeError: Object [object Object] has no method 'live'; http://dobox.local/js/app.js; 288
+2013/03/24 20:34:53 Uncaught TypeError: Object [object Object] has no method 'live'; http://dobox.local/js/app.js; 288
+2013/03/24 20:35:06 Uncaught TypeError: Object [object Object] has no method 'live'; http://dobox.local/js/app.js; 288
+2013/03/24 20:37:04 Uncaught TypeError: Object [object Object] has no method 'corner'; http://dobox.local/items/fav; 101
+2013/03/25 18:23:20 Uncaught TypeError: Object [object Object] has no method 'corner'; http://dobox.local/items/fav; 102
+2013/03/26 19:54:27 Uncaught TypeError: Object [object Object] has no method 'live'; http://dobox.local/js/app.js; 288
+2013/03/30 20:53:16 Uncaught SyntaxError: Unexpected token {; http://dobox.local/js/newpage.search.js; 8
+2013/03/30 20:53:50 Uncaught SyntaxError: Unexpected token {; http://dobox.local/js/newpage.search.js; 8
+2013/04/08 19:48:53 Uncaught TypeError: Object [object Object] has no method 'live'; http://dobox.local/js/app.js; 288
+2013/04/08 19:50:44 Uncaught TypeError: Object [object Object] has no method 'live'; http://dobox.local/js/app.js; 288
+2013/04/08 20:10:39 Uncaught TypeError: Cannot read property 'safari' of undefined; http://dobox.local/bff/js/jquery.min.js; 5
+2013/04/08 20:40:29 Uncaught SyntaxError: Unexpected token function; http://dobox.local/js/bbs.add.js; 531
+2013/04/08 20:40:30 Uncaught ReferenceError: bbsAddClass is not defined; http://dobox.local/items/add#; 382
+2013/04/12 13:20:58 Uncaught TypeError: Object [object Object] has no method 'live'; http://dobox.local/js/app.js; 288
+2013/04/13 10:13:12 Uncaught TypeError: Cannot read property 'safari' of undefined; http://dobox.local/bff/js/bff.base.js; 471
+2013/04/13 10:13:40 Uncaught TypeError: Cannot read property 'safari' of undefined; http://dobox.local/bff/js/bff.base.js; 471
+2013/04/13 10:27:28 Uncaught TypeError: Object #<HTMLTextAreaElement> has no method 'val'; http://dobox.local/js/bbs.add.js; 39
+2013/04/16 19:58:39 Uncaught TypeError: Object [object Object] has no method 'live'; http://dobox.local/js/app.js; 288
+2013/04/16 19:58:44 Uncaught TypeError: Object [object Object] has no method 'live'; http://dobox.local/js/app.js; 288
+2013/04/16 20:10:07 Uncaught TypeError: Object [object Object] has no method 'live'; http://dobox.local/js/app.js; 288
+2013/04/16 20:17:15 Uncaught TypeError: Object [object Object] has no method 'corner'; http://dobox.local/items/fav; 114
+2013/04/16 20:17:18 Uncaught TypeError: Object [object Object] has no method 'corner'; http://dobox.local/items/fav; 114
+2013/04/16 20:38:59 Uncaught TypeError: Object [object Object] has no method 'corner'; http://dobox.local/items/fav; 102
+2013/04/18 17:31:28 Uncaught TypeError: Object [object Object] has no method 'corner'; http://dobox.local/items/fav; 101
+2013/04/18 18:55:25 Uncaught Error: Syntax error, unrecognized expression: :not[:checked]; http://dobox.local/bff/js/jquery.min.js; 4
+2013/04/18 18:55:26 Uncaught Error: Syntax error, unrecognized expression: :not[:checked]; http://dobox.local/bff/js/jquery.min.js; 4
+2013/04/18 18:55:26 Uncaught Error: Syntax error, unrecognized expression: :not[:checked]; http://dobox.local/bff/js/jquery.min.js; 4
+2013/04/18 18:55:46 Uncaught Error: Syntax error, unrecognized expression: :not[:checked]; http://dobox.local/bff/js/jquery.min.js; 4
+2013/04/18 18:55:48 Uncaught Error: Syntax error, unrecognized expression: :not[:checked]; http://dobox.local/bff/js/jquery.min.js; 4
+2013/04/18 18:56:13 Uncaught Error: Syntax error, unrecognized expression: :not[:checked]; http://dobox.local/bff/js/jquery.min.js; 4
+2013/04/18 18:56:14 Uncaught Error: Syntax error, unrecognized expression: :not[:checked]; http://dobox.local/bff/js/jquery.min.js; 4
+2013/04/18 18:56:31 Uncaught Error: Syntax error, unrecognized expression: .not[:checked]; http://dobox.local/bff/js/jquery.min.js; 4
+2013/04/18 18:56:31 Uncaught Error: Syntax error, unrecognized expression: .not[:checked]; http://dobox.local/bff/js/jquery.min.js; 4
+2013/04/18 18:56:32 Uncaught Error: Syntax error, unrecognized expression: .not[:checked]; http://dobox.local/bff/js/jquery.min.js; 4
+2013/04/22 17:42:39 Uncaught TypeError: Object [object Object] has no method 'live'; http://dobox.local/js/app.js; 288
+2013/04/22 17:45:30 Uncaught TypeError: Object [object Object] has no method 'live'; http://dobox.local/js/app.js; 288
+2013/04/22 17:45:59 Uncaught TypeError: Object [object Object] has no method 'live'; http://dobox.local/js/app.js; 288
+2013/04/22 17:46:05 Uncaught TypeError: Object [object Object] has no method 'live'; http://dobox.local/js/app.js; 288
+2013/04/22 17:56:52 Uncaught TypeError: Object [object Object] has no method 'live'; http://dobox.local/js/app.js; 288
+2013/04/22 17:57:52 Uncaught TypeError: Object [object Object] has no method 'live'; http://dobox.local/js/app.js; 288
+2013/04/22 17:58:23 Uncaught TypeError: Object [object Object] has no method 'live'; http://dobox.local/js/app.js; 288
+2013/04/22 18:00:21 Uncaught TypeError: Object [object Object] has no method 'live'; http://dobox.local/js/app.js; 288
+2013/04/22 18:00:55 Uncaught TypeError: Object [object Object] has no method 'live'; http://dobox.local/js/app.js; 288
+2013/04/22 18:04:19 Uncaught TypeError: Object [object Object] has no method 'live'; http://dobox.local/js/app.js; 288
+2013/04/22 18:04:46 Uncaught TypeError: Object [object Object] has no method 'live'; http://dobox.local/js/app.js; 288
+2013/04/22 18:05:16 Uncaught TypeError: Object [object Object] has no method 'live'; http://dobox.local/js/app.js; 288
+2013/04/22 18:06:22 Uncaught TypeError: Object [object Object] has no method 'live'; http://dobox.local/js/app.js; 288
+2013/04/22 18:07:30 Uncaught TypeError: Object [object Object] has no method 'live'; http://dobox.local/js/app.js; 288
+2013/04/22 18:11:07 Uncaught TypeError: Object [object Object] has no method 'live'; http://dobox.local/js/app.js; 288
+2013/04/22 18:13:44 Uncaught TypeError: Object [object Object] has no method 'live'; http://dobox.local/js/app.js; 288
+2013/04/22 18:16:08 Uncaught TypeError: Object [object Object] has no method 'live'; http://dobox.local/js/app.js; 288
+2013/04/22 18:19:24 Uncaught TypeError: Object [object Object] has no method 'live'; http://dobox.local/js/app.js; 288
+2013/04/22 18:34:50 Uncaught TypeError: Object [object Object] has no method 'live'; http://dobox.local/js/app.js; 288
+2013/04/22 18:34:55 Uncaught TypeError: Object [object Object] has no method 'live'; http://dobox.local/js/app.js; 288
+2013/04/22 18:35:13 Uncaught TypeError: Object [object Object] has no method 'live'; http://dobox.local/js/app.js; 288
+2013/04/22 18:35:39 Uncaught TypeError: Object [object Object] has no method 'live'; http://dobox.local/js/app.js; 288
+2013/04/22 18:43:47 Uncaught TypeError: Object [object Object] has no method 'live'; http://dobox.local/js/app.js; 288
+2013/04/22 18:45:52 Uncaught TypeError: Object [object Object] has no method 'live'; http://dobox.local/js/app.js; 288
+2013/04/22 18:47:01 Uncaught TypeError: Object [object Object] has no method 'live'; http://dobox.local/js/app.js; 288
+2013/05/16 19:45:45 Uncaught TypeError: Object [object Object] has no method 'live'; http://dobox.local/js/app.js; 288
+2013/05/16 19:45:54 Uncaught TypeError: Object [object Object] has no method 'live'; http://dobox.local/js/app.js; 288
+2013/05/16 19:45:57 Uncaught TypeError: Object [object Object] has no method 'live'; http://dobox.local/js/app.js; 288
+2013/05/16 19:48:42 Uncaught TypeError: Object [object Object] has no method 'live'; http://dobox.local/js/app.js; 288
+2013/05/16 19:48:43 Uncaught TypeError: Object [object Object] has no method 'live'; http://dobox.local/js/app.js; 288
+2013/05/16 19:50:09 Uncaught TypeError: Object [object Object] has no method 'live'; http://dobox.local/js/app.js; 288
+2013/05/16 19:50:20 Uncaught TypeError: Object [object Object] has no method 'live'; http://dobox.local/js/app.js; 288
+2013/05/16 19:50:44 Uncaught TypeError: Cannot call method 'get' of undefined; http://dobox.local/js/bbs.search.js; 259
+2013/05/16 19:51:11 Uncaught TypeError: Object [object Object] has no method 'live'; http://dobox.local/js/app.js; 288
+2013/05/16 19:51:31 Uncaught TypeError: Object [object Object] has no method 'live'; http://dobox.local/js/app.js; 288
+2013/05/16 19:51:44 Uncaught TypeError: Object [object Object] has no method 'live'; http://dobox.local/js/app.js; 288
+2013/05/16 19:54:00 Uncaught TypeError: Object [object Object] has no method 'live'; http://dobox.local/js/app.js; 288
+2013/05/16 19:54:07 Uncaught TypeError: Object [object Object] has no method 'live'; http://dobox.local/js/app.js; 288
+2013/05/16 19:55:02 Uncaught TypeError: Object [object Object] has no method 'live'; http://dobox.local/js/app.js; 288
+2013/05/16 19:55:17 Uncaught TypeError: Object [object Object] has no method 'live'; http://dobox.local/js/app.js; 288
+2013/05/16 19:57:14 Uncaught TypeError: Object [object Object] has no method 'live'; http://dobox.local/js/app.js; 288
+2013/05/16 19:57:34 Uncaught TypeError: Object [object Object] has no method 'live'; http://dobox.local/js/app.js; 288
+2013/05/16 20:02:10 Uncaught TypeError: Object [object Object] has no method 'live'; http://dobox.local/js/app.js; 288
+2013/05/16 20:04:57 Uncaught ReferenceError: bbsSearch is not defined; http://dobox.local/?text=&rubric=48&subrubric=49&country=0&l_price=&h_price=&f%5B1%5D%5B2%5D=2&f%5B4%5D%5Bf%5D=&f%5B4%5D%5Bt%5D=&f%5B6%5D%5Bf%5D=&f%5B6%5D%5Bt%5D=&sort=0#; 652
+2013/05/16 20:05:10 Uncaught ReferenceError: bbsSearch is not defined; http://dobox.local/?text=&rubric=48&subrubric=49&country=0&l_price=&h_price=&f%5B1%5D%5B2%5D=2&f%5B1%5D%5B1%5D=1&f%5B4%5D%5Bf%5D=&f%5B4%5D%5Bt%5D=&f%5B6%5D%5Bf%5D=&f%5B6%5D%5Bt%5D=&sort=0#; 652
+2013/05/16 20:05:24 Uncaught ReferenceError: bbsSearch is not defined; http://dobox.local/?text=&rubric=48&subrubric=49&country=0&l_price=&h_price=&f%5B1%5D%5B2%5D=2&f%5B1%5D%5B1%5D=1&f%5B4%5D%5Bf%5D=1998&f%5B4%5D%5Bt%5D=&f%5B6%5D%5Bf%5D=&f%5B6%5D%5Bt%5D=&sort=0#; 652
+2013/05/16 20:06:53 Uncaught ReferenceError: bbsSearch is not defined; http://dobox.local/?text=&rubric=48&subrubric=49&country=0&l_price=&h_price=&f%5B1%5D%5B2%5D=2&f%5B1%5D%5B1%5D=1&f%5B4%5D%5Bf%5D=1998&f%5B4%5D%5Bt%5D=&f%5B6%5D%5Bf%5D=&f%5B6%5D%5Bt%5D=&sort=0#; 324
+2013/05/16 20:07:07 Uncaught ReferenceError: bbsSearch is not defined; http://dobox.local/?text=&rubric=48&subrubric=49&country=0&l_price=&h_price=&f%5B1%5D%5B2%5D=2&f%5B1%5D%5B1%5D=1&f%5B4%5D%5Bf%5D=1998&f%5B4%5D%5Bt%5D=&f%5B6%5D%5Bf%5D=&f%5B6%5D%5Bt%5D=&sort=0#; 946
+2013/05/16 20:07:26 Uncaught ReferenceError: bbsSearch is not defined; http://dobox.local/?text=&rubric=48&subrubric=49&country=0&l_price=&h_price=&f%5B1%5D%5B2%5D=2&f%5B1%5D%5B1%5D=1&f%5B4%5D%5Bf%5D=1998&f%5B4%5D%5Bt%5D=&f%5B6%5D%5Bf%5D=&f%5B6%5D%5Bt%5D=&sort=0#; 324
+2013/05/16 20:07:43 Uncaught ReferenceError: bbsSearch is not defined; http://dobox.local/?text=&rubric=48&subrubric=49&country=0&l_price=&h_price=&f%5B1%5D%5B2%5D=2&f%5B1%5D%5B1%5D=1&f%5B4%5D%5Bf%5D=1998&f%5B4%5D%5Bt%5D=&f%5B6%5D%5Bf%5D=&f%5B6%5D%5Bt%5D=&sort=0#; 621
+2013/05/16 20:07:47 Uncaught ReferenceError: bbsSearch is not defined; http://dobox.local/?text=&rubric=48&subrubric=49&country=0&l_price=&h_price=&f%5B1%5D%5B2%5D=2&f%5B1%5D%5B1%5D=1&f%5B4%5D%5Bf%5D=1998&f%5B4%5D%5Bt%5D=&f%5B6%5D%5Bf%5D=&f%5B6%5D%5Bt%5D=&sort=0#; 652
+2013/05/16 20:10:02 Uncaught ReferenceError: bbsSearch is not defined; http://dobox.local/?text=&rubric=48&subrubric=49&country=0&l_price=&h_price=&f%5B1%5D%5B2%5D=2&f%5B1%5D%5B1%5D=1&f%5B4%5D%5Bf%5D=1998&f%5B4%5D%5Bt%5D=&f%5B6%5D%5Bf%5D=&f%5B6%5D%5Bt%5D=&sort=0#; 325
+2013/05/16 20:10:22 Uncaught ReferenceError: bbsSearch is not defined; http://dobox.local/?text=&rubric=48&subrubric=49&country=0&l_price=&h_price=&f%5B1%5D%5B2%5D=2&f%5B1%5D%5B1%5D=1&f%5B4%5D%5Bf%5D=1998&f%5B4%5D%5Bt%5D=&f%5B6%5D%5Bf%5D=&f%5B6%5D%5Bt%5D=&sort=0#; 324
+2013/05/16 20:11:11 Uncaught ReferenceError: bbsSearch is not defined; http://dobox.local/?text=&rubric=48&subrubric=49&country=0&l_price=&h_price=&f%5B1%5D%5B2%5D=2&f%5B1%5D%5B1%5D=1&f%5B4%5D%5Bf%5D=1998&f%5B4%5D%5Bt%5D=&f%5B6%5D%5Bf%5D=&f%5B6%5D%5Bt%5D=&sort=0#; 324
+2013/05/16 20:16:03 Uncaught ReferenceError: bbsSearch is not defined; http://dobox.local/?text=&rubric=48&subrubric=49&country=0&l_price=&h_price=&f%5B1%5D%5B2%5D=2&f%5B1%5D%5B1%5D=1&f%5B4%5D%5Bf%5D=1998&f%5B4%5D%5Bt%5D=&f%5B6%5D%5Bf%5D=&f%5B6%5D%5Bt%5D=&sort=0#; 324

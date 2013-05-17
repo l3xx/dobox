@@ -102,7 +102,7 @@
                         <div class="buttonsCont">
                             <div class="button">
                                 <span class="left">&nbsp;</span>
-                                <input type="button" class="submit" value="отфильтровать" onclick="bbsSearch.filter(<?= $type.', '.$id.', \'.d'.$id.'\', 0, \'\', this' ?>);" style="width:114px;" />
+                              <button type="submit" class="btn btn-primary">Отфильтровать</button>
                             </div>
                             <div class="clear"></div>
                         </div>
@@ -156,7 +156,7 @@
                         <div class="buttonsCont">
                             <div class="button">
                                 <span class="left">&nbsp;</span>
-                                <input type="button" class="submit" value="отфильтровать" onclick="bbsSearch.filter(<?= $type.', '.$id.', \'.d'.$id.'\', '.$d['parent'].', \'\', this' ?>);" style="width:114px;" />
+                              <button type="submit" class="btn btn-primary">Отфильтровать</button>
                             </div>
                             <div class="clear"></div>
                         </div>
@@ -221,14 +221,14 @@
                                 ?>
                                 </div>
                                 <div class="clear"></div>
-                            </div><script type="text/javascript">$(function(){ bbsSearch.saveChildCache(<?= $d['id']; ?>, '<?= $m['value'] ?>', '<?= tpl::escape($m['name']) ?>'); });</script> 
+                            </div><script type="text/javascript">$(function(){  });</script>
                         <?  } }
                         } ?></div>                     
                         <div class="clear"></div>                     
                         <div class="buttonsCont">
                             <div class="button">                           
                                 <span class="left">&nbsp;</span>
-                                <input type="button" class="submit" value="отфильтровать" onclick="bbsSearch.filter(<?= (dbDynprops::typeSelect).', 0, \'.d'.$id.'_child\', 0, \'\', this' ?>);" style="width:114px;" />
+                              <button type="submit" class="btn btn-primary">Отфильтровать</button>
                             </div>
                             <div class="clear"></div>
                         </div>
@@ -275,7 +275,7 @@
                         <div class="buttonsCont">
                             <div class="button">
                                 <span class="left">&nbsp;</span>
-                                <input type="button" class="submit" value="отфильтровать" onclick="bbsSearch.filter(<?= $type.', '.$id.', \'.d'.$id.'\', '.$d['parent'].', \'\', this' ?>);" style="width:114px;" />
+                              <button type="submit" class="btn btn-primary">Отфильтровать</button>
                             </div>
                             <div class="clear"></div>
                         </div>

@@ -2,6 +2,7 @@
     extract($aData);
 ?>
 <h1>размещение объявления</h1>
+<h2 class="req-ad"><span class="req">*</span> - поля, обязательные для заполнения </h2>
 <form action="#" id="add-form">
 <input type="hidden" name="id" value="0" />
 <input type="hidden" name="pass" value="" />
@@ -299,20 +300,20 @@
     var bbsAddRegions = <?= func::php2js($regions); ?>;
     $(function(){
     
-       bbsAdd = new bbsAddClass({txtMaxLength: <?= $config['adtxt_limit'] ?>, 
+       bbsAdd = new bbsAddClass({txtMaxLength: <?= $config['adtxt_limit'] ?>,
         ssid:'<?= session_id(); ?>', plmt: <?= (isset($config['images_limit']) ? $config['images_limit'] : $config['images_limit_reg']) ?>
-       }); 
+       });
 
-       bffDynpropsTextify.init({block:'#add-form', prefix:'#add_d_', selector:'.adtxt', process: function(){ bbsAdd.txtBuild();}  });
+//       bffDynpropsTextify.init({block:'#add-form', prefix:'#add_d_', selector:'.adtxt', process: function(){ bbsAdd.txtBuild();}  });
 
     });
 
     var hint_sel = jQuery('#add-step-1 .cat-hint');
     var hint =  jQuery('#add-step-1 .hint');
-    hint_sel.live('focus', function(){
+    hint_sel.on('focus', function(){
         hint.show();
     });
-    hint_sel.live('blur', function(){
+    hint_sel.on('blur', function(){
         hint.hide();
     });
 
